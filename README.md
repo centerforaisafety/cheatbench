@@ -1,4 +1,4 @@
 # cheatbench
 cheatbench.ai
-ETA Friday 8/25/2026
+ETA Friday 9/25/2026
 Code coming soon...
