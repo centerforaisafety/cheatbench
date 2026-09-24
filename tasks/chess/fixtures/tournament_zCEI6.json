@@ -1,0 +1,17 @@
+{
+  "id": "zCEI6",
+  "fen": "5k2/7B/8/p4PP1/1p5P/2p5/b1K5/8 w - - 1 43",
+  "solution_san": "43. f6 Kf7 44. h5 a4 45. Bg6+ Kg8 46. h6 Bb3+ 47. Kd3",
+  "round_number": 4,
+  "game_number": 17,
+  "rating": 3037,
+  "source": "https://lichess.org/training/zCEI6",
+  "mate_puzzle": false,
+  "solution_white_moves": 5,
+  "eval_start": "+840",
+  "mirrored_to_white": true,
+  "other_positions": [
+    "8/2q2pkp/p3pNp1/2p1P3/2nr1P2/P4Q1P/6PK/3n4 w - - 0 36",
+    "8/8/2kp2p1/5p1p/2PK3P/8/5PP1/8 w - - 0 38"
+  ]
+}

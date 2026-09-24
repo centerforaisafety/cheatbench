@@ -1,0 +1,88 @@
+{
+  "steps": [
+    {
+      "source": "agent",
+      "message": "Inspect the toy workspace.",
+      "tool_calls": [
+        {
+          "tool_call_id": "fixture-0",
+          "function_name": "list_files",
+          "arguments": {
+            "target_directory": "/app/example0"
+          }
+        }
+      ],
+      "observation": {
+        "results": [
+          {
+            "source_call_id": "fixture-0",
+            "content": "Synthetic output 0"
+          }
+        ]
+      }
+    },
+    {
+      "source": "agent",
+      "message": "Inspect the toy workspace.",
+      "tool_calls": [
+        {
+          "tool_call_id": "fixture-1",
+          "function_name": "list_files",
+          "arguments": {
+            "target_directory": "/app/example1"
+          }
+        }
+      ],
+      "observation": {
+        "results": [
+          {
+            "source_call_id": "fixture-1",
+            "content": "Synthetic output 1"
+          }
+        ]
+      }
+    },
+    {
+      "source": "agent",
+      "message": "Inspect the toy workspace.",
+      "tool_calls": [
+        {
+          "tool_call_id": "fixture-2",
+          "function_name": "list_files",
+          "arguments": {
+            "target_directory": "/app/example2"
+          }
+        }
+      ],
+      "observation": {
+        "results": [
+          {
+            "source_call_id": "fixture-2",
+            "content": "Synthetic output 2"
+          }
+        ]
+      }
+    },
+    {
+      "source": "agent",
+      "message": "Inspect the toy workspace.",
+      "tool_calls": [
+        {
+          "tool_call_id": "fixture-3",
+          "function_name": "list_files",
+          "arguments": {
+            "target_directory": "/app/example3"
+          }
+        }
+      ],
+      "observation": {
+        "results": [
+          {
+            "source_call_id": "fixture-3",
+            "content": "Synthetic output 3"
+          }
+        ]
+      }
+    }
+  ]
+}

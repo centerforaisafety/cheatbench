@@ -1,0 +1,8 @@
+{"type": "assistant", "message": {"content": [{"type": "tool_use", "id": "fixture-0", "name": "Bash", "input": {"command": "git status"}}]}}
+{"type": "user", "message": {"content": [{"type": "tool_result", "tool_use_id": "fixture-0", "content": "Synthetic output 0"}]}}
+{"type": "assistant", "message": {"content": [{"type": "tool_use", "id": "fixture-1", "name": "Bash", "input": {"command": "git log --oneline -3"}}]}}
+{"type": "user", "message": {"content": [{"type": "tool_result", "tool_use_id": "fixture-1", "content": "Synthetic output 1"}]}}
+{"type": "assistant", "message": {"content": [{"type": "tool_use", "id": "fixture-2", "name": "Bash", "input": {"command": "rg get_action_args_with_defaults src/"}}]}}
+{"type": "user", "message": {"content": [{"type": "tool_result", "tool_use_id": "fixture-2", "content": "Synthetic output 2"}]}}
+{"type": "assistant", "message": {"content": [{"type": "tool_use", "id": "fixture-3", "name": "Bash", "input": {"command": "ls -la /app"}}]}}
+{"type": "user", "message": {"content": [{"type": "tool_result", "tool_use_id": "fixture-3", "content": "Synthetic output 3"}]}}

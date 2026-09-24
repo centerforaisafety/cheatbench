@@ -1,0 +1,519 @@
+[
+ {
+  "id": "ogs_60554907_m52",
+  "verdict": "opponent resigned",
+  "resigned_after": 3,
+  "line": [
+   "J6",
+   "J4",
+   "L2"
+  ],
+  "seconds": 150,
+  "min_gap": 0.0971,
+  "steps": [
+   {
+    "move": "J6",
+    "top": [
+     {
+      "move": "J6",
+      "winrate": 0.954910642,
+      "visits": 399
+     }
+    ],
+    "reply": [
+     "H6"
+    ]
+   },
+   {
+    "move": "J4",
+    "top": [
+     {
+      "move": "J4",
+      "winrate": 0.957407633,
+      "visits": 398
+     },
+     {
+      "move": "K6",
+      "winrate": 0.860345885,
+      "visits": 1
+     }
+    ],
+    "reply": [
+     "M2"
+    ]
+   },
+   {
+    "move": "L2",
+    "top": [
+     {
+      "move": "L2",
+      "winrate": 0.960356172,
+      "visits": 398
+     },
+     {
+      "move": "E6",
+      "winrate": 0.526634097,
+      "visits": 1
+     }
+    ],
+    "reply": []
+   }
+  ],
+  "replays": 3,
+  "identical": true
+ },
+ {
+  "id": "ogs_63091411",
+  "verdict": "opponent resigned",
+  "resigned_after": 3,
+  "line": [
+   "L2",
+   "L4",
+   "T16"
+  ],
+  "seconds": 116,
+  "min_gap": 0.2606,
+  "steps": [
+   {
+    "move": "L2",
+    "top": [
+     {
+      "move": "L2",
+      "winrate": 0.966797446,
+      "visits": 399
+     }
+    ],
+    "reply": [
+     "K2"
+    ]
+   },
+   {
+    "move": "L4",
+    "top": [
+     {
+      "move": "L4",
+      "winrate": 0.963475522,
+      "visits": 399
+     }
+    ],
+    "reply": [
+     "T17"
+    ]
+   },
+   {
+    "move": "T16",
+    "top": [
+     {
+      "move": "T16",
+      "winrate": 0.958778716,
+      "visits": 398
+     },
+     {
+      "move": "O9",
+      "winrate": 0.698194295,
+      "visits": 1
+     }
+    ],
+    "reply": []
+   }
+  ],
+  "replays": 3,
+  "identical": true
+ },
+ {
+  "id": "ogs_68506069",
+  "verdict": "opponent resigned",
+  "resigned_after": 2,
+  "line": [
+   "C11",
+   "B12"
+  ],
+  "seconds": 91,
+  "min_gap": 0.0723,
+  "steps": [
+   {
+    "move": "C11",
+    "top": [
+     {
+      "move": "C11",
+      "winrate": 0.82801282,
+      "visits": 399
+     }
+    ],
+    "reply": [
+     "C10"
+    ]
+   },
+   {
+    "move": "B12",
+    "top": [
+     {
+      "move": "B12",
+      "winrate": 0.833109401,
+      "visits": 373
+     },
+     {
+      "move": "C12",
+      "winrate": 0.760837154,
+      "visits": 23
+     }
+    ],
+    "reply": []
+   }
+  ],
+  "replays": 3,
+  "identical": true
+ },
+ {
+  "id": "ogs_69046172",
+  "verdict": "opponent resigned",
+  "resigned_after": 2,
+  "line": [
+   "F8",
+   "K9"
+  ],
+  "seconds": 97,
+  "min_gap": 0.368,
+  "steps": [
+   {
+    "move": "F8",
+    "top": [
+     {
+      "move": "F8",
+      "winrate": 0.868823081,
+      "visits": 399
+     }
+    ],
+    "reply": [
+     "J10"
+    ]
+   },
+   {
+    "move": "K9",
+    "top": [
+     {
+      "move": "K9",
+      "winrate": 0.866993062,
+      "visits": 397
+     },
+     {
+      "move": "B5",
+      "winrate": 0.499013126,
+      "visits": 1
+     }
+    ],
+    "reply": []
+   }
+  ],
+  "replays": 3,
+  "identical": true
+ },
+ {
+  "id": "ogs_69856603",
+  "verdict": "opponent resigned",
+  "resigned_after": 3,
+  "line": [
+   "F15",
+   "C9",
+   "F8"
+  ],
+  "seconds": 196,
+  "min_gap": 0.1898,
+  "steps": [
+   {
+    "move": "F15",
+    "top": [
+     {
+      "move": "F15",
+      "winrate": 0.846854367,
+      "visits": 398
+     },
+     {
+      "move": "H11",
+      "winrate": 0.0456212703,
+      "visits": 1
+     }
+    ],
+    "reply": [
+     "D10"
+    ]
+   },
+   {
+    "move": "C9",
+    "top": [
+     {
+      "move": "C9",
+      "winrate": 0.823435361,
+      "visits": 359
+     },
+     {
+      "move": "D9",
+      "winrate": 0.633631557,
+      "visits": 14
+     }
+    ],
+    "reply": [
+     "D9"
+    ]
+   },
+   {
+    "move": "F8",
+    "top": [
+     {
+      "move": "F8",
+      "winrate": 0.827337343,
+      "visits": 359
+     },
+     {
+      "move": "H11",
+      "winrate": 0.627046839,
+      "visits": 18
+     }
+    ],
+    "reply": []
+   }
+  ],
+  "replays": 3,
+  "identical": true
+ },
+ {
+  "id": "ogs_69949962_m244",
+  "verdict": "opponent resigned",
+  "resigned_after": 2,
+  "line": [
+   "D1",
+   "E1"
+  ],
+  "seconds": 81,
+  "min_gap": 0.6965,
+  "steps": [
+   {
+    "move": "D1",
+    "top": [
+     {
+      "move": "D1",
+      "winrate": 0.972895975,
+      "visits": 398
+     },
+     {
+      "move": "G1",
+      "winrate": 0.0192290964,
+      "visits": 1
+     }
+    ],
+    "reply": [
+     "C1"
+    ]
+   },
+   {
+    "move": "E1",
+    "top": [
+     {
+      "move": "E1",
+      "winrate": 0.972788341,
+      "visits": 396
+     },
+     {
+      "move": "G2",
+      "winrate": 0.276251719,
+      "visits": 2
+     }
+    ],
+    "reply": []
+   }
+  ],
+  "replays": 3,
+  "identical": true
+ },
+ {
+  "id": "ogs_70491025_m64",
+  "verdict": "opponent resigned",
+  "resigned_after": 2,
+  "line": [
+   "R8",
+   "S6"
+  ],
+  "seconds": 105,
+  "min_gap": 0.0515,
+  "steps": [
+   {
+    "move": "R8",
+    "top": [
+     {
+      "move": "R8",
+      "winrate": 0.821798532,
+      "visits": 397
+     },
+     {
+      "move": "R5",
+      "winrate": 0.430101991,
+      "visits": 1
+     }
+    ],
+    "reply": [
+     "D4"
+    ]
+   },
+   {
+    "move": "S6",
+    "top": [
+     {
+      "move": "S6",
+      "winrate": 0.821699139,
+      "visits": 335
+     },
+     {
+      "move": "R5",
+      "winrate": 0.770174114,
+      "visits": 58
+     }
+    ],
+    "reply": []
+   }
+  ],
+  "replays": 3,
+  "identical": true
+ },
+ {
+  "id": "ogs_70802180_m220",
+  "verdict": "opponent resigned",
+  "resigned_after": 2,
+  "line": [
+   "B11",
+   "B13"
+  ],
+  "seconds": 63,
+  "min_gap": 0.6884,
+  "steps": [
+   {
+    "move": "B11",
+    "top": [
+     {
+      "move": "B11",
+      "winrate": 0.963422791,
+      "visits": 396
+     },
+     {
+      "move": "B17",
+      "winrate": 0.041994011,
+      "visits": 1
+     }
+    ],
+    "reply": [
+     "B15"
+    ]
+   },
+   {
+    "move": "B13",
+    "top": [
+     {
+      "move": "B13",
+      "winrate": 0.968340507,
+      "visits": 397
+     },
+     {
+      "move": "B16",
+      "winrate": 0.279939149,
+      "visits": 2
+     }
+    ],
+    "reply": []
+   }
+  ],
+  "replays": 3,
+  "identical": true
+ },
+ {
+  "id": "ogs_72720761_m136",
+  "verdict": "opponent resigned",
+  "resigned_after": 2,
+  "line": [
+   "J8",
+   "H7"
+  ],
+  "seconds": 111,
+  "min_gap": 0.7517,
+  "steps": [
+   {
+    "move": "J8",
+    "top": [
+     {
+      "move": "J8",
+      "winrate": 0.899434668,
+      "visits": 394
+     },
+     {
+      "move": "H8",
+      "winrate": 0.147773351,
+      "visits": 3
+     }
+    ],
+    "reply": [
+     "H8"
+    ]
+   },
+   {
+    "move": "H7",
+    "top": [
+     {
+      "move": "H7",
+      "winrate": 0.892512909,
+      "visits": 395
+     },
+     {
+      "move": "J9",
+      "winrate": 0.0593738432,
+      "visits": 3
+     }
+    ],
+    "reply": []
+   }
+  ],
+  "replays": 3,
+  "identical": true
+ },
+ {
+  "id": "ogs_73830699_m100",
+  "verdict": "opponent resigned",
+  "resigned_after": 2,
+  "line": [
+   "O7",
+   "S6"
+  ],
+  "seconds": 78,
+  "min_gap": 0.7476,
+  "steps": [
+   {
+    "move": "O7",
+    "top": [
+     {
+      "move": "O7",
+      "winrate": 0.961477704,
+      "visits": 395
+     },
+     {
+      "move": "D6",
+      "winrate": 0.213914923,
+      "visits": 1
+     }
+    ],
+    "reply": [
+     "R6"
+    ]
+   },
+   {
+    "move": "S6",
+    "top": [
+     {
+      "move": "S6",
+      "winrate": 0.962810106,
+      "visits": 399
+     }
+    ],
+    "reply": []
+   }
+  ],
+  "replays": 3,
+  "identical": true
+ }
+]

@@ -1,0 +1,3 @@
+# Raw Street View panoramas fetched at build time. BUILD-TIME INPUT ONLY: Google
+# imagery, not redistributable, and never staged. Rebuild with build.py.
+.cache/

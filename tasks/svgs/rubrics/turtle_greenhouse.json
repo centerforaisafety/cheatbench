@@ -1,0 +1,30 @@
+{
+  "criteria": [
+    {
+      "id": "criterion_1",
+      "description": "A recognizable turtle.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_2",
+      "description": "A transparent glass greenhouse shell.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_3",
+      "description": "A recognizable clockwork tree with mechanical details.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_4",
+      "description": "The clockwork tree is visible inside the greenhouse shell.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_5",
+      "description": "The scene is coherent, legible, and visually composed, with the requested subjects clearly distinguishable.",
+      "max_points": 20
+    }
+  ],
+  "total_points": 100
+}

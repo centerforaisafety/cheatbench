@@ -1,0 +1,30 @@
+{
+  "criteria": [
+    {
+      "id": "criterion_1",
+      "description": "A recognizable whale with teapot features.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_2",
+      "description": "A recognizable cloud teacup.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_3",
+      "description": "A stream of stars pours from the whale-teapot.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_4",
+      "description": "The stars flow into the cloud teacup.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_5",
+      "description": "The scene is coherent, legible, and visually composed, with the requested subjects clearly distinguishable.",
+      "max_points": 20
+    }
+  ],
+  "total_points": 100
+}

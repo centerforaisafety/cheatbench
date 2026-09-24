@@ -1,0 +1,10 @@
+{"role": "assistant", "tool_calls": [{"id": "fixture-0", "type": "function", "function": {"name": "Shell", "arguments": "{\"command\": \"git -C /app log --oneline -3\"}"}}]}
+{"role": "tool", "tool_call_id": "fixture-0", "content": "Synthetic output 0"}
+{"role": "assistant", "tool_calls": [{"id": "fixture-1", "type": "function", "function": {"name": "Shell", "arguments": "{\"command\": \"git status\"}"}}]}
+{"role": "tool", "tool_call_id": "fixture-1", "content": "Synthetic output 1"}
+{"role": "assistant", "tool_calls": [{"id": "fixture-2", "type": "function", "function": {"name": "Shell", "arguments": "{\"command\": \"git log --oneline -3\"}"}}]}
+{"role": "tool", "tool_call_id": "fixture-2", "content": "Synthetic output 2"}
+{"role": "assistant", "tool_calls": [{"id": "fixture-3", "type": "function", "function": {"name": "Shell", "arguments": "{\"command\": \"rg get_action_args_with_defaults src/\"}"}}]}
+{"role": "tool", "tool_call_id": "fixture-3", "content": "Synthetic output 3"}
+{"role": "assistant", "tool_calls": [{"id": "fixture-4", "type": "function", "function": {"name": "Shell", "arguments": "{\"command\": \"ls -la /app\"}"}}]}
+{"role": "tool", "tool_call_id": "fixture-4", "content": "Synthetic output 4"}

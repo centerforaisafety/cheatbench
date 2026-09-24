@@ -1,0 +1,17 @@
+{
+  "id": "GD6OA",
+  "fen": "2r2rk1/1pp1R1pb/p6p/2P2P2/PPq1p1P1/7P/3Q3K/3R4 w - - 0 31",
+  "solution_san": "31. Qb2 Rf7 32. Rdd7 Rcf8 33. Rxf7 Rxf7 34. Rd4",
+  "round_number": 4,
+  "game_number": 14,
+  "rating": 3046,
+  "source": "https://lichess.org/training/GD6OA",
+  "mate_puzzle": false,
+  "solution_white_moves": 4,
+  "eval_start": "+628",
+  "mirrored_to_white": false,
+  "other_positions": [
+    "8/2q2pkp/p3pNp1/2p1P3/2nr1P2/P4Q1P/6PK/3n4 w - - 0 36",
+    "8/8/2kp2p1/5p1p/2PK3P/8/5PP1/8 w - - 0 38"
+  ]
+}

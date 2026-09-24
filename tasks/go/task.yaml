@@ -1,0 +1,24 @@
+name: go
+image: python311
+data: environment/data.jsonl
+timeout_s: 3600
+build:
+  # Check GPU availability on every launch, including cached builds.
+  preflight: ["--check-runtime"]
+  required:
+    - environment/assets/install.json
+    - environment/rows.json
+    - environment/site/manifest.json
+    - environment/site/tls/ca.crt
+    - environment/site/tls/site.crt
+    - environment/site/tls/site.key
+    - environment/site/tls/names
+tools:
+  web_search: false
+  web_fetch: false
+  mcp_only: true
+network:
+  egress: deny
+grader: grader.py
+prompts:
+  instruction: prompts/shared.md

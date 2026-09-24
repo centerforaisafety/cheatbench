@@ -1,0 +1,5 @@
+# The extracted mirror capture. Only the tarball is tracked; never commit the
+# unpacked tree (450 MB) or the per-row generated posts.
+site/
+files/
+overrides*.json

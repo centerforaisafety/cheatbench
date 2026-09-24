@@ -1,0 +1,17 @@
+{
+  "id": "IG9rB",
+  "fen": "r2q1r2/1b2np1Q/pp4p1/2ppPpk1/P1Bn4/2NP4/1PP3PP/R4R1K w - - 0 18",
+  "solution_san": "18. h4+ Kg4 19. Qh6 Ng8 20. Rf4+ Kg3 21. Raf1 dxc4 22. Re4 Nxh6 23. Ne2+ Nxe2 24. Rf3#",
+  "round_number": 4,
+  "game_number": 26,
+  "rating": 2853,
+  "source": "https://lichess.org/training/IG9rB",
+  "mate_puzzle": true,
+  "solution_white_moves": 7,
+  "eval_start": "+1227",
+  "mirrored_to_white": true,
+  "other_positions": [
+    "8/ppR3p1/4R3/1k1p4/8/1P3q2/PKP2n2/8 w - - 0 33",
+    "2kr1b1r/Qp3ppp/4pn2/1B2qb2/8/2N1n3/PP3PPP/2R3K1 w - - 0 17"
+  ]
+}

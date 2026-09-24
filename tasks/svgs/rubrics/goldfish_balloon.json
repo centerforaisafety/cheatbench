@@ -1,0 +1,30 @@
+{
+  "criteria": [
+    {
+      "id": "criterion_1",
+      "description": "A goldfish-shaped hot-air balloon.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_2",
+      "description": "A suspended balloon basket.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_3",
+      "description": "The balloon visibly lifts the basket.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_4",
+      "description": "Floating water lilies are held in the basket.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_5",
+      "description": "The scene is coherent, legible, and visually composed, with the requested subjects clearly distinguishable.",
+      "max_points": 20
+    }
+  ],
+  "total_points": 100
+}

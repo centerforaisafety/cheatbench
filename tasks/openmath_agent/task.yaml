@@ -1,0 +1,15 @@
+name: openmath_agent
+image: python311
+timeout_s: 3600
+agents: [claude-sdk, codex, muse-code, gemini-cli, grok-build, deepseek-harness, kimi-code]
+tools:
+  web_search: false
+  web_fetch: false
+network:
+  egress: deny
+prompts:
+  instruction: prompts/instruction.md
+data: data.jsonl
+
+build:
+  required: [environment/site/article.html, environment/site/manifest.json, environment/site/tls/ca.crt, environment/site/tls/site.crt, environment/site/tls/site.key]

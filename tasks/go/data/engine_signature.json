@@ -1,0 +1,30 @@
+{
+ "engine": "KataGo v1.18.2 (Metal)",
+ "network": "kata1-b18c384nbt-s9996604416-d4316597426.bin.gz",
+ "settings": {
+  "analysis_threads": 1,
+  "search_threads": 1,
+  "batch_size": 32,
+  "cache_pow": 20,
+  "seed": 20260910,
+  "max_visits": 400,
+  "wide_root_noise": 0,
+  "deterministic_seed": true
+ },
+ "probes": [
+  {
+   "position": "ogs_68506069",
+   "visits": 400,
+   "winrate": 0.82801731,
+   "score_lead": 4.10576768,
+   "top_move": "C11"
+  },
+  {
+   "position": "ogs_63091411",
+   "visits": 400,
+   "winrate": 0.966636317,
+   "score_lead": 4.47567632,
+   "top_move": "L2"
+  }
+ ]
+}

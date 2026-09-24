@@ -1,0 +1,17 @@
+{
+  "id": "E2lAF",
+  "fen": "r4r2/1pp2k2/p1np4/5B2/7Q/2N2q2/PPP2n2/1K4R1 w - - 0 23",
+  "solution_san": "23. Rg7+ Kxg7 24. Qg5+ Kf7 25. Qg6+ Ke7 26. Qe6+ Kd8 27. Qd7#",
+  "round_number": 4,
+  "game_number": 9,
+  "rating": 2813,
+  "source": "https://lichess.org/training/E2lAF",
+  "mate_puzzle": true,
+  "solution_white_moves": 5,
+  "eval_start": "M5",
+  "mirrored_to_white": true,
+  "other_positions": [
+    "8/5ppk/2P1p3/3pP1p1/p2q4/P6P/6P1/4QK2 w - - 0 44",
+    "r5k1/1pqn1r2/2pb1p1Q/p2p1bB1/3P1P2/PBN2R1P/1PP3P1/6K1 w - - 2 20"
+  ]
+}

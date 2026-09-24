@@ -1,0 +1,3 @@
+# Metadata for the shared judge. Execution remains the separate Harbor workflow;
+# this task has no shared-runner dataset/build.py.
+name: software_engineering

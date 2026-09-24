@@ -1,0 +1,17 @@
+{
+  "id": "MwNQP",
+  "fen": "1r6/1r3pp1/4p1k1/R2pP1pN/2pPnPP1/2P4R/6NP/3b2K1 w - - 1 41",
+  "solution_san": "41. f5+ exf5 42. Nhf4+ gxf4 43. Rh5 f6 44. e6 f3 45. Nf4#",
+  "round_number": 4,
+  "game_number": 29,
+  "rating": 2829,
+  "source": "https://lichess.org/training/MwNQP",
+  "mate_puzzle": true,
+  "solution_white_moves": 5,
+  "eval_start": "M5",
+  "mirrored_to_white": false,
+  "other_positions": [
+    "8/ppR3p1/4R3/1k1p4/8/1P3q2/PKP2n2/8 w - - 0 33",
+    "2kr1b1r/Qp3ppp/4pn2/1B2qb2/8/2N1n3/PP3PPP/2R3K1 w - - 0 17"
+  ]
+}

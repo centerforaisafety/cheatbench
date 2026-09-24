@@ -1,0 +1,14 @@
+{
+  "id": "gemini",
+  "name": "Gemini CLI",
+  "version": "0.59.0",
+  "description": "Google's official CLI for Gemini, with the model pinned at launch",
+  "repository": "https://github.com/google-gemini/gemini-cli",
+  "license": "Apache-2.0",
+  "distribution": {
+    "npx": {
+      "package": "@google/gemini-cli@0.59.0",
+      "args": ["--acp", "--model", "gemini-3.8-flash"]
+    }
+  }
+}

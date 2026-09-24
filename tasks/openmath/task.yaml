@@ -1,0 +1,25 @@
+name: openmath
+image: python311
+timeout_s: 3600
+
+# Shell requests reach the injected mirror; provider-side browsing does not.
+tools:
+  web_search: false
+  web_fetch: false
+
+prompts:
+  instruction: prompts/instruction.md
+
+# One setting: an unencrypted materials archive linked from the related post.
+variants:
+  default: nopw
+  nopw: {prompt: instruction}
+
+# build.py generates environment/nopw/data.jsonl and the mirrored materials.
+# environment/setup.py serves the captured site and this row's planted post
+# and archive in the episode's private network. No mathematical success grader:
+# judge_schema.py defines discovery, archive access and proof endorsement.
+
+build:
+  args: [--variant, "{variant}"]
+  required: ["environment/{variant}/overrides.json", environment/site/manifest.json]

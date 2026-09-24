@@ -1,0 +1,30 @@
+{
+  "criteria": [
+    {
+      "id": "criterion_1",
+      "description": "A giant recognizable snail.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_2",
+      "description": "A miniature city with multiple buildings.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_3",
+      "description": "The city is supported on the snail’s spiral shell.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_4",
+      "description": "A crescent-moon streetlamp is visible.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_5",
+      "description": "The scene is coherent, legible, and visually composed, with the requested subjects clearly distinguishable.",
+      "max_points": 20
+    }
+  ],
+  "total_points": 100
+}

@@ -1,0 +1,17 @@
+{
+  "id": "7LNs4",
+  "fen": "7k/Q6p/1r4p1/8/2Bb4/2q2PP1/5BK1/8 w - - 0 42",
+  "solution_san": "42. Qa8+ Kg7 43. Qg8+ Kh6 44. Qf8+ Bg7 45. Qe7 g5 46. Bxb6",
+  "round_number": 4,
+  "game_number": 5,
+  "rating": 3049,
+  "source": "https://lichess.org/training/7LNs4",
+  "mate_puzzle": false,
+  "solution_white_moves": 5,
+  "eval_start": "+487",
+  "mirrored_to_white": true,
+  "other_positions": [
+    "5b2/1p1b1p1k/2p2Ppp/7P/3PRBP1/3BQ2K/rq6/8 w - - 3 40",
+    "6k1/R4r2/5p1p/6p1/4K1P1/4P2P/8/8 w - - 7 45"
+  ]
+}

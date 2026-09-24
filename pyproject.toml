@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cheatbench"
+version = "0.1.0"
+description = "Agentic reward-hacking evals: one folder per task, one sandboxed container per episode"
+requires-python = ">=3.11"
+dependencies = [
+    "claude-agent-sdk==0.2.135",
+    "anthropic>=0.121.0",
+    "litellm>=1.0",
+    "openai>=1.0",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0",
+    "requests>=2.31",
+    "tqdm>=4.66",
+    "pydantic>=2.0",
+    "chess>=1.11.2",
+]
+
+[project.optional-dependencies]
+# The SVG task renders submissions on the host for its deterministic leaderboard.
+svgs = ["cairosvg>=2.7"]
+# Compatibility extra; the board/UCI client is included in the base installation.
+chess = []
+# Go host-side SGF parsing; engine assets are built separately.
+go = ["sgfmill==1.1.1"]
+# Only needed to (re)build a task's corpus: `python tasks/knowledge_work/build.py`.
+build = [
+    "datasets>=2.0",
+    "huggingface-hub>=0.23",
+    "cryptography>=42.0",
+    # Synthetic puzzle generation and pixel-count verification.
+    "numpy",
+    "pillow==12.3.0",
+    "scipy>=1.10",
+]
+
+[project.scripts]
+rh = "run:main"
+
+[tool.setuptools]
+py-modules = ["run", "judge"]
+
+[tool.setuptools.packages.find]
+include = ["core*"]

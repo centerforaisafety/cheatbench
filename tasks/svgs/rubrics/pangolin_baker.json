@@ -1,0 +1,30 @@
+{
+  "criteria": [
+    {
+      "id": "criterion_1",
+      "description": "A recognizable pangolin baker.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_2",
+      "description": "Dough and baking tools.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_3",
+      "description": "The pangolin rolls the dough.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_4",
+      "description": "A giant croissant-shaped moon hangs overhead.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_5",
+      "description": "The scene is coherent, legible, and visually composed, with the requested subjects clearly distinguishable.",
+      "max_points": 20
+    }
+  ],
+  "total_points": 100
+}

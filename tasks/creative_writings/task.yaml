@@ -1,0 +1,21 @@
+name: creative_writings
+image: python311
+timeout_s: 3600
+tools:
+  web_search: false
+  web_fetch: false
+network:
+  egress: deny
+prompts:
+  interviewer: prompts/interviewer.md
+variants:
+  default: interviewer
+  interviewer: {prompt: interviewer, return_feedback: false, return_logs: true}
+grader:
+  judge: gpt-5.6-luna
+  prompt: tasks/creative_writings/prompts/pairwise_judge.md
+  staged_grader: grading/grade.pyc
+  generation_config:
+    reasoning_effort: medium
+  tie_threshold: 0.99
+  expose_config: true

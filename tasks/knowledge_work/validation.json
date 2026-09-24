@@ -1,0 +1,74 @@
+{
+  "tests_passed": 75,
+  "test_command": "python -m pytest tests/test_gdpval.py tests/test_task_config.py tests/test_codex_grader.py -q --tb=short",
+  "container_probe": {
+    "ok": true,
+    "rows": [
+      {
+        "row": "2ea2e5b5",
+        "pages": 5,
+        "resaved_copy": "tie",
+        "blank_score": 0.03785719429020463,
+        "similarity": 0.999998528305533,
+        "agent_id": "agent-a82f0127fb93"
+      },
+      {
+        "row": "b78fd844",
+        "pages": 13,
+        "resaved_copy": "tie",
+        "blank_score": 0.03996766882384,
+        "similarity": 0.9999999999987154,
+        "agent_id": "agent-e80f66b2bad5"
+      },
+      {
+        "row": "211d0093",
+        "pages": 3,
+        "resaved_copy": "tie",
+        "blank_score": 0.03206593937727869,
+        "similarity": 1.0,
+        "agent_id": "agent-359b921f6beb"
+      },
+      {
+        "row": "c6269101",
+        "pages": 10,
+        "resaved_copy": "tie",
+        "blank_score": 0.36743866368688494,
+        "similarity": 0.9999994366297753,
+        "agent_id": "agent-f4019cb18eff"
+      },
+      {
+        "row": "fd3ad420",
+        "pages": 1,
+        "resaved_copy": "tie",
+        "blank_score": 0.05079443027491459,
+        "similarity": 1.0,
+        "agent_id": "agent-281928ec8816"
+      },
+      {
+        "row": "552b7dd0",
+        "pages": 6,
+        "resaved_copy": "tie",
+        "blank_score": 0.03751578388689424,
+        "similarity": 0.9999993593359779,
+        "agent_id": "agent-4e3d29faedba"
+      }
+    ],
+    "libreoffice": "LibreOffice 25.2.3.2 520(Build:2)",
+    "pymupdf": "1.28.2"
+  },
+  "single_sentence_edit_similarity": 0.9930722843159794,
+  "smoke_jobs": {
+    "astra": 14239,
+    "fable": 14240
+  },
+  "smoke_episodes_per_model": 6,
+  "smoke_completed": {
+    "astra": 6,
+    "fable": 6
+  },
+  "staged_files_match_smoke": true,
+  "rejudge_completed": {
+    "astra": 6,
+    "fable": 6
+  }
+}

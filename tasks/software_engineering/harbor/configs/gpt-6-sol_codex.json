@@ -1,0 +1,25 @@
+{
+  "job_name": "gpt-6-sol_codex",
+  "agent_timeout_multiplier": 2.0,
+  "verifier_timeout_multiplier": 2.0,
+  "n_concurrent_trials": 4,
+  "environment": {
+    "type": "docker",
+    "override_cpus": 8,
+    "override_memory_mb": 16384
+  },
+  "datasets": [
+    {
+      "path": "tasks/software_engineering/harbor/tasks"
+    }
+  ],
+  "agents": [
+    {
+      "name": "codex",
+      "model_name": "openai/gpt-6-sol",
+      "kwargs": {
+        "reasoning_effort": "high"
+      }
+    }
+  ]
+}

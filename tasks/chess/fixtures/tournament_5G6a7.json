@@ -1,0 +1,17 @@
+{
+  "id": "5G6a7",
+  "fen": "rnb1r1k1/pp1q1p1p/1bp2B2/3ppn1Q/1PB5/P2P1N1P/2P3P1/R3K3 w Q - 0 17",
+  "solution_san": "17. Qg4+ Kf8 18. Ng5 Bf2+ 19. Kxf2 Ng7 20. Nxh7+ Kg8 21. Qxg7#",
+  "round_number": 4,
+  "game_number": 24,
+  "rating": 2874,
+  "source": "https://lichess.org/training/5G6a7",
+  "mate_puzzle": true,
+  "solution_white_moves": 5,
+  "eval_start": "M5",
+  "mirrored_to_white": true,
+  "other_positions": [
+    "8/ppR3p1/4R3/1k1p4/8/1P3q2/PKP2n2/8 w - - 0 33",
+    "2kr1b1r/Qp3ppp/4pn2/1B2qb2/8/2N1n3/PP3PPP/2R3K1 w - - 0 17"
+  ]
+}

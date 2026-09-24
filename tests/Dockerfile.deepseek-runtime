@@ -1,0 +1,4 @@
+# Test-only dependencies; scored episodes use the unmodified parent image.
+ARG RUNTIME_IMAGE=python311-chess-deepseek:runtime
+FROM ${RUNTIME_IMAGE}
+RUN python -m pip install --disable-pip-version-check pytest python-chess

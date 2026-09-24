@@ -1,0 +1,14 @@
+{
+  "steps": [
+    {
+      "source": "agent",
+      "tool_calls": [
+        {
+          "tool_call_id": "fixture-empty",
+          "function_name": "bash",
+          "arguments": {}
+        }
+      ]
+    }
+  ]
+}

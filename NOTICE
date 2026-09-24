@@ -1,0 +1,114 @@
+This product includes software developed as part of Harbor
+(https://github.com/harbor-framework/harbor).
+
+Harbor is licensed under the Apache License, Version 2.0. You may obtain a
+copy of the License at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+--------------------------------------------------------------------------
+ATIF (Agent Trajectory Interchange Format) models
+--------------------------------------------------------------------------
+
+Everything under `core/trajectory/` is a derived work of Harbor's ATIF model
+package, `src/harbor/models/trajectories/`:
+
+    __init__.py                 agent.py
+    content.py                  final_metrics.py
+    metrics.py                  observation.py
+    observation_result.py       step.py
+    subagent_trajectory_ref.py  tool_call.py
+    trajectory.py
+
+The port is faithful. Import paths were rewritten for this package, attribution
+headers were added to each module's docstring, and `trajectory.py` gained a
+`SCHEMA_VERSION` constant naming the ATIF version this repository emits. No
+field was removed, renamed or retyped: an interchange format that dropped the
+fields one consumer did not need would no longer be interchangeable.
+
+--------------------------------------------------------------------------
+Codex rollout -> ATIF conversion
+--------------------------------------------------------------------------
+
+`CodexAgent.to_trajectory` and its helpers in `core/agents/codex.py` are ported
+from
+Harbor's `src/harbor/agents/installed/codex.py`, specifically the methods
+`_extract_message_text`, `_parse_output_blob`, `_group_events_by_api_call_id`,
+`_metrics_from_token_count_payload`, `_convert_event_to_step` and
+`_convert_events_to_trajectory`.
+
+Documented divergences, each explained in a comment at the site:
+
+  * Harbor reads the rollout `.jsonl` from disk after copying the Codex session
+    directory out of the environment. This sandbox has no bind mount, so the
+    events arrive in memory from the in-container runner and the file-discovery
+    half of Harbor's method is absent. Event handling is unchanged.
+  * Harbor prices each API call through LiteLLM on the host. The container has
+    no pricing table, so per-call `cost_usd` is left null rather than estimated;
+    the token counts, which the rollout does carry, are recorded exactly.
+  * Harbor discards any step whose conversion raises `ValueError`. Because
+    pydantic's `ValidationError` subclasses `ValueError`, a rollout with
+    unparseable timestamps loses EVERY step that way. This port tolerates a
+    non-ISO-8601 timestamp (dropping the timestamp, keeping the step) and
+    records any step it still could not convert in the trajectory's `notes`.
+
+--------------------------------------------------------------------------
+Claude Agent SDK -> ATIF conversion
+--------------------------------------------------------------------------
+
+`ClaudeSDKAgent.to_trajectory` follows the ATIF semantics of Harbor's
+`src/harbor/agents/installed/claude_code.py` `_convert_events_to_trajectory`,
+and `ClaudeSDKAgent._metrics` is a port of that file's `_build_metrics`
+(including its guard against null usage fields on an interrupted stream). The
+surrounding walk is a hand mapping rather than a port: Harbor parses Claude
+Code's on-disk JSONL session transcript, whereas this repository drives the
+Claude Agent SDK, whose message objects are a different shape.
+
+--------------------------------------------------------------------------
+Agent failure taxonomy
+--------------------------------------------------------------------------
+
+`core/agents/errors.py` is a port of the error taxonomy in Harbor's
+`src/harbor/agents/installed/base.py`: the `ApiError` hierarchy (rate limit,
+usage limit, internal server, overloaded, connection closed, response stalled,
+output token exceeded, context window exceeded, safety refusal, unknown), the
+`AgentAuthenticationError` / `ModelNotFoundError` / `NetworkConnectionError`
+classes beside it, the `ErrorPattern` mechanism and Harbor's pattern list with
+its ordering and its "last match wins" and soft-refusal rules.
+
+Documented divergences:
+
+  * Harbor's root class is `NonZeroAgentExitCodeError`, named for the mechanism
+    that raises it: a command Harbor exec'd into a live environment returned
+    non-zero. This sandbox has no exec channel -- an episode is one
+    `enroot start` that returns one JSON record -- so the root class is
+    `AgentError`, the same taxonomy without the mechanism in the name.
+  * Harbor RAISES these and its retry policy catches them. This repository
+    CLASSIFIES with them: the class is a label on an episode record, so that a
+    context-window exhaustion and a provider safety refusal are separable in
+    analysis instead of collapsing into one `error` string.
+  * Harbor hangs the patterns off `BaseInstalledAgent`. Ours are on the `Agent`
+    contract, because the text being classified is the record every adapter
+    returns rather than a command this process ran.
+  * The `HarnessError` subtree (container launch, setup hook, install, timeout,
+    container exit, no record, unparseable record) has no Harbor equivalent and
+    is not derived from Harbor.
+
+--------------------------------------------------------------------------
+Agent adapter structure
+--------------------------------------------------------------------------
+
+`core/agents/` follows the layout and the separation of concerns of Harbor's
+`src/harbor/agents/`: the contract in `base.py` (`BaseAgent`), the machinery for
+an agent that must be installed into the environment in `installed.py`
+(`BaseInstalledAgent`), one module per adapter as in `installed/*.py`, and a
+name -> "module:Class" registry imported on demand in `factory.py`
+(`AgentFactory._AGENT_MAP`).
+
+One deliberate divergence is documented at `InstalledAgent.install()`: Harbor's
+`BaseInstalledAgent.install()` EXECUTES against a live environment, while ours
+RETURNS a check/install command pair, because an episode here is a single
+`enroot start` with no exec channel.
+
+Node runtime provisioning (nvm version, install shape) also follows Harbor's
+approach for its Node-based agents.

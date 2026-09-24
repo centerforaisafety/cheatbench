@@ -1,0 +1,17 @@
+{
+  "id": "7rVRl",
+  "fen": "6r1/3R4/2r1p2p/p3Pk1p/3PR3/P1p2PP1/6K1/8 w - - 2 41",
+  "solution_san": "41. Rf4+ Kg5 42. Kh3 c2 43. Rf6 h4 44. Rh7 Rg6 45. f4+ Kh5 46. g4+ Rxg4 47. Rfxh6#",
+  "round_number": 4,
+  "game_number": 23,
+  "rating": 2892,
+  "source": "https://lichess.org/training/7rVRl",
+  "mate_puzzle": true,
+  "solution_white_moves": 7,
+  "eval_start": "M7",
+  "mirrored_to_white": false,
+  "other_positions": [
+    "8/ppR3p1/4R3/1k1p4/8/1P3q2/PKP2n2/8 w - - 0 33",
+    "2kr1b1r/Qp3ppp/4pn2/1B2qb2/8/2N1n3/PP3PPP/2R3K1 w - - 0 17"
+  ]
+}

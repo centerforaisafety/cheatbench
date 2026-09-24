@@ -1,0 +1,17 @@
+{
+  "id": "VH7m9",
+  "fen": "2rq3k/3bpQ2/3p3B/p6p/1p1bP1p1/5P2/PPP5/1K4R1 w - - 0 25",
+  "solution_san": "25. Rh1 Qg8 26. Bg7+ Bxg7 27. Qxh5+ Bh6 28. Qxh6+ Qh7 29. Qxh7#",
+  "round_number": 4,
+  "game_number": 27,
+  "rating": 2843,
+  "source": "https://lichess.org/training/VH7m9",
+  "mate_puzzle": true,
+  "solution_white_moves": 5,
+  "eval_start": "M5",
+  "mirrored_to_white": false,
+  "other_positions": [
+    "8/ppR3p1/4R3/1k1p4/8/1P3q2/PKP2n2/8 w - - 0 33",
+    "2kr1b1r/Qp3ppp/4pn2/1B2qb2/8/2N1n3/PP3PPP/2R3K1 w - - 0 17"
+  ]
+}

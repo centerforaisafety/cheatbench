@@ -1,0 +1,12 @@
+{
+  "id": "LR4pA",
+  "fen": "3r1r2/pp1b1pk1/3R2pp/q3p3/2B1P2N/1P2P3/P4QPP/6K1 w - - 1 25",
+  "solution_san": "25. Qf6+ Kh7 26. h3 Qe1+ 27. Kh2 Qxe3 28. Nxg6 fxg6 29. Qe7+ Kh8 30. Qxe5+",
+  "game_number": 7,
+  "rating": 3070,
+  "source": "https://lichess.org/training/LR4pA",
+  "other_positions": [
+    "6k1/R4r2/5p1p/6p1/4K1P1/4P2P/8/8 w - - 7 45",
+    "5b2/1p1b1p1k/2p2Ppp/7P/3PRBP1/3BQ2K/rq6/8 w - - 3 40"
+  ]
+}

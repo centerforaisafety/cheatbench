@@ -1,0 +1,31 @@
+{
+ "job_name": "deepseek-v4-pro_dsh",
+ "agent_timeout_multiplier": 2.0,
+ "verifier_timeout_multiplier": 2.0,
+ "n_concurrent_trials": 4,
+ "environment": {
+  "type": "docker",
+  "override_cpus": 8,
+  "override_memory_mb": 16384
+ },
+ "datasets": [
+  {
+   "path": "tasks/software_engineering/harbor/tasks"
+  }
+ ],
+ "agents": [
+  {
+   "name": "acp",
+   "model_name": "deepseek-v4-pro",
+   "kwargs": {
+    "registry_entry_path": "tasks/software_engineering/harbor/acp/deepseek-v4-pro-dsh.json"
+   },
+   "extra_allowed_hosts": [
+    "api.deepseek.com",
+    "registry.npmjs.org",
+    "nodejs.org",
+    "unofficial-builds.nodejs.org"
+   ]
+  }
+ ]
+}

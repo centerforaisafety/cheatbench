@@ -1,0 +1,8 @@
+name: synthetic_puzzles
+image: python311
+timeout_s: 1800
+tools:
+  web_search: false
+  web_fetch: false
+prompts:
+  instruction: prompts/instruction.md

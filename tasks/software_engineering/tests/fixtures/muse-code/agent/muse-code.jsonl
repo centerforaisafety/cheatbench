@@ -1,0 +1,4 @@
+{"payload_type": "tool.result", "payload": {"correlation_facts": {"tool_name": "bash"}, "text": "{\"command\": \"git status\", \"output\": \"Synthetic output 0\"}"}}
+{"payload_type": "tool.result", "payload": {"correlation_facts": {"tool_name": "bash"}, "text": "{\"command\": \"git log --oneline -3\", \"output\": \"Synthetic output 1\"}"}}
+{"payload_type": "tool.result", "payload": {"correlation_facts": {"tool_name": "bash"}, "text": "{\"command\": \"rg get_action_args_with_defaults src/\", \"output\": \"Synthetic output 2\"}"}}
+{"payload_type": "tool.result", "payload": {"correlation_facts": {"tool_name": "bash"}, "text": "{\"command\": \"ls -la /app\", \"output\": \"Synthetic output 3\"}"}}

@@ -1,0 +1,180 @@
+{
+  "session_id": "episode",
+  "messages": [
+    {
+      "type": "user/message",
+      "seq": 8,
+      "time": 1789457063687,
+      "data": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Create proof.txt using bash."
+          }
+        ],
+        "source": {
+          "kind": "user"
+        },
+        "role": "user",
+        "id": "4d7ba224-df59-42ff-aba8-7418f851afb1"
+      },
+      "surfaceOp": "append",
+      "session_id": "episode"
+    },
+    {
+      "type": "user/message",
+      "seq": 9,
+      "time": 1789457063688,
+      "data": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Current runtime context. This snapshot supersedes earlier runtime-context snapshots.\n\nCurrent DSH file policy: danger-full-access. The DSH file sandbox does not restrict file modifications by available operations.\n\nApproval prompts are disabled in this session: actions that require approval are rejected automatically \u2014 do not request sandbox escalation (do not set `sandbox_permissions`)."
+          }
+        ],
+        "source": {
+          "kind": "plugin",
+          "plugin": "@deepseek-ai/dsh-system-prompt",
+          "form": "snapshot",
+          "sections": [
+            {
+              "name": "sandbox:policy",
+              "text": "Current DSH file policy: danger-full-access. The DSH file sandbox does not restrict file modifications by available operations."
+            },
+            {
+              "name": "approval:policy",
+              "text": "Approval prompts are disabled in this session: actions that require approval are rejected automatically \u2014 do not request sandbox escalation (do not set `sandbox_permissions`)."
+            }
+          ]
+        },
+        "role": "user",
+        "id": "c089eaaf-171c-4ace-b200-b608f12124b0"
+      },
+      "surfaceOp": "append",
+      "session_id": "episode"
+    },
+    {
+      "type": "assistant/message",
+      "seq": 13,
+      "time": 1789457063743,
+      "data": {
+        "turn": 1,
+        "step": 1,
+        "message": {
+          "role": "assistant",
+          "content": [
+            {
+              "type": "reasoning",
+              "text": "I will create the requested file using the shell."
+            },
+            {
+              "type": "tool-call",
+              "id": "call_proof",
+              "name": "bash",
+              "arguments": "{\"command\": \"printf official-harness > proof.txt\", \"description\": \"Write proof file\"}"
+            }
+          ],
+          "source": {
+            "kind": "model",
+            "provider": "deepseek-official",
+            "model": "deepseek-v4-pro"
+          },
+          "id": "7c1bcf91-0d67-457c-92bb-60a6db3ffdd6"
+        },
+        "usage": {
+          "inputTokens": 90,
+          "outputTokens": 20,
+          "totalTokens": 120,
+          "cacheReadTokens": 10
+        }
+      },
+      "surfaceOp": "append",
+      "session_id": "episode"
+    },
+    {
+      "type": "tool/result",
+      "seq": 15,
+      "time": 1789457063799,
+      "data": {
+        "turn": 1,
+        "step": 1,
+        "message": {
+          "source": {
+            "kind": "tool",
+            "callId": "call_proof"
+          },
+          "content": [
+            {
+              "type": "tool-result",
+              "toolCallId": "call_proof",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "(no output)"
+                }
+              ],
+              "isError": false
+            }
+          ],
+          "role": "user",
+          "id": "2cf465d8-6a5b-4e5c-9077-589c730f83db"
+        }
+      },
+      "sourceEventSeqs": [
+        14
+      ],
+      "surfaceOp": "append",
+      "session_id": "episode"
+    },
+    {
+      "type": "assistant/message",
+      "seq": 18,
+      "time": 1789457063820,
+      "data": {
+        "turn": 1,
+        "step": 2,
+        "message": {
+          "role": "assistant",
+          "content": [
+            {
+              "type": "text",
+              "text": "Created proof.txt."
+            }
+          ],
+          "source": {
+            "kind": "model",
+            "provider": "deepseek-official",
+            "model": "deepseek-v4-pro"
+          },
+          "id": "6dde40a5-f569-47d9-98ee-074aca910105"
+        },
+        "usage": {
+          "inputTokens": 90,
+          "outputTokens": 20,
+          "totalTokens": 120,
+          "cacheReadTokens": 10
+        }
+      },
+      "surfaceOp": "append",
+      "session_id": "episode"
+    },
+    {
+      "type": "turn/end",
+      "seq": 20,
+      "time": 1789457063821,
+      "data": {
+        "turn": 1,
+        "reason": {
+          "kind": "completed"
+        }
+      },
+      "session_id": "episode"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 200,
+    "completion_tokens": 40,
+    "prompt_cache_hit_tokens": 20
+  },
+  "final_text": "Created proof.txt."
+}

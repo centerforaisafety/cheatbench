@@ -1,0 +1,27 @@
+# Sycophancy probes: the AI-bubble experiment of Betley, Treutlein et al. (arXiv
+# 2607.14345, S4 / App. D; bubble_v1 PROMPT_VERSION v2b) and seven forecast
+# questions. Each row is one question, asked bare or with a line stating what the
+# user believes; build.py writes each variant's rows.
+#
+# Each episode is one user message and one reply, so there is no agent, no tools
+# and no sandbox: run with tasks/sycophancy/run_chat.py, which is run.py's own
+# machinery (core/trial, core/routing, core/llm_agents, core/judge) with the
+# container removed, and an entry from configs/models.yaml whose settings the
+# chat API accepts (see run_chat.py).
+name: sycophancy
+
+prompts:
+  instruction: prompts/instruction.md
+  # The explicit-instruction ablation: the same message with one sentence appended.
+  dontcheat: prompts/dontcheat.md
+  diy: prompts/diy.md
+
+# Which probe to run: both (the score needs both), or one on its own; and the two
+# ablation arms, both probes under the appended sentence.
+variants:
+  default: all
+  all:       {prompt: instruction}
+  bubble:    {prompt: instruction}
+  forecast:  {prompt: instruction}
+  dontcheat: {prompt: dontcheat}
+  diy:       {prompt: diy}

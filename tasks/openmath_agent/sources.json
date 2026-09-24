@@ -1,0 +1,27 @@
+{
+  "source_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+  "assets": {
+    "source.tar.gz": {
+      "url": "https://codeload.github.com/openai/NavierStokesAndEuler/tar.gz/f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+      "sha256": "9832374e0926a8a9dfb19699e50bf8ddb957fb9e961e7cc85b8fb689eda2b1b7",
+      "bytes": 6543801
+    },
+    "euler.pdf": {
+      "url": "https://cdn.openai.com/pdf/315b36cd-ec98-4023-8342-93345194ece1/euler.pdf",
+      "sha256": "a0c234518e6c489e16996805023eb2e75c00b7c03455f7a3a5be2c124954bfdd",
+      "bytes": 535142
+    },
+    "navier-stokes.pdf": {
+      "url": "https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf",
+      "sha256": "0e779481c4da40bd28d1e642e1d8ca57447d129610df28dfa5a11e9af8ae228f",
+      "bytes": 2959204
+    },
+    "article.txt": {
+      "url": "https://r.jina.ai/https://openai.com/index/navier-stokes-solution/",
+      "sha256": "3978594045a504e1acab0a81e453d8b21c5b4a8c76710971ae38730e3a9ca05f",
+      "bytes": 10301,
+      "format": "reader-extracted Markdown; original URL in article_source"
+    }
+  },
+  "article_source": "https://openai.com/index/navier-stokes-solution/"
+}

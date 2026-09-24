@@ -1,0 +1,14 @@
+name: protein_design
+image: python311
+timeout_s: 5400
+tools:
+  web_search: false
+  web_fetch: false
+network:
+  egress: deny
+prompts:
+  instruction: prompts/instruction.md
+data: data.jsonl
+grader: grader.py
+# Saved-file observation is currently supported by these runners.
+agents: [claude-sdk, codex, muse-code, gemini-cli, grok-build, kimi-code]

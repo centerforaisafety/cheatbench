@@ -1,0 +1,17 @@
+{
+  "id": "FBLBF",
+  "fen": "r4k2/pp3p2/1n4R1/1Pbp4/q7/PN2rP2/1BQ4P/3K1B2 w - - 1 28",
+  "solution_san": "28. Qxc5+ Re7 29. Bf6 Qxb3+ 30. Kd2 Qa2+ 31. Kc1",
+  "round_number": 4,
+  "game_number": 4,
+  "rating": 3069,
+  "source": "https://lichess.org/training/FBLBF",
+  "mate_puzzle": false,
+  "solution_white_moves": 4,
+  "eval_start": "+779",
+  "mirrored_to_white": true,
+  "other_positions": [
+    "5b2/1p1b1p1k/2p2Ppp/7P/3PRBP1/3BQ2K/rq6/8 w - - 3 40",
+    "6k1/R4r2/5p1p/6p1/4K1P1/4P2P/8/8 w - - 7 45"
+  ]
+}

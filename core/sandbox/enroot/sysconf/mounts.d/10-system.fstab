@@ -1,0 +1,52 @@
+# Mounts for the eval sandbox. This REPLACES enroot's stock /etc/enroot config
+# (via ENROOT_SYSCONF_PATH) rather than adding to it, because two of the stock
+# entries are wrong for us:
+#
+#   * 10-system.fstab rbinds the HOST's /proc. A procfs superblock belongs to
+#     the pid namespace of whoever mounted it, so an rbind would show the agent
+#     every process on the node -- including run_eval.py's argv and the magic
+#     symlink /proc/<pid>/cwd, which the kernel resolves in the target's mount
+#     namespace and walks straight into this repo. We mount a FRESH procfs, so
+#     it is bound to the private pid namespace the launcher unshares and holds
+#     nothing but the container's own processes.
+#
+#     It has to be mounted HERE, in the container's mount namespace, and not
+#     only in the payload's: fuse-overlayfs -- which is what makes the rootfs
+#     writable -- reopens files through /proc/self/fd, and with no /proc in its
+#     own mount namespace every readdir on the rootfs hangs forever (`ls /`
+#     inside the container never returns).
+#   * 20-config.fstab bind-mounts /etc/{hosts,resolv.conf,hostname} read-only
+#     from the host, which leaks the node name AND stops sandbox_net from
+#     pinning the mirror's hostnames -- the same read-only bind that used to
+#     fail with "PermissionError: /etc/resolv.conf". Here those stay
+#     ordinary writable files in the per-episode overlay, seeded by
+#     hooks.d/50-sandbox.sh, so nothing about them shows up in the container's
+#     mount table either.
+#
+# /dev is a fresh tmpfs with only the standard character devices, so the agent
+# cannot enumerate the node's GPUs and interconnect and conclude it is on a
+# cluster.
+
+proc            /proc           proc    x-create=dir,rw,nosuid,nodev,noexec              0   -1
+
+# /sys is not here: whether it can be a fresh sysfs (only when the network
+# namespace is ours) or has to be an rbind of the host's depends on the run, so
+# the launcher passes it with -m.
+
+tmpfs           /dev            tmpfs   x-create=dir,rw,nosuid,mode=755,slave            0   -1
+/dev/null       /dev/null       none    x-create=file,bind,rw,nosuid,noexec              0   -1
+/dev/zero       /dev/zero       none    x-create=file,bind,rw,nosuid,noexec              0   -1
+/dev/full       /dev/full       none    x-create=file,bind,rw,nosuid,noexec              0   -1
+/dev/random     /dev/random     none    x-create=file,bind,rw,nosuid,noexec              0   -1
+/dev/urandom    /dev/urandom    none    x-create=file,bind,rw,nosuid,noexec              0   -1
+/dev/tty        /dev/tty        none    x-create=file,bind,rw,nosuid,noexec              0   -1
+# gid=0, not the conventional gid=5: only uid/gid 0 are mapped in our user
+# namespace, and an unmapped gid makes mount(2) fail with EINVAL. /dev/ptmx is
+# a symlink made by hooks.d/50-sandbox.sh -- a bind of the host's would carry
+# the host devpts instance in, with ptmxmode=000.
+devpts          /dev/pts        devpts  x-create=dir,rw,nosuid,noexec,newinstance,ptmxmode=0666,mode=0620,gid=0 0 -1
+tmpfs           /dev/shm        tmpfs   x-create=dir,rw,nosuid,nodev,mode=1777,size=1g   0   -1
+
+tmpfs           /tmp            tmpfs   x-create=dir,rw,nosuid,nodev,mode=1777,size=8g   0   -1
+tmpfs           /var/run        tmpfs   x-create=dir,rw,nosuid,nodev,mode=755,slave      0   -1
+tmpfs           /var/lock       tmpfs   x-create=dir,rw,nosuid,nodev,mode=755,slave      0   -1

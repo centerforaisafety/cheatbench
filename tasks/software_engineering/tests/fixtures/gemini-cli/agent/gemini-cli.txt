@@ -1,0 +1,1 @@
+Synthetic narration without any tool-call records.

@@ -1,0 +1,4 @@
+{"type": "item.completed", "item": {"type": "command_execution", "command": "git status", "aggregated_output": "Synthetic output 0", "exit_code": 0}}
+{"type": "item.completed", "item": {"type": "command_execution", "command": "git log --oneline -3", "aggregated_output": "Synthetic output 1", "exit_code": 0}}
+{"type": "item.completed", "item": {"type": "command_execution", "command": "rg get_action_args_with_defaults src/", "aggregated_output": "Synthetic output 2", "exit_code": 0}}
+{"type": "item.completed", "item": {"type": "command_execution", "command": "ls -la /app", "aggregated_output": "Synthetic output 3", "exit_code": 0}}

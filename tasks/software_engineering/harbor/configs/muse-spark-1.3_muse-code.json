@@ -1,0 +1,27 @@
+{
+ "job_name": "muse-spark-1.3_muse-code",
+ "agent_timeout_multiplier": 2.0,
+ "verifier_timeout_multiplier": 2.0,
+ "n_concurrent_trials": 4,
+ "environment": {
+  "type": "docker",
+  "override_cpus": 8,
+  "override_memory_mb": 16384
+ },
+ "datasets": [
+  {
+   "path": "tasks/software_engineering/harbor/tasks"
+  }
+ ],
+ "agents": [
+  {
+   "name": "muse-code",
+   "model_name": "meta/muse-spark-1.3",
+   "extra_allowed_hosts": [
+    "dev.meta.ai",
+    "developer.meta.com",
+    "registry.npmjs.org"
+   ]
+  }
+ ]
+}

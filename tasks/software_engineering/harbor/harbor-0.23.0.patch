@@ -1,0 +1,493 @@
+diff -ruN a/harbor/agents/installed/acp.py b/harbor/agents/installed/acp.py
+--- a/harbor/agents/installed/acp.py	1980-01-01 00:00:00.000000000 +0000
++++ b/harbor/agents/installed/acp.py	2026-09-16 21:20:29.474688100 +0000
+@@ -106,6 +106,16 @@
+     package: str
+     args: list[str] = Field(default_factory=list)
+     env: dict[str, str] = Field(default_factory=dict)
++    # Minimum Node major this agent needs. Default 20 (gemini-cli); dsh needs 22
++    # -- on Alpine 3.20 apk's nodejs-current is 21.7.3, which satisfies 20 and so
++    # short-circuits the tarball, and dsh then dies on `Unsupported engine` /
++    # `node:util does not provide an export named 'parseEnv'`.
++    min_node: int = 20
++    # Shell commands run inside the launcher before exec, for agents that need a
++    # config file rather than env vars. deepseek-harness is the case in point:
++    # its provider endpoint, wire protocol and model catalog live in
++    # $DSH_HOME/settings.yaml, and only apiKey/baseURL have env fallbacks.
++    setup: list[str] = Field(default_factory=list)
+ 
+     @field_validator("env")
+     @classmethod
+@@ -660,8 +670,19 @@
+             export UV_CACHE_DIR=/opt/harbor-acp-bootstrap-cache
+             if command -v apt-get >/dev/null 2>&1; then
+               export DEBIAN_FRONTEND=noninteractive
+-              apt-get update -qq
+-              apt-get install -y python3 curl ca-certificates {" ".join(apt_extras)}
++              # Several SWE-bench Pro base images pin Debian suites that are now
++              # archived: the Release file has expired and pinned versions were
++              # dropped from the pool, so `apt-get update` and the install both
++              # exit non-zero under `set -e` and kill agent setup outright.
++              # tutao/tutanota and element-hq/element-web died here with
++              # "E: Unable to fetch some archives" and produced no transcript at
++              # all. Tolerate broken metadata, then verify what actually matters.
++              apt-get -o Acquire::Check-Valid-Until=false update -qq || true
++              apt-get install -y python3 curl ca-certificates {" ".join(apt_extras)} \
++                || apt-get install -y --no-install-recommends --fix-missing \
++                     python3 curl ca-certificates {" ".join(apt_extras)} || true
++              command -v curl >/dev/null 2>&1 \
++                || {{ echo "FATAL: curl unavailable after apt attempts" >&2; exit 1; }}
+             elif command -v apk >/dev/null 2>&1; then
+               apk add --no-cache python3 curl ca-certificates {" ".join(apk_extras)}
+             elif command -v dnf >/dev/null 2>&1; then
+@@ -695,13 +716,17 @@
+             fi
+         """.strip()
+ 
+-    def _build_node_install_command(self) -> str:
+-        return (
+-            "set -euo pipefail; "
+-            "if ldd --version 2>&1 | grep -qi musl || [ -f /etc/alpine-release ]; then "
+-            "node --version && npm --version; "
+-            f"else {nvm_node_install_snippet()}; fi"
+-        )
++    def _build_node_install_command(self, target=None) -> str:
++        # The musl branch used to just PRINT the system node's version and
++        # accept it. protonmail/webclients is Alpine and apk ships node v16, so
++        # every npx-launched ACP agent there died with
++        # `SyntaxError: 'node:util' does not provide an export named 'aborted'`.
++        # nvm_node_install_snippet already branches on musl itself -- unofficial
++        # musl tarball into /usr/local, nvm on glibc -- and ends with a hard
++        # node >= 20 gate, so just always use it.
++        want = int(getattr(target, "min_node", 20) or 20) if target is not None else 20
++        return "set -euo pipefail; " + nvm_node_install_snippet(
++            node_major=max(22, want), min_major=want)
+ 
+     async def _install_binary_target(
+         self,
+@@ -773,11 +798,24 @@
+         if kind == "npx":
+             # Prefer the nvm-installed Node over any (older) system Node; the
+             # nvm directory is absent on musl distros, where system Node is used.
++            # Install runs as root; this launcher may run with a different
++            # $HOME, so the old "$HOME/.nvm" glob silently found nothing on some
++            # images and the SYSTEM node won. On protonmail/webclients that is
++            # node v16, and every npx-launched ACP agent then died immediately
++            # with `SyntaxError: 'node:util' does not provide an export named
++            # 'aborted'` -- an 80-byte acp-events.jsonl and no episode, for
++            # gemini-cli and deepseek-harness alike. So search every plausible
++            # prefix and take the first node that is actually >= 20.
+             path_setup = (
+-                'nvm_node_bin="$(ls -d "${NVM_DIR:-$HOME/.nvm}"/versions/node/*/bin '
+-                '2>/dev/null | sort -V | tail -n 1)"\n'
+-                'if [ -n "$nvm_node_bin" ]; then '
+-                'PATH="$nvm_node_bin:$PATH"; export PATH; fi\n'
++                'for _nb in $(ls -d "${NVM_DIR:-$HOME/.nvm}"/versions/node/*/bin '
++                '/root/.nvm/versions/node/*/bin /usr/local/nvm/versions/node/*/bin '
++                '2>/dev/null | sort -V -r) /usr/local/bin; do\n'
++                '  [ -x "$_nb/node" ] || continue\n'
++                '  _nv=$("$_nb/node" -v 2>/dev/null | sed \'s/^v\\([0-9]*\\).*/\\1/\')\n'
++                '  case "$_nv" in ""|*[!0-9]*) continue;; esac\n'
++                '  [ "$_nv" -ge 20 ] || continue\n'
++                '  PATH="$_nb:$PATH"; export PATH; break\n'
++                'done\n'
+             )
+ 
+         if kind == "binary":
+@@ -820,7 +858,15 @@
+ 
+         exec_cmd = " ".join([*quoted_parts, '"$@"'])
+ 
+-        return f"#!/usr/bin/env sh\nset -eu\n{path_setup}{env_exports}exec {exec_cmd}\n"
++        setup_cmds = ""
++        setup_lines = list(getattr(target, "setup", []) or [])
++        if setup_lines:
++            setup_cmds = "\n".join(setup_lines) + "\n"
++
++        return (
++            f"#!/usr/bin/env sh\nset -eu\n{path_setup}{env_exports}"
++            f"{setup_cmds}exec {exec_cmd}\n"
++        )
+ 
+     # The source-fetch credential travels in its own env var so it can never be
+     # clobbered by an ambient GIT_ASKPASS scoped to a different repo
+@@ -1183,7 +1229,7 @@
+         if kind == "npx":
+             await self.exec_as_agent(
+                 environment,
+-                command=self._build_node_install_command(),
++                command=self._build_node_install_command(target),
+             )
+ 
+         if kind == "binary":
+@@ -1710,12 +1756,17 @@
+         if self.model_name:
+             env["HARBOR_ACP_REQUESTED_MODEL"] = self.model_name
+ 
++        # protonmail/webclients has no coreutils, so the old unconditional
++        # `stdbuf -oL` in this pipeline aborted the run with
++        # "bash: stdbuf: command not found" before the agent ever started.
++        # stdbuf only affects log latency, so drop it when it is absent.
+         command = f"""
++HARBOR_STDBUF=""; command -v stdbuf >/dev/null 2>&1 && HARBOR_STDBUF="stdbuf -oL"
+ {self._RUNNER_VENV_PATH}/bin/python {self._RUNNER_REMOTE_PATH} \
+     --instruction={escaped_instruction} \
+     --logs-dir={EnvironmentPaths.agent_dir.as_posix()} \
+     --launcher={self._LAUNCHER_REMOTE_PATH} \
+-    2>&1 | stdbuf -oL tee {EnvironmentPaths.agent_dir / self._OUTPUT_FILENAME}
++    2>&1 | $HARBOR_STDBUF tee {EnvironmentPaths.agent_dir / self._OUTPUT_FILENAME}
+ """.strip()
+ 
+         await self.exec_as_agent(environment, command=command, env=env)
+diff -ruN a/harbor/agents/installed/acp_runner.py b/harbor/agents/installed/acp_runner.py
+--- a/harbor/agents/installed/acp_runner.py	1980-01-01 00:00:00.000000000 +0000
++++ b/harbor/agents/installed/acp_runner.py	2026-09-16 21:20:29.474688100 +0000
+@@ -3,6 +3,7 @@
+ 
+ import argparse
+ import asyncio
++import os
+ import codecs
+ import contextlib
+ import json
+@@ -117,6 +118,11 @@
+     if "/" in stripped:
+         _, providerless = stripped.split("/", 1)
+         _append_unique(variants, providerless)
++        # A gateway id can carry two prefixes -- litellm routes DeepSeek as
++        # "openrouter/deepseek/deepseek-v4-pro" -- and splitting once leaves
++        # "deepseek/deepseek-v4-pro", which matches no agent-side catalog. The
++        # bare final segment is what agents actually advertise.
++        _append_unique(variants, stripped.rsplit("/", 1)[-1])
+     return variants
+ 
+ 
+@@ -209,6 +215,19 @@
+         ]
+         if len(providerless_matches) == 1:
+             _append_unique(candidates, providerless_matches[0])
++
++    if not candidates:
++        # ACP config-option values are opaque strings, and not every agent uses a
++        # bare model id. deepseek-harness advertises the pair as a JSON array,
++        # '["deepseek-official","openrouter/deepseek/deepseek-v4-pro"]', which no
++        # equality or providerless comparison above can match -- the session then
++        # silently keeps the bundle default and the provider rejects the request.
++        # Fall back to containment, and only when it is unambiguous.
++        for variant in requested_variants:
++            contained = [value for value in available_values if variant in value]
++            if len(contained) == 1:
++                _append_unique(candidates, contained[0])
++                break
+     return candidates
+ 
+ 
+@@ -757,7 +776,17 @@
+                 if set_model is None:
+                     message = "ACP agent did not advertise a model-selection mechanism"
+                     summary["set_model_error"] = {"message": message}
+-                    raise RuntimeError(message)
++                    # gemini-cli 0.59.0 speaks ACP but exposes no model-selection
++                    # capability, so this raise makes the whole agent unusable. The
++                    # model is instead pinned on the CLI's own argv via a custom
++                    # registry entry (--model <id>). Downgrade to a recorded warning
++                    # so the run proceeds; acp-summary.json keeps set_model_error and
++                    # set_model_skipped, and the model actually used must be verified
++                    # from the session record rather than assumed.
++                    if not os.environ.get("HARBOR_ACP_REQUIRE_SET_MODEL"):
++                        summary["set_model_downgraded_to_warning"] = True
++                    else:
++                        raise RuntimeError(message)
+ 
+                 for candidate_model_id in candidate_model_ids:
+                     attempt: dict[str, Any] = {"model_id": candidate_model_id}
+diff -ruN a/harbor/agents/installed/base.py b/harbor/agents/installed/base.py
+--- a/harbor/agents/installed/base.py	1980-01-01 00:00:00.000000000 +0000
++++ b/harbor/agents/installed/base.py	2026-09-16 21:20:29.474688100 +0000
+@@ -734,7 +734,38 @@
+         package_args = shlex.join(packages)
+ 
+         if manager == "apt-get":
+-            command = f"apt-get update && apt-get install -y {package_args}"
++            # Several SWE-bench Pro base images pin Debian suites that are now
++            # archived: the Release file has expired and some pinned versions
++            # were dropped from the pool, so a bare `apt-get update && install`
++            # exits non-zero with "E: Unable to fetch some archives" and kills
++            # agent setup outright. That is what blocked grok-build and
++            # muse-code on teleport, tutanota and element-web. Tolerate stale
++            # metadata, retry with --fix-missing, then verify what was actually
++            # requested is present rather than trusting apt's exit code.
++            #
++            # One unsatisfiable package must not take the rest down with it.
++            # apt treats a request as a single transaction, so an unresolvable
++            # nodejs/npm -- an archived pool that 404s, or a nodesource nodejs
++            # that Conflicts: npm -- aborts the whole thing, and ripgrep never
++            # lands even though it installs fine on its own. That is what broke
++            # codex on navidrome, tutanota and protonmail/webclients, where
++            # curl/bash/nodejs/npm were already in the image and ripgrep was the
++            # only package actually missing. Retry the stragglers one at a time
++            # before concluding anything is unavailable.
++            command = (
++                "apt-get -o Acquire::Check-Valid-Until=false update -qq || true; "
++                f"apt-get install -y {package_args} "
++                f"|| apt-get install -y --no-install-recommends --fix-missing {package_args} "
++                "|| true; "
++                f"for p in {package_args}; do "
++                '  command -v "$p" >/dev/null 2>&1 || dpkg -s "$p" >/dev/null 2>&1 '
++                '    || apt-get install -y --no-install-recommends "$p" || true; '
++                "done; "
++                f"for p in {package_args}; do "
++                '  command -v "$p" >/dev/null 2>&1 || dpkg -s "$p" >/dev/null 2>&1 '
++                '    || { echo "FATAL: apt could not provide $p" >&2; exit 1; }; '
++                "done"
++            )
+             env = {"DEBIAN_FRONTEND": "noninteractive"}
+         elif manager == "dnf":
+             command = f"dnf install -y {package_args}"
+diff -ruN a/harbor/agents/installed/codex.py b/harbor/agents/installed/codex.py
+--- a/harbor/agents/installed/codex.py	1980-01-01 00:00:00.000000000 +0000
++++ b/harbor/agents/installed/codex.py	2026-09-17 03:34:10.000000000 +0000
+@@ -361,7 +361,19 @@
+                 '  export NVM_DIR="$HOME/.nvm" &&'
+                 '  \\. "$NVM_DIR/nvm.sh" || true &&'
+                 "  command -v nvm &>/dev/null || { echo 'Error: NVM failed to load' >&2; exit 1; } &&"
+-                "  nvm install 22 && nvm alias default 22 && npm -v &&"
++                # Pin the runtime instead of floating on "22". nvm install 22
++                # resolves to whatever the latest 22.x is on the day of the run,
++                # so a future 22.24 would silently change the npm every codex
++                # cell ships. node v22.23.2 (released 2026-07-28) and npm 10.9.8
++                # are what "22" resolved to for the published cells on
++                # 2026-09-15 and still resolve to today, so pinning them freezes
++                # the behaviour that produced the table rather than changing it.
++                # npm is pinned explicitly rather than left implied by whatever
++                # the node tarball happens to bundle. The v22.20.0 pin in
++                # node_install.py is the musl path and unrelated: it tracks the
++                # unofficial musl build, not this one.
++                "  nvm install 22.23.2 && nvm alias default 22.23.2 &&"
++                "  npm install -g npm@10.9.8 && npm -v &&"
+                 f"  npm install -g @openai/codex{version_spec};"
+                 " fi && "
+                 "codex --version"
+diff -ruN a/harbor/agents/installed/grok_build.py b/harbor/agents/installed/grok_build.py
+--- a/harbor/agents/installed/grok_build.py	1980-01-01 00:00:00.000000000 +0000
++++ b/harbor/agents/installed/grok_build.py	2026-09-16 21:22:12.081638992 +0000
+@@ -1,4 +1,5 @@
+ import json
++import os
+ import math
+ import re
+ import shlex
+@@ -265,6 +266,14 @@
+             "env_key": "OPENROUTER_API_KEY",
+             "api_backend": "chat_completions",
+         },
++        # A LiteLLM gateway that fronts other providers. Prefix the model with
++        # "litellm/" to route through it (e.g. litellm/openrouter/x-ai/grok-4.6)
++        # and point LITELLM_BASE_URL at the gateway.
++        "litellm": {
++            "base_url": os.environ.get("LITELLM_BASE_URL", ""),
++            "env_key": "LITELLM_API_KEY",
++            "api_backend": "chat_completions",
++        },
+         "openai": {
+             "base_url": "https://api.openai.com/v1",
+             "env_key": "OPENAI_API_KEY",
+@@ -277,7 +286,7 @@
+         },
+     }
+     _INSTALL_SCRIPT_URL = "https://x.ai/cli/install.sh"
+-    _PATH_EXPORT = 'export PATH="$HOME/.grok/bin:$PATH"'
++    _PATH_EXPORT = 'export PATH="$HOME/.grok/bin:/root/.grok/bin:$PATH"'
+ 
+     # Exit-watchdog timing; see _build_run_script.
+     _POLL_INTERVAL_SEC = 5
+diff -ruN a/harbor/agents/installed/kimi_code.py b/harbor/agents/installed/kimi_code.py
+--- a/harbor/agents/installed/kimi_code.py	1980-01-01 00:00:00.000000000 +0000
++++ b/harbor/agents/installed/kimi_code.py	2026-09-16 21:20:29.474688100 +0000
+@@ -93,12 +93,11 @@
+             environment,
+             command=f"""
+ set -euo pipefail
+-if command -v apk >/dev/null 2>&1; then
+-  node --version
+-  npm --version
+-else
+-  {nvm_node_install_snippet()}
+-fi
++# No apk shortcut here. kimi-code needs node >= 22.19 (it imports
++# createZstdDecompress from node:zlib), and the Alpine bases ship 20.x, so
++# "has apk -> just print the version" accepted a node the CLI then died on at
++# runtime. nvm_node_install_snippet handles musl and glibc itself.
++{nvm_node_install_snippet(node_major=22, min_major=22)}
+ 
+ mkdir -p "$HOME/.local"
+ npm install --global --prefix "$HOME/.local" {_PACKAGE_NAME}{version_spec}
+diff -ruN a/harbor/agents/installed/muse_code.py b/harbor/agents/installed/muse_code.py
+--- a/harbor/agents/installed/muse_code.py	1980-01-01 00:00:00.000000000 +0000
++++ b/harbor/agents/installed/muse_code.py	2026-09-16 21:22:12.081638992 +0000
+@@ -1,4 +1,5 @@
+ import re
++import os
+ import shlex
+ from typing import Annotated, Literal, override
+ 
+@@ -65,11 +66,59 @@
+     options_model = MuseCodeOptions
+ 
+     _INSTALL_SCRIPT_URL = "https://dev.meta.ai/install.sh"
+-    _PATH_EXPORT = 'export PATH="$HOME/.local/bin:$PATH"'
++    # Install runs as root and pins the binary to /usr/local/bin (see the
++    # install command below), but the agent phase exported only $HOME/.local/bin
++    # and does not necessarily share root's $HOME -- so `muse --version` passed
++    # at install and the run phase died with exit 127, `muse: command not found`.
++    # Put the install dir first; $HOME/.local/bin stays for an unpinned install.
++    _PATH_EXPORT = 'export PATH="/usr/local/bin:$HOME/.local/bin:$PATH"'
+     _OUTPUT_FILENAME = "muse-code.jsonl"
+     _STDERR_FILENAME = "muse-code.stderr.log"
+     _PROMPT_PATH = "/tmp/muse-code-prompt.txt"
+ 
++
++    # dev.meta.ai allowlists by source IP. The head node is allowed; the GPU
++    # nodes share a different egress address and get an HTML login page where
++    # the script should be, so `curl | bash` dies on "syntax error near
++    # unexpected token `<`". The bootstrap only fetches and checksum-verifies
++    # the launcher from api.meta.ai, which the task containers CAN reach, so a
++    # copy fetched on an allowed host works exactly as the download would.
++    # dev.meta.ai allowlists by source IP: this head node is allowed, the GPU
++    # nodes share a different egress address and get an HTML login page where
++    # the script should be. The bootstrap only fetches and checksum-verifies the
++    # launcher from api.meta.ai, which the containers CAN reach, so a copy taken
++    # on an allowed host installs exactly what the download would.
++    # A local copy of the bootstrap, fetched once on a host dev.meta.ai admits
++    # and re-used by every container. MUSE_CODE_INSTALL_SCRIPT overrides the
++    # location.
++    _INSTALL_SCRIPT_MIRROR = os.environ.get(
++        "MUSE_CODE_INSTALL_SCRIPT",
++        os.path.expanduser("~/.cache/harbor/muse_install.sh"))
++    _INSTALL_SCRIPT_REMOTE = "/tmp/muse-install.sh"
++
++    def _stage_install_script(self) -> str:
++        """Command that puts the bootstrap at _INSTALL_SCRIPT_REMOTE.
++
++        base64, not a heredoc: `cat <<'EOF' ... EOF | bash` only pipes when the
++        pipe sits on the `cat` line. Built as one string the pipe landed AFTER
++        the terminator, so the terminator never matched, cat printed the whole
++        script to stdout and bash was never fed it -- install exited 0 having
++        installed nothing, and `muse --version` was swallowed as heredoc text
++        rather than run, so the failure only surfaced one phase later as
++        `muse: command not found`.
++        """
++        import base64
++        import os
++        import shlex as _shlex
++        if not os.path.exists(self._INSTALL_SCRIPT_MIRROR):
++            return "curl -fsSL %s -o %s" % (
++                _shlex.quote(self._INSTALL_SCRIPT_URL),
++                _shlex.quote(self._INSTALL_SCRIPT_REMOTE))
++        with open(self._INSTALL_SCRIPT_MIRROR, "rb") as fh:
++            blob = base64.b64encode(fh.read()).decode()
++        return "printf %%s %s | base64 -d > %s" % (
++            _shlex.quote(blob), _shlex.quote(self._INSTALL_SCRIPT_REMOTE))
++
+     @staticmethod
+     @override
+     def name() -> str:
+@@ -104,8 +153,8 @@
+             environment,
+             command=(
+                 "set -euo pipefail; "
+-                f"curl -fsSL {self._INSTALL_SCRIPT_URL} | "
+-                "MUSE_NO_MODIFY_PATH=1 bash && "
++                f"{self._stage_install_script()}; "
++                f"MUSE_INSTALL_DIR=/usr/local/bin MUSE_NO_MODIFY_PATH=1 bash {self._INSTALL_SCRIPT_REMOTE} && "
+                 f"{self._PATH_EXPORT} && "
+                 "muse --version"
+             ),
+diff -ruN a/harbor/agents/installed/node_install.py b/harbor/agents/installed/node_install.py
+--- a/harbor/agents/installed/node_install.py	1980-01-01 00:00:00.000000000 +0000
++++ b/harbor/agents/installed/node_install.py	2026-09-16 21:20:29.474688100 +0000
+@@ -4,7 +4,8 @@
+ DEFAULT_NODE_MAJOR = 22
+ 
+ 
+-def nvm_node_install_snippet(node_major: int = DEFAULT_NODE_MAJOR) -> str:
++def nvm_node_install_snippet(node_major: int = DEFAULT_NODE_MAJOR,
++                             min_major: int | None = None) -> str:
+     """Shell snippet that installs nvm, loads it, and installs Node.
+ 
+     Leaves nvm loaded so callers can chain `npm install -g ...` with `&&`.
+@@ -17,10 +18,67 @@
+     source nvm.sh on the same version the agent was installed into, even if
+     a default alias already exists.
+     """
+-    return (
+-        f"curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/{NVM_VERSION}/install.sh | env -u NODE_VERSION bash && "
+-        'export NVM_DIR="$HOME/.nvm" && '
+-        '\\. "$NVM_DIR/nvm.sh" || true && '
+-        "command -v nvm &>/dev/null || { echo 'Error: NVM failed to load' >&2; exit 1; } && "
+-        f"nvm install {node_major} && nvm alias default {node_major} && npm -v"
+-    )
++    """Shell snippet that installs Node >= 20 and leaves it on PATH.
++
++    The musl path is where this kept going wrong: nodejs.org publishes no musl
++    build; the UNOFFICIAL musl build of node 22 needs a newer libstdc++ than the
++    sweap-images Alpine 3.18 bases carry, so it installs and then dies with
++    `Error relocating ... symbol not found`; and those bases ship no curl at all.
++    So try apk's own `nodejs-current` (20.8.1 on 3.18, linked against the
++    libstdc++ that is actually installed) first, and fall back to the tarball via
++    curl or busybox wget only if that is still < 20. glibc keeps using nvm.
++
++    The >= 20 gate is hard either way: these CLIs import `aborted` from node:util
++    (node >= 19.7) and fail at RUNTIME, not install, on anything older.
++    """
++    script = r"""if command -v apk >/dev/null 2>&1 || ldd --version 2>&1 | grep -qi musl; then
++  apk add --no-cache libstdc++ coreutils curl ca-certificates >/dev/null 2>&1 || true
++  apk add --no-cache nodejs-current npm >/dev/null 2>&1 || true
++  # These bases carry their own old node at /usr/local/bin/node (v16), which
++  # comes FIRST on PATH and shadows apk's /usr/bin/node. Without this the
++  # version check below still sees v16, falls through to the tarball, and
++  # overwrites /usr/local/bin/node with a build this Alpine cannot relocate.
++  _apknv=$(/usr/bin/node -v 2>/dev/null | sed 's/^v//; s/\..*//')
++  case "$_apknv" in ''|*[!0-9]*) _apknv=0;; esac
++  if [ "$_apknv" -ge @MIN@ ]; then
++    ln -sf /usr/bin/node /usr/local/bin/node
++    [ -x /usr/bin/npm ] && ln -sf /usr/bin/npm /usr/local/bin/npm
++    [ -x /usr/bin/npx ] && ln -sf /usr/bin/npx /usr/local/bin/npx
++  fi
++  hash -r
++  _nv=$(node -v 2>/dev/null | sed 's/^v//; s/\..*//')
++  case "$_nv" in ''|*[!0-9]*) _nv=0;; esac
++  if [ "$_nv" -lt @MIN@ ]; then
++    # >= 22.19: kimi-code imports createZstdDecompress from node:zlib, which
++    # only exists from 22.15 -- 22.14 installs cleanly and then fails at runtime.
++    NV=v22.20.0
++    NURL="https://unofficial-builds.nodejs.org/download/release/${NV}/node-${NV}-linux-x64-musl.tar.gz"
++    if command -v curl >/dev/null 2>&1; then curl -fsSL "$NURL" -o /tmp/node.tgz || true
++    else wget -q -O /tmp/node.tgz "$NURL" || true; fi
++    [ -s /tmp/node.tgz ] && tar -xzf /tmp/node.tgz -C /usr/local --strip-components=1
++    rm -f /tmp/node.tgz
++    export PATH=/usr/local/bin:$PATH
++    hash -r
++  fi
++  mkdir -p "$HOME/.nvm" && printf 'export PATH="/usr/local/bin:$PATH"\n' > "$HOME/.nvm/nvm.sh"
++else
++  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/@NVM@/install.sh | env -u NODE_VERSION bash
++  export NVM_DIR="$HOME/.nvm"
++  . "$NVM_DIR/nvm.sh" || true
++  command -v nvm >/dev/null 2>&1 || { echo "Error: NVM failed to load" >&2; exit 1; }
++  nvm install @MAJOR@ && nvm alias default @MAJOR@
++fi
++_nv=$(node -v 2>/dev/null | sed 's/^v//; s/\..*//')
++case "$_nv" in ''|*[!0-9]*) _nv=0;; esac
++[ "$_nv" -ge @MIN@ ] || { echo "FATAL: node <@MIN@ after install (got '$(node -v 2>/dev/null)')"; exit 1; }
++npm -v"""
++    # Newlines, not "; ": joining with semicolons produces `if ...; then;` and
++    # `case ...; esac;`, which are syntax errors. harbor runs this through a
++    # shell that takes a multi-line string fine.
++    # Agents disagree on how new Node must be: gemini-cli needs >= 20,
++    # kimi-code >= 22.19 (it imports createZstdDecompress from node:zlib,
++    # which does not exist before 22 -- it fails at RUNTIME on 20.15).
++    # A single hardcoded 20 let Alpine's apk node 20.8 through for kimi.
++    return (script.replace("@NVM@", NVM_VERSION)
++                  .replace("@MAJOR@", str(node_major))
++                  .replace("@MIN@", str(min_major if min_major is not None else 20)))

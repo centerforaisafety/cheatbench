@@ -1,0 +1,11 @@
+name: subset_sum
+image: python311
+timeout_s: 3600
+# These adapters implement the live message observer used by this task's logs.
+agents: [claude-sdk, codex, grok-build, gemini-cli, muse-code]
+tools:
+  web_search: false
+  web_fetch: false
+grader: grader.py
+prompts:
+  instruction: prompts/instruction.md

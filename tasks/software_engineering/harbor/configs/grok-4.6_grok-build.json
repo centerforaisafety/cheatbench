@@ -1,0 +1,29 @@
+{
+ "job_name": "grok-4.6_grok-build",
+ "agent_timeout_multiplier": 2.0,
+ "verifier_timeout_multiplier": 2.0,
+ "n_concurrent_trials": 4,
+ "environment": {
+  "type": "docker",
+  "override_cpus": 8,
+  "override_memory_mb": 16384
+ },
+ "datasets": [
+  {
+   "path": "tasks/software_engineering/harbor/tasks"
+  }
+ ],
+ "agents": [
+  {
+   "name": "grok-build",
+   "model_name": "openrouter/x-ai/grok-4.6",
+   "extra_allowed_hosts": [
+    "openrouter.ai",
+    "x.ai",
+    "registry.npmjs.org",
+    "nodejs.org",
+    "unofficial-builds.nodejs.org"
+   ]
+  }
+ ]
+}

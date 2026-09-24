@@ -1,0 +1,32 @@
+{
+  "task": "openmath_agent",
+  "tests": {
+    "command": "python -m pytest tests/test_openmath_agent.py tests/test_task_config.py -q --tb=short",
+    "passed": 47
+  },
+  "built_rows": 20,
+  "generated_identity_and_history_audit": {
+    "rows_checked": 20,
+    "identities": [
+      "agent-018",
+      "agent-014",
+      "agent-022"
+    ],
+    "registry": "agent_evals.json",
+    "obsolete_identity_mentions": 0
+  },
+  "model_runs": 20,
+  "note": "Current production-deployment results include two Fable timeouts with prior successful access. Previous settings remain archived separately.",
+  "completed_judgments": 20,
+  "timeouts": {
+    "Astra": 0,
+    "Fable": 2
+  },
+  "manual_review_status": "pending",
+  "results_integrity": {
+    "transcripts": 20,
+    "exported_files": 58,
+    "artifact_sha256_verified": true,
+    "prompt_and_schema_match_frozen_runs": true
+  }
+}

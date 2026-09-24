@@ -1,0 +1,95 @@
+{
+  "_comment": "Pinned pointers into the Harbor dataset registry. The benchmark content is NOT vendored here: build.py sparse-checks-out these paths at the pinned commit, and the container images they name are pulled from DockerHub on first use.",
+  "source": {
+    "hub": "https://hub.harborframework.com/datasets/scale-ai/swe-bench-pro",
+    "adapter": "https://github.com/laude-institute/harbor/tree/main/adapters/swebenchpro",
+    "upstream_benchmark": "https://github.com/scaleapi/SWE-bench_Pro-os",
+    "upstream_dataset": "https://huggingface.co/datasets/ScaleAI/SWE-bench_Pro",
+    "license": "Apache-2.0"
+  },
+  "git_url": "https://github.com/laude-institute/harbor-datasets.git",
+  "git_commit_id": "c8e8f3fac7097accaacf261d74c3d6f441de45b1",
+  "selection": "repo-stratified sample of 20 of the 731 test instances",
+  "instances": [
+    {
+      "id": "instance_ansible__ansible-5640093f1ca63fd6af231cc8a7fb7d40e1907b8c-vba6da65a0f3baefda7a058ebbd0a8dcafb8512f5",
+      "path": "datasets/swebenchpro/instance_ansible__ansible-5640093f1ca63fd6af231cc8a7fb7d40e1907b8c-vba6da65a0f3baefda7a058ebbd0a8dcafb8512f5"
+    },
+    {
+      "id": "instance_ansible__ansible-cd9c4eb5a6b2bfaf4a6709f001ce3d0c92c1eed2-v0f01c69f1e2528b935359cfe578530722bca2c59",
+      "path": "datasets/swebenchpro/instance_ansible__ansible-cd9c4eb5a6b2bfaf4a6709f001ce3d0c92c1eed2-v0f01c69f1e2528b935359cfe578530722bca2c59"
+    },
+    {
+      "id": "instance_ansible__ansible-ecea15c508f0e081525be036cf76bbb56dbcdd9d-vba6da65a0f3baefda7a058ebbd0a8dcafb8512f5",
+      "path": "datasets/swebenchpro/instance_ansible__ansible-ecea15c508f0e081525be036cf76bbb56dbcdd9d-vba6da65a0f3baefda7a058ebbd0a8dcafb8512f5"
+    },
+    {
+      "id": "instance_element-hq__element-web-ce554276db97b9969073369fefa4950ca8e54f84-vnan",
+      "path": "datasets/swebenchpro/instance_element-hq__element-web-ce554276db97b9969073369fefa4950ca8e54f84-vnan"
+    },
+    {
+      "id": "instance_flipt-io__flipt-02e21636c58e86c51119b63e0fb5ca7b813b07b1",
+      "path": "datasets/swebenchpro/instance_flipt-io__flipt-02e21636c58e86c51119b63e0fb5ca7b813b07b1"
+    },
+    {
+      "id": "instance_flipt-io__flipt-21a935ad7886cc50c46852be21b37f363a926af0",
+      "path": "datasets/swebenchpro/instance_flipt-io__flipt-21a935ad7886cc50c46852be21b37f363a926af0"
+    },
+    {
+      "id": "instance_flipt-io__flipt-72d06db14d58692bfb4d07b1aa745a37b35956f3",
+      "path": "datasets/swebenchpro/instance_flipt-io__flipt-72d06db14d58692bfb4d07b1aa745a37b35956f3"
+    },
+    {
+      "id": "instance_future-architect__vuls-1832b4ee3a20177ad313d806983127cb6e53f5cf",
+      "path": "datasets/swebenchpro/instance_future-architect__vuls-1832b4ee3a20177ad313d806983127cb6e53f5cf"
+    },
+    {
+      "id": "instance_future-architect__vuls-ca3f6b1dbf2cd24d1537bfda43e788443ce03a0c",
+      "path": "datasets/swebenchpro/instance_future-architect__vuls-ca3f6b1dbf2cd24d1537bfda43e788443ce03a0c"
+    },
+    {
+      "id": "instance_gravitational__teleport-288c5519ce0dec9622361a5e5d6cd36aa2d9e348",
+      "path": "datasets/swebenchpro/instance_gravitational__teleport-288c5519ce0dec9622361a5e5d6cd36aa2d9e348"
+    },
+    {
+      "id": "instance_gravitational__teleport-2b15263e49da5625922581569834eec4838a9257-vee9b09fb20c43af7e520f57e9239bbcf46b7113d",
+      "path": "datasets/swebenchpro/instance_gravitational__teleport-2b15263e49da5625922581569834eec4838a9257-vee9b09fb20c43af7e520f57e9239bbcf46b7113d"
+    },
+    {
+      "id": "instance_internetarchive__openlibrary-111347e9583372e8ef91c82e0612ea437ae3a9c9-v2d9a6c849c60ed19fd0858ce9e40b7cc8e097e59",
+      "path": "datasets/swebenchpro/instance_internetarchive__openlibrary-111347e9583372e8ef91c82e0612ea437ae3a9c9-v2d9a6c849c60ed19fd0858ce9e40b7cc8e097e59"
+    },
+    {
+      "id": "instance_internetarchive__openlibrary-3aeec6afed9198d734b7ee1293f03ca94ff970e1-v13642507b4fc1f8d234172bf8129942da2c2ca26",
+      "path": "datasets/swebenchpro/instance_internetarchive__openlibrary-3aeec6afed9198d734b7ee1293f03ca94ff970e1-v13642507b4fc1f8d234172bf8129942da2c2ca26"
+    },
+    {
+      "id": "instance_navidrome__navidrome-29bc17acd71596ae92131aca728716baf5af9906",
+      "path": "datasets/swebenchpro/instance_navidrome__navidrome-29bc17acd71596ae92131aca728716baf5af9906"
+    },
+    {
+      "id": "instance_nodebb__nodebb-0f788b8eaa4bba3c142d171fd941d015c53b65fc-v0ec6d6c2baf3cb4797482ce4829bc25cd5716649",
+      "path": "datasets/swebenchpro/instance_nodebb__nodebb-0f788b8eaa4bba3c142d171fd941d015c53b65fc-v0ec6d6c2baf3cb4797482ce4829bc25cd5716649"
+    },
+    {
+      "id": "instance_protonmail__webclients-d3e513044d299d04e509bf8c0f4e73d812030246",
+      "path": "datasets/swebenchpro/instance_protonmail__webclients-d3e513044d299d04e509bf8c0f4e73d812030246"
+    },
+    {
+      "id": "instance_protonmail__webclients-fc9d535e9beb3ae30a52a7146398cadfd6e30606",
+      "path": "datasets/swebenchpro/instance_protonmail__webclients-fc9d535e9beb3ae30a52a7146398cadfd6e30606"
+    },
+    {
+      "id": "instance_qutebrowser__qutebrowser-70248f256f93ed9b1984494d0a1a919ddd774892-v2ef375ac784985212b1805e1d0431dc8f1b3c171",
+      "path": "datasets/swebenchpro/instance_qutebrowser__qutebrowser-70248f256f93ed9b1984494d0a1a919ddd774892-v2ef375ac784985212b1805e1d0431dc8f1b3c171"
+    },
+    {
+      "id": "instance_qutebrowser__qutebrowser-a84ecfb80a00f8ab7e341372560458e3f9cfffa2-v2ef375ac784985212b1805e1d0431dc8f1b3c171",
+      "path": "datasets/swebenchpro/instance_qutebrowser__qutebrowser-a84ecfb80a00f8ab7e341372560458e3f9cfffa2-v2ef375ac784985212b1805e1d0431dc8f1b3c171"
+    },
+    {
+      "id": "instance_tutao__tutanota-1ff82aa365763cee2d609c9d19360ad87fdf2ec7-vc4e41fd0029957297843cb9dec4a25c7c756f029",
+      "path": "datasets/swebenchpro/instance_tutao__tutanota-1ff82aa365763cee2d609c9d19360ad87fdf2ec7-vc4e41fd0029957297843cb9dec4a25c7c756f029"
+    }
+  ]
+}

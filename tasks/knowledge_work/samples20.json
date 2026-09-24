@@ -1,0 +1,173 @@
+{
+  "dataset": "openai/gdpval",
+  "revision": "11e7900cdcac61bc4daf59e65feb238acda98fbf",
+  "selection_rule": "One original PDF or PPTX deliverable; no explicit HTTP(S) links in the brief because the environment is offline. Retain the original six tasks, then fill each format to ten by ascending task UUID. Include all original input attachments; zero-input briefs use an empty inputs directory. Selection does not use model outcomes.",
+  "tasks": [
+    {
+      "task_id": "b78fd844-db76-448e-a783-5e9877cb74c2",
+      "format": "pdf",
+      "occupation": "Financial Managers",
+      "reference_files": [
+        "reference_files/e0784d15e464a30316ae57313a9fbd97/Tiny Rod Hit Inc Reference.pdf"
+      ],
+      "deliverable": "deliverable_files/67e6577509223a9f2242939226fa1a63/Tiny Rod Hit Inc Report.pdf"
+    },
+    {
+      "task_id": "211d0093-2c64-4bd0-828c-0201f18924e7",
+      "format": "pdf",
+      "occupation": "First-Line Supervisors of Retail Sales Workers",
+      "reference_files": [
+        "reference_files/a19ff917a5f84ec4b136400cec4a5e1f/Daily Tasks.docx"
+      ],
+      "deliverable": "deliverable_files/b6a975e4e60151aa0dabbd77ba3dba3d/Daily Task List.pdf"
+    },
+    {
+      "task_id": "fd3ad420-6f7d-43b1-a990-c0c5c047d071",
+      "format": "pdf",
+      "occupation": "Real Estate Brokers",
+      "reference_files": [
+        "reference_files/0608371b74fb5d30da16ce261aede297/Compensation Model Ideas.docx"
+      ],
+      "deliverable": "deliverable_files/81460db408a9e96ecf1f8a449c61da1b/Broker Compensation Structure.pdf"
+    },
+    {
+      "task_id": "0112fc9b-c3b2-4084-8993-5a4abb1f54f1",
+      "format": "pdf",
+      "occupation": "Nurse Practitioners",
+      "reference_files": [],
+      "deliverable": "deliverable_files/3917a453dd26addb79ab9ab4b4dbb61c/mTBI SOAP.pdf"
+    },
+    {
+      "task_id": "02314fc6-a24e-42f4-a8cd-362cae0f0ec1",
+      "format": "pdf",
+      "occupation": "General and Operations Managers",
+      "reference_files": [],
+      "deliverable": "deliverable_files/a6d75782c42e853de257b253aa368f1d/Safety Checklist.pdf"
+    },
+    {
+      "task_id": "0353ee0c-18b5-4ad3-88e8-e001d223e1d7",
+      "format": "pdf",
+      "occupation": "First-Line Supervisors of Office and Administrative Support Workers",
+      "reference_files": [
+        "reference_files/690bb18c0e997a066e08866074744414/Document A - Email Thread Task 8 Veterans.pdf",
+        "reference_files/6fe3866dfe71efe2605ae7ffc6e14911/Document B - PACT Act Links.pdf"
+      ],
+      "deliverable": "deliverable_files/80209097200369daa4fc9b9061c2aaa7/Deliverable Veteran PACT Act Comprehensive Guide_Updated.pdf"
+    },
+    {
+      "task_id": "11593a50-734d-4449-b5b4-f8986a133fd8",
+      "format": "pdf",
+      "occupation": "Real Estate Sales Agents",
+      "reference_files": [
+        "reference_files/1e15759c2909d91e9cd6024813a1a1f7/Massabama active listings.xlsx",
+        "reference_files/90aa102139088e0e11f8c3aef000f2be/Mort Realty logo.webp"
+      ],
+      "deliverable": "deliverable_files/93012be979c9c2b5bdda315112c6f88f/Massabama Home Flyers.pdf"
+    },
+    {
+      "task_id": "116e791e-890c-42b1-ba90-1db02e8bfd45",
+      "format": "pdf",
+      "occupation": "Registered Nurses",
+      "reference_files": [],
+      "deliverable": "deliverable_files/89522cb126c77c30c16a94fe8a47cc9c/AB Care Plan.pdf"
+    },
+    {
+      "task_id": "3940b7e7-ec4f-4cea-8097-3ab4cfdcaaa6",
+      "format": "pdf",
+      "occupation": "Mechanical Engineers",
+      "reference_files": [
+        "reference_files/40bef3e53d515c7bc90a19e41783b95b/X-Wing-assembly.STEP",
+        "reference_files/edac132577bb44e35b1a31348f750be2/XWING SIM STUDY.pdf"
+      ],
+      "deliverable": "deliverable_files/b1c51dd3b49da8791d6b86f473c717fe/X Wing Analysis Report Draft.pdf"
+    },
+    {
+      "task_id": "3f625cb2-f40e-4ead-8a97-6924356d5989",
+      "format": "pdf",
+      "occupation": "Lawyers",
+      "reference_files": [],
+      "deliverable": "deliverable_files/4f43a27a911c6637b271d040d4d2ca61/Legal Concerns Regarding VueVid Collection of Child Personal Information.pdf"
+    },
+    {
+      "task_id": "2ea2e5b5-257f-42e6-a7dc-93763f28b19d",
+      "format": "pptx",
+      "occupation": "Computer and Information Systems Managers",
+      "reference_files": [
+        "reference_files/bb09ca2a9999b404d7fced9202b42949/Work Time Study - Source.xlsx"
+      ],
+      "deliverable": "deliverable_files/e9db56b584180f23e7bd4b2322a29f8e/WorkStudy.pptx"
+    },
+    {
+      "task_id": "c6269101-fdc8-4602-b345-eac7597c0c81",
+      "format": "pptx",
+      "occupation": "Industrial Engineers",
+      "reference_files": [
+        "reference_files/d30017e5b972bf15a12511fc0dd6b8c7/Process Capability Data.xlsx"
+      ],
+      "deliverable": "deliverable_files/f6ae00cf7fae1e9daae9fea8ca664c82/Process Capability.pptx"
+    },
+    {
+      "task_id": "552b7dd0-96f4-437c-a749-0691e0e4b381",
+      "format": "pptx",
+      "occupation": "Shipping, Receiving, and Inventory Clerks",
+      "reference_files": [
+        "reference_files/767092c37fd1c2f618371d1fc4f4d620/Inventory Incident Report FINAL.xlsx"
+      ],
+      "deliverable": "deliverable_files/2227f1706a019fb6a1e7a8c114089eed/Inventory Incident Reports FINAL.pptx"
+    },
+    {
+      "task_id": "1b9ec237-bf9c-41f9-8fa9-0e685fcd93c6",
+      "format": "pptx",
+      "occupation": "Nurse Practitioners",
+      "reference_files": [],
+      "deliverable": "deliverable_files/77651e16cbced3af755097554a1efea4/HypertensionPPT.pptx"
+    },
+    {
+      "task_id": "403b9234-6299-4b5f-a106-70c1bc11ec4c",
+      "format": "pptx",
+      "occupation": "Recreation Workers",
+      "reference_files": [],
+      "deliverable": "deliverable_files/e367ca3f83ba413caa647774c5d123d8/Chamber Presentation.pptx"
+    },
+    {
+      "task_id": "664a42e5-3240-413a-9a57-ea93c6303269",
+      "format": "pptx",
+      "occupation": "Personal Financial Advisors",
+      "reference_files": [],
+      "deliverable": "deliverable_files/00d22c733e6d49d58f5b8e84085f3229/ILIT Crummey Powers Time Cycle Implementaton Considerations.pptx"
+    },
+    {
+      "task_id": "87da214f-fd92-4c58-9854-f4d0d10adce0",
+      "format": "pptx",
+      "occupation": "Customer Service Representatives",
+      "reference_files": [
+        "reference_files/8e2249c26d343289d1396317ddedd6e2/ID Theft Policy (1).docx",
+        "reference_files/1272fc8a6788399f795d1031073ac91e/Policy Reimbursement Account Sample.xlsx"
+      ],
+      "deliverable": "deliverable_files/384ebc517b291dbca0fe6e70aa23a596/Policy Reimbursement and Remediation Review.pptx"
+    },
+    {
+      "task_id": "9a0d8d36-6233-4c76-9107-0d1f783c7340",
+      "format": "pptx",
+      "occupation": "Personal Financial Advisors",
+      "reference_files": [],
+      "deliverable": "deliverable_files/2371898511a24206139713c91ca4ab68/Incentive and Non Qualified Stock Options.pptx"
+    },
+    {
+      "task_id": "be830ca0-b352-4658-a5bd-57139d6780ba",
+      "format": "pptx",
+      "occupation": "Industrial Engineers",
+      "reference_files": [
+        "reference_files/d18f030de4c4854185daf04838324857/Processing Data.xlsx"
+      ],
+      "deliverable": "deliverable_files/06f41d86259012529b317196226a5134/DMAIC - Analyze Tollgate.pptx"
+    },
+    {
+      "task_id": "ec591973-04d5-48c0-981c-1ab2fcec2dc1",
+      "format": "pptx",
+      "occupation": "First-Line Supervisors of Non-Retail Sales Workers",
+      "reference_files": [],
+      "deliverable": "deliverable_files/e371a208bb0ebe17c9c8ab3a1a30a691/Retail Strategy.pptx"
+    }
+  ]
+}

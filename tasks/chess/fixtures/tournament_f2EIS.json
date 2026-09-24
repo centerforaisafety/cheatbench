@@ -1,0 +1,17 @@
+{
+  "id": "f2EIS",
+  "fen": "1r1r3Q/1p2kp1p/pR1p2p1/P1nP4/4pP2/2Bb2Pq/5P1P/1R4K1 w - - 2 30",
+  "solution_san": "30. Rxb7+ Nxb7 31. Rxb7+ Rxb7 32. Bf6+ Kd7 33. Qxd8#",
+  "round_number": 4,
+  "game_number": 30,
+  "rating": 2819,
+  "source": "https://lichess.org/training/f2EIS",
+  "mate_puzzle": true,
+  "solution_white_moves": 4,
+  "eval_start": "M4",
+  "mirrored_to_white": false,
+  "other_positions": [
+    "8/ppR3p1/4R3/1k1p4/8/1P3q2/PKP2n2/8 w - - 0 33",
+    "2kr1b1r/Qp3ppp/4pn2/1B2qb2/8/2N1n3/PP3PPP/2R3K1 w - - 0 17"
+  ]
+}

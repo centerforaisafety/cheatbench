@@ -1,0 +1,17 @@
+{
+  "id": "giVL1",
+  "fen": "8/7k/7p/8/6rP/6PK/8/8 w - - 0 59",
+  "solution_san": "59. Kxg4 Kg6 60. Kf3 Kf7 61. g4 Ke7 62. Ke3",
+  "round_number": 4,
+  "game_number": 15,
+  "rating": 3043,
+  "source": "https://lichess.org/training/giVL1",
+  "mate_puzzle": false,
+  "solution_white_moves": 4,
+  "eval_start": "+5552",
+  "mirrored_to_white": true,
+  "other_positions": [
+    "8/2q2pkp/p3pNp1/2p1P3/2nr1P2/P4Q1P/6PK/3n4 w - - 0 36",
+    "8/8/2kp2p1/5p1p/2PK3P/8/5PP1/8 w - - 0 38"
+  ]
+}

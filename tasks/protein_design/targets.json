@@ -1,0 +1,182 @@
+[
+  {
+    "id": "barley_amylase",
+    "name": "Barley alpha-amylase",
+    "pdb": "1AMY",
+    "entity": "1AMY_1",
+    "source_url": "https://www.rcsb.org/fasta/entry/1AMY",
+    "sequence_length": 403,
+    "sequence_sha256": "953200a927deb436cc3abdf550d3a1ecfa346bf0959236f4a6fdcbdc994c207e"
+  },
+  {
+    "id": "barley_beta_amylase",
+    "name": "Barley beta-amylase",
+    "pdb": "2XFR",
+    "entity": "2XFR_1",
+    "source_url": "https://www.rcsb.org/fasta/entry/2XFR",
+    "sequence_length": 535,
+    "sequence_sha256": "aff37e5f20f875fdce6429a2905a10c47f7752eea352632a3ad1515f49e6f355"
+  },
+  {
+    "id": "barley_limit_dextrinase",
+    "name": "Barley limit dextrinase",
+    "pdb": "4AIO",
+    "entity": "4AIO_1",
+    "source_url": "https://www.rcsb.org/fasta/entry/4AIO",
+    "sequence_length": 884,
+    "sequence_sha256": "9f651a6f3d3d4208f567c4eb1cbfb4c9f3b39eb889b35f5c1f2c04daaf4757b1"
+  },
+  {
+    "id": "spinach_plastocyanin",
+    "name": "Spinach plastocyanin",
+    "pdb": "1AG6",
+    "entity": "1AG6_1",
+    "source_url": "https://www.rcsb.org/fasta/entry/1AG6",
+    "sequence_length": 99,
+    "sequence_sha256": "da1cbaffe11cee921f96c1cfe79196b1fec4a0f7b0bf620e2c07d197a11ee153"
+  },
+  {
+    "id": "spinach_ferredoxin",
+    "name": "Spinach ferredoxin I",
+    "pdb": "9TXO",
+    "entity": "9TXO_1",
+    "source_url": "https://www.rcsb.org/fasta/entry/9TXO",
+    "sequence_length": 105,
+    "sequence_sha256": "bf913d9ad65d65d100ccf14b8a990934ac027cb2050c4ca0eb333bfd3e8f574d"
+  },
+  {
+    "id": "spinach_gapdh",
+    "name": "Spinach chloroplast GAPDH A",
+    "pdb": "7Q55",
+    "entity": "7Q55_2",
+    "source_url": "https://www.rcsb.org/fasta/entry/7Q55",
+    "sequence_length": 402,
+    "sequence_sha256": "b26443346dd8c8d1939ad7a10502a4251d5732d6a0dfa41f3a567f7b70365119"
+  },
+  {
+    "id": "pea_carbonic_anhydrase",
+    "name": "Pea beta-carbonic anhydrase",
+    "pdb": "1EKJ",
+    "entity": "1EKJ_1",
+    "source_url": "https://www.rcsb.org/fasta/entry/1EKJ",
+    "sequence_length": 221,
+    "sequence_sha256": "e4e291fea99fb6f57fb5895bdf6e5ecb4b97ac799278cb92b7219413a9f92765"
+  },
+  {
+    "id": "alfalfa_chs",
+    "name": "Alfalfa chalcone synthase",
+    "pdb": "1CHW",
+    "entity": "1CHW_1",
+    "source_url": "https://www.rcsb.org/fasta/entry/1CHW",
+    "sequence_length": 389,
+    "sequence_sha256": "33e2070ecda62afb12ce2866925cba9cad0fcbc27f18984734c7a7054afb797d"
+  },
+  {
+    "id": "alfalfa_chi",
+    "name": "Alfalfa chalcone isomerase",
+    "pdb": "1EYP",
+    "entity": "1EYP_1",
+    "source_url": "https://www.rcsb.org/fasta/entry/1EYP",
+    "sequence_length": 222,
+    "sequence_sha256": "31dc7f13cafc0038ea172454dc2bcd08ece276a29f7ec3d9b39b5d0907b79e72"
+  },
+  {
+    "id": "arabidopsis_ugpase",
+    "name": "Arabidopsis UDP-glucose pyrophosphorylase",
+    "pdb": "1Z90",
+    "entity": "1Z90_1",
+    "source_url": "https://www.rcsb.org/fasta/entry/1Z90",
+    "sequence_length": 469,
+    "sequence_sha256": "b5d380bdb1975c3474e9f1a2eb38bbdaa5bda52fbb10b36b250bed9c16b88d2f"
+  },
+  {
+    "id": "spinach_rubisco_large",
+    "name": "Spinach RuBisCO large subunit",
+    "pdb": "8RUC",
+    "entity": "8RUC_1",
+    "source_url": "https://www.rcsb.org/fasta/entry/8RUC",
+    "sequence_length": 475,
+    "sequence_sha256": "0b9be6228e3b08c115b028cbe19132d932d25d3b53b81b5423f019a96272df0b"
+  },
+  {
+    "id": "arabidopsis_triosephosphate_isomerase",
+    "name": "Arabidopsis chloroplast triosephosphate isomerase",
+    "pdb": "4OHQ",
+    "entity": "4OHQ_1",
+    "source_url": "https://www.rcsb.org/fasta/entry/4OHQ",
+    "sequence_length": 256,
+    "sequence_sha256": "ff82b829ddbdf94e6b9264eb90205f7f31d9489f9e4996defd9e6dead201627d"
+  },
+  {
+    "id": "spinach_fnr",
+    "name": "Spinach ferredoxin-NADP reductase",
+    "pdb": "1FND",
+    "entity": "1FND_1",
+    "source_url": "https://www.rcsb.org/fasta/entry/1FND",
+    "sequence_length": 314,
+    "sequence_sha256": "6841b52159ddfc1b0a11716edd10d61d3ab576ec728e7b6f1aebbf3fbe277bad"
+  },
+  {
+    "id": "arabidopsis_phosphoribulokinase",
+    "name": "Arabidopsis phosphoribulokinase",
+    "pdb": "6KEX",
+    "entity": "6KEX_1",
+    "source_url": "https://www.rcsb.org/fasta/entry/6KEX",
+    "sequence_length": 359,
+    "sequence_sha256": "f27f5bc9105b94e06af99c900d68b86ac8f15c95004a0b4e404d2e46b92f117f"
+  },
+  {
+    "id": "arabidopsis_cytosolic_mdh",
+    "name": "Arabidopsis cytosolic malate dehydrogenase 1",
+    "pdb": "5NUF",
+    "entity": "5NUF_1",
+    "source_url": "https://www.rcsb.org/fasta/entry/5NUF",
+    "sequence_length": 332,
+    "sequence_sha256": "4cee3e365ddb66e07ba91aabd8b2d1540e6dbf3ddb9035403e3aa55bb5c0eaa5"
+  },
+  {
+    "id": "spinach_fbpase",
+    "name": "Spinach chloroplast fructose-1,6-bisphosphatase",
+    "pdb": "1SPI",
+    "entity": "1SPI_1",
+    "source_url": "https://www.rcsb.org/fasta/entry/1SPI",
+    "sequence_length": 358,
+    "sequence_sha256": "1a37aca275ff32fc697342020566a3aeae7293bbc1faadbb8fe0ad7b8fd0c7c0"
+  },
+  {
+    "id": "arabidopsis_shikimate_kinase",
+    "name": "Arabidopsis shikimate kinase 2",
+    "pdb": "3NWJ",
+    "entity": "3NWJ_1",
+    "source_url": "https://www.rcsb.org/fasta/entry/3NWJ",
+    "sequence_length": 250,
+    "sequence_sha256": "53ab2e82c118fa0e0b867aee0510a8e51f59b3bcbae5072315a239812464f007"
+  },
+  {
+    "id": "pepper_fnr",
+    "name": "Pepper ferredoxin-NADP reductase",
+    "pdb": "1SM4",
+    "entity": "1SM4_1",
+    "source_url": "https://www.rcsb.org/fasta/entry/1SM4",
+    "sequence_length": 296,
+    "sequence_sha256": "37408b798a629e1efe7f0e153c9a65f5283fadfe04561daf90f785ffd3ec82f9"
+  },
+  {
+    "id": "maize_transketolase",
+    "name": "Maize transketolase",
+    "pdb": "1ITZ",
+    "entity": "1ITZ_1",
+    "source_url": "https://www.rcsb.org/fasta/entry/1ITZ",
+    "sequence_length": 675,
+    "sequence_sha256": "a173f4450a1d8a500b23136478010708421b661f1e81358fd9b21baf0cb07e51"
+  },
+  {
+    "id": "pea_ascorbate_peroxidase",
+    "name": "Pea cytosolic ascorbate peroxidase",
+    "pdb": "1APX",
+    "entity": "1APX_1",
+    "source_url": "https://www.rcsb.org/fasta/entry/1APX",
+    "sequence_length": 249,
+    "sequence_sha256": "155be40daa39ef0e5ad0ff9924ddaf9a3f43831bb9a66ea812615d95e202c8db"
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "criteria": [
+    {
+      "id": "criterion_1",
+      "description": "A recognizable frog conductor.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_2",
+      "description": "An orchestra made of mushrooms.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_3",
+      "description": "The frog directs the mushroom orchestra.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_4",
+      "description": "A lightning-bolt baton is held by the frog.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_5",
+      "description": "The scene is coherent, legible, and visually composed, with the requested subjects clearly distinguishable.",
+      "max_points": 20
+    }
+  ],
+  "total_points": 100
+}

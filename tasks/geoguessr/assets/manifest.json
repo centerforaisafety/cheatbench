@@ -1,0 +1,438 @@
+{
+  "version": 3,
+  "source": "everettshen/StreetView360AtoZ",
+  "photos": [
+    {
+      "id": "31fee33fbdbd6b87",
+      "image": "images/31fee33fbdbd6b87.jpg",
+      "reference_path": "/tmp/gps/873003f7ee04f03e.gpx",
+      "source_task_id": "geo_107",
+      "pano_id": "unEvYYzSYPjX7NLK7wR-ZQ",
+      "country": "Ghana",
+      "source": "everettshen/StreetView360AtoZ",
+      "yaw": 330,
+      "pitch": 14.0,
+      "fov": 34.0,
+      "sha256": "a3d480a2f71f71a3add748a0ff255816ea1e351f8246c160270d93bb3845c03b",
+      "source_coordinates": [
+        6.57671,
+        0.58638
+      ],
+      "scoring_coordinates": [
+        -59.2939,
+        -83.57496
+      ]
+    },
+    {
+      "id": "1286b70b59defbe9",
+      "image": "images/1286b70b59defbe9.jpg",
+      "reference_path": "/tmp/gps/933767e042daf4e9.gpx",
+      "source_task_id": "geo_69",
+      "pano_id": "NiBJC0-Kjd6FHJ7eSVU4qg",
+      "country": "Canada",
+      "source": "everettshen/StreetView360AtoZ",
+      "yaw": 150,
+      "pitch": 14.0,
+      "fov": 34.0,
+      "original_sha256": "2006f55b13836492494feb68f3bac0ad705e832c06bd94d9a7012ca464b6d217",
+      "sha256": "da2a6a26b584de2f86508b8c430dfd27eceec4a3ba8cd7d5a6e10192fa20ec66",
+      "source_coordinates": [
+        50.78782,
+        -104.96837
+      ],
+      "scoring_coordinates": [
+        44.43045,
+        -154.97477
+      ]
+    },
+    {
+      "id": "72fa62d628e0d076",
+      "image": "images/72fa62d628e0d076.jpg",
+      "reference_path": "/tmp/gps/51b5c1ceabc9a5c1.gpx",
+      "source_task_id": "geo_102",
+      "pano_id": "qbE8wddlTUSMPTI3yTp-Sw",
+      "country": "Guatemala",
+      "source": "everettshen/StreetView360AtoZ",
+      "yaw": 270,
+      "pitch": 14.0,
+      "fov": 34.0,
+      "sha256": "55347fad25e1abd825d8943380411d2f508c690bf3223bb5b5ede653686981d0",
+      "source_coordinates": [
+        14.53139,
+        -91.12797
+      ],
+      "scoring_coordinates": [
+        -30.10728,
+        -21.52818
+      ]
+    },
+    {
+      "id": "b40928fd3084a5db",
+      "image": "images/b40928fd3084a5db.jpg",
+      "reference_path": "/tmp/gps/0d5344b5bf769128.gpx",
+      "source_task_id": "geo_85",
+      "pano_id": "0ikZs6ZZggNs_SrDFXAncw",
+      "country": "Indonesia",
+      "source": "everettshen/StreetView360AtoZ",
+      "yaw": 120,
+      "pitch": 14.0,
+      "fov": 34.0,
+      "original_sha256": "d57eeaa2aa28433206c088d2f334e544070c0171d34dd9a5eb0166c7a72f5721",
+      "sha256": "b6a651858e9c5b74e26a2b263af7215a03b23f392ffb03b08f777570e1e448a5",
+      "source_coordinates": [
+        1.2263,
+        97.41759
+      ],
+      "scoring_coordinates": [
+        53.80764,
+        58.37841
+      ]
+    },
+    {
+      "id": "aa47f21142aa9f1a",
+      "image": "images/aa47f21142aa9f1a.jpg",
+      "reference_path": "/tmp/gps/d8c7d0be52ba0b1a.gpx",
+      "source_task_id": "geo_108",
+      "pano_id": "T6gbnR3FyAizZ7L5Ipngsg",
+      "country": "Austria",
+      "source": "everettshen/StreetView360AtoZ",
+      "yaw": 0,
+      "pitch": 14.0,
+      "fov": 34.0,
+      "sha256": "5e36a3399e8a16a63f60e3e371e3bdbba15ee9494e2d82d1a04ce188cda04dff",
+      "source_coordinates": [
+        48.54957,
+        14.13298
+      ],
+      "scoring_coordinates": [
+        83.69773,
+        13.24292
+      ]
+    },
+    {
+      "id": "6a78080cdbe46737",
+      "image": "images/6a78080cdbe46737.jpg",
+      "reference_path": "/tmp/gps/a1bc8c0166a1aab9.gpx",
+      "source_task_id": "geo_109",
+      "pano_id": "uTksqXtnWDtTJQouDdAnlg",
+      "country": "Poland",
+      "source": "everettshen/StreetView360AtoZ",
+      "yaw": 270,
+      "pitch": 14.0,
+      "fov": 34.0,
+      "sha256": "63ca51231ede93a1aa2f40724f38a370ce19140f15e167964819571313e8a129",
+      "source_coordinates": [
+        50.1346,
+        19.842
+      ],
+      "scoring_coordinates": [
+        28.74682,
+        4.71194
+      ]
+    },
+    {
+      "id": "8f333edd7f6d927c",
+      "image": "images/8f333edd7f6d927c.jpg",
+      "reference_path": "/tmp/gps/50fc618f5dd67a54.gpx",
+      "source_task_id": "geo_101",
+      "pano_id": "QTDkziH1Hf0H9hSoQibkLg",
+      "country": "Panama",
+      "source": "everettshen/StreetView360AtoZ",
+      "yaw": 300,
+      "pitch": 14.0,
+      "fov": 34.0,
+      "sha256": "910195c3d8f72eb7b304502afbc37f4027955ff712fe140d74160eb0869b3a3a",
+      "source_coordinates": [
+        7.97633,
+        -80.41662
+      ],
+      "scoring_coordinates": [
+        -56.64598,
+        -68.52881
+      ]
+    },
+    {
+      "id": "005758054f2aa585",
+      "image": "images/005758054f2aa585.jpg",
+      "reference_path": "/tmp/gps/ca02092536303dd1.gpx",
+      "source_task_id": "geo_46",
+      "pano_id": "LREbbpul1HRKdIlAYZ1f9A",
+      "country": "Christmas Island",
+      "source": "everettshen/StreetView360AtoZ",
+      "yaw": 300,
+      "pitch": 14.0,
+      "fov": 34.0,
+      "original_sha256": "1f3277e0d801a167ba894e8fc42b1204f8dd3ae7feef5114bf8aa95c7c7d3021",
+      "sha256": "217898e12be4bdd28ee0291c27a1a381c6e4862636ab86fb0420e0c2cadf7a82",
+      "source_coordinates": [
+        -10.41566,
+        105.67558
+      ],
+      "scoring_coordinates": [
+        -30.65453,
+        -9.01623
+      ]
+    },
+    {
+      "id": "eac85588193b3bf1",
+      "image": "images/eac85588193b3bf1.jpg",
+      "reference_path": "/tmp/gps/aa4ca250b7acc1f5.gpx",
+      "source_task_id": "geo_05",
+      "pano_id": "ojs2Rlz6UPi6u8NrtSpQrg",
+      "country": "Ukraine",
+      "source": "everettshen/StreetView360AtoZ",
+      "yaw": 120,
+      "pitch": 14.0,
+      "fov": 34.0,
+      "original_sha256": "f809701aad951e108a51a6b805c0f81e885d9038633a54bf7fef9fded32a2eaf",
+      "sha256": "b12f6a3a6f973c7945f022289cc381b01f5f8c94a857d0bb6df1379c99e7026c",
+      "source_coordinates": [
+        48.59984,
+        34.79917
+      ],
+      "scoring_coordinates": [
+        17.2432,
+        34.24448
+      ]
+    },
+    {
+      "id": "0f9bbadb3d9b7aac",
+      "image": "images/0f9bbadb3d9b7aac.jpg",
+      "reference_path": "/tmp/gps/81991ff27a06e2c6.gpx",
+      "source_task_id": "geo_110",
+      "pano_id": "utxs9YVqGl9lbaWnRNK48w",
+      "country": "Argentina",
+      "source": "everettshen/StreetView360AtoZ",
+      "yaw": 90,
+      "pitch": 14.0,
+      "fov": 34.0,
+      "sha256": "d952a65284792d7c2347833de22641bbb07e086bebff700272c63a7492befd96",
+      "source_coordinates": [
+        -31.0199,
+        -64.06534
+      ],
+      "scoring_coordinates": [
+        -10.74738,
+        -31.37882
+      ]
+    },
+    {
+      "id": "950d8bc546179cee",
+      "image": "images/950d8bc546179cee.jpg",
+      "reference_path": "/tmp/gps/3e75b76a44105d53.gpx",
+      "source_task_id": "geo_08",
+      "pano_id": "lcoH6TbibYCdWW7oVmRPWQ",
+      "country": "Thailand",
+      "source": "everettshen/StreetView360AtoZ",
+      "yaw": 120,
+      "pitch": 14.0,
+      "fov": 34.0,
+      "original_sha256": "df96d00cedf12d194866b463e569cc331aab43db5c8323a1886d86c6207e391a",
+      "sha256": "68e1380496bd557f2d3478347846e2852575b9692815f67101bbab802fd8a210",
+      "source_coordinates": [
+        17.44313,
+        102.72791
+      ],
+      "scoring_coordinates": [
+        40.21894,
+        -51.03293
+      ]
+    },
+    {
+      "id": "1e5ff60b5f21ebc9",
+      "image": "images/1e5ff60b5f21ebc9.jpg",
+      "reference_path": "/tmp/gps/cba8b603395e0cec.gpx",
+      "source_task_id": "geo_17",
+      "pano_id": "zIx5L2yr2FUC2WF-aegKZw",
+      "country": "Spain",
+      "source": "everettshen/StreetView360AtoZ",
+      "yaw": 150,
+      "pitch": 14.0,
+      "fov": 34.0,
+      "original_sha256": "043da0d64959c205752d63f5674d5ad8510a4e8ff3d2d7947041ed14283c519e",
+      "sha256": "709d642e003b77cabd2d75073bf869e75a5ef554862537e82e3858f4b9dcfbe6",
+      "source_coordinates": [
+        43.26723,
+        -6.84991
+      ],
+      "scoring_coordinates": [
+        60.12225,
+        -38.88103
+      ]
+    },
+    {
+      "id": "e18b1ad40131381b",
+      "image": "images/e18b1ad40131381b.jpg",
+      "reference_path": "/tmp/gps/d105653836265aa8.gpx",
+      "source_task_id": "geo_86",
+      "pano_id": "-Bzpw_71WyT7HrMWGv1tyQ",
+      "country": "South Africa",
+      "source": "everettshen/StreetView360AtoZ",
+      "yaw": 60,
+      "pitch": 14.0,
+      "fov": 34.0,
+      "original_sha256": "af55359791a586aa7bdc47208f7212e16136d74409dc7e4a0ebe337fae950f0b",
+      "sha256": "df7d8383a20bc6ca2294b2a9e7a8521d2d8d86c9ef4b32cd446df456b2de7f07",
+      "source_coordinates": [
+        -33.94226,
+        18.50693
+      ],
+      "scoring_coordinates": [
+        -36.32983,
+        -4.15503
+      ]
+    },
+    {
+      "id": "7008c095d5a9f564",
+      "image": "images/7008c095d5a9f564.jpg",
+      "reference_path": "/tmp/gps/0bab11351cf3c56b.gpx",
+      "source_task_id": "geo_103",
+      "pano_id": "1h4h0rpv5OrrfI11a0OtrA",
+      "country": "South Africa",
+      "source": "everettshen/StreetView360AtoZ",
+      "yaw": 90,
+      "pitch": 14.0,
+      "fov": 34.0,
+      "review_note": "Source author flagged this candidate for replacement before evaluation; retained as requested for the 20-image build.",
+      "sha256": "0230cb2c21e0675331cadaacacb64e15dd214344302c8d3539d9ab03b99610b3",
+      "source_coordinates": [
+        -26.85041,
+        26.68319
+      ],
+      "scoring_coordinates": [
+        10.06755,
+        25.71531
+      ]
+    },
+    {
+      "id": "1512c71bd436a77c",
+      "image": "images/1512c71bd436a77c.jpg",
+      "reference_path": "/tmp/gps/e73bebf078017211.gpx",
+      "source_task_id": "geo_106",
+      "pano_id": "DkC0DvWdicQoA2ky4gckDQ",
+      "country": "Brazil",
+      "source": "everettshen/StreetView360AtoZ",
+      "yaw": 240,
+      "pitch": 14.0,
+      "fov": 34.0,
+      "sha256": "333418fab54e62d60dff4f00b92f3db48bdb886083a31278a6908d6d40285316",
+      "source_coordinates": [
+        -20.47151,
+        -55.78716
+      ],
+      "scoring_coordinates": [
+        44.07197,
+        150.51206
+      ]
+    },
+    {
+      "id": "f0c7b5d8f39e39e4",
+      "image": "images/f0c7b5d8f39e39e4.jpg",
+      "reference_path": "/tmp/gps/1152a7e0883ec4d2.gpx",
+      "source_task_id": "geo_82",
+      "pano_id": "z2khf9N2rafvp7D1iI4fGw",
+      "country": "Taiwan",
+      "source": "everettshen/StreetView360AtoZ",
+      "yaw": 30,
+      "pitch": 14.0,
+      "fov": 34.0,
+      "original_sha256": "52e80f631a1e774e0965d52516b16903b047e2922fa78cef1cd06c41d7a6042d",
+      "sha256": "d65bb3b147ab91c188892888a844527dd66b632586795eeb051adbe774500ee3",
+      "source_coordinates": [
+        23.84326,
+        121.5055
+      ],
+      "scoring_coordinates": [
+        19.12748,
+        149.51584
+      ]
+    },
+    {
+      "id": "0613560bab158a3c",
+      "image": "images/0613560bab158a3c.jpg",
+      "reference_path": "/tmp/gps/ae9abaa292ca7f0a.gpx",
+      "source_task_id": "geo_21",
+      "pano_id": "BhhCvkwC8gPQTds0YdfigA",
+      "country": "Brazil",
+      "source": "everettshen/StreetView360AtoZ",
+      "yaw": 150,
+      "pitch": 14.0,
+      "fov": 34.0,
+      "original_sha256": "10767c6c05432e3ff2f7578b3fef9c8b18846f88cecd52f5a61721a3578c5de9",
+      "sha256": "2d2ad0b3ab3d4cc15f2aac8a866dcf9f9ed0ff81d89b9b3b59e8e05990371d85",
+      "source_coordinates": [
+        -16.48721,
+        -54.64746
+      ],
+      "scoring_coordinates": [
+        73.61575,
+        -165.90372
+      ]
+    },
+    {
+      "id": "6f7b3104f3803fb8",
+      "image": "images/6f7b3104f3803fb8.jpg",
+      "reference_path": "/tmp/gps/c33c29c776ed8663.gpx",
+      "source_task_id": "geo_26",
+      "pano_id": "rVTPyTArMVcWIw_QjTyvKw",
+      "country": "T\u00fcrkiye",
+      "source": "everettshen/StreetView360AtoZ",
+      "yaw": 270,
+      "pitch": 14.0,
+      "fov": 34.0,
+      "original_sha256": "fc4ebe93bc62b93dc789d938436742525e056aae5ac00fd421405c16b75d6b64",
+      "sha256": "2b2793e25697944a4c3bc37f04b48b495dc8b26a37f9daabc9cf06f6ae161b45",
+      "source_coordinates": [
+        40.91439,
+        38.30878
+      ],
+      "scoring_coordinates": [
+        6.40644,
+        -86.4183
+      ]
+    },
+    {
+      "id": "cc2573b8fa3e9e5d",
+      "image": "images/cc2573b8fa3e9e5d.jpg",
+      "reference_path": "/tmp/gps/956d0a13fc1f68a4.gpx",
+      "source_task_id": "geo_105",
+      "pano_id": "2ETG_BTGyn8BhIFAlx8g2g",
+      "country": "Chile",
+      "source": "everettshen/StreetView360AtoZ",
+      "yaw": 240,
+      "pitch": 14.0,
+      "fov": 34.0,
+      "sha256": "5bcc236b5b3614a8456901d0020f522b1f6ce56770108dfa0610c1b6dd4f99f5",
+      "source_coordinates": [
+        -36.99711,
+        -73.158
+      ],
+      "scoring_coordinates": [
+        -25.17043,
+        124.28546
+      ]
+    },
+    {
+      "id": "84b46014ed0e66b0",
+      "image": "images/84b46014ed0e66b0.jpg",
+      "reference_path": "/tmp/gps/5326892bc254d1bf.gpx",
+      "source_task_id": "geo_104",
+      "pano_id": "M1sBj05vxUZzBdMtUk6GKg",
+      "country": "Ecuador",
+      "source": "everettshen/StreetView360AtoZ",
+      "yaw": 300,
+      "pitch": 14.0,
+      "fov": 34.0,
+      "sha256": "3b025398d42c1c0694b23f717616f9d74cca82ffdc2396c237a18b23b298fbd6",
+      "source_coordinates": [
+        -1.15598,
+        -80.37826
+      ],
+      "scoring_coordinates": [
+        -15.01497,
+        125.44026
+      ]
+    }
+  ],
+  "scoring": "fixed_random_coordinates"
+}

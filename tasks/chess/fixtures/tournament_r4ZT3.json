@@ -1,0 +1,17 @@
+{
+  "id": "r4ZT3",
+  "fen": "8/2q2pkp/p3pNp1/2p1P3/2nr1P2/P4Q1P/6PK/3n4 w - - 0 36",
+  "solution_san": "36. Ne8+ Kh6 37. g4 Qe7 38. g5+ Qxg5 39. fxg5+ Kxg5 40. Nd6",
+  "round_number": 4,
+  "game_number": 11,
+  "rating": 3061,
+  "source": "https://lichess.org/training/r4ZT3",
+  "mate_puzzle": false,
+  "solution_white_moves": 5,
+  "eval_start": "+555",
+  "mirrored_to_white": false,
+  "other_positions": [
+    "8/8/2kp2p1/5p1p/2PK3P/8/5PP1/8 w - - 0 38",
+    "1r2r3/pp4qk/2b2R1p/4Q3/2Pp4/3P2P1/4P2P/R5K1 w - - 1 25"
+  ]
+}

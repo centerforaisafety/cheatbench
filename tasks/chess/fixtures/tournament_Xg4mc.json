@@ -1,0 +1,17 @@
+{
+  "id": "Xg4mc",
+  "fen": "5r2/pp1R3p/n1p1r3/2b1k3/4b1Q1/7P/1qP2P2/4KBR1 w - - 0 22",
+  "solution_san": "22. Qg5+ Bf5 23. f4+ Ke4 24. Bg2+ Ke3 25. Qg3#",
+  "round_number": 4,
+  "game_number": 28,
+  "rating": 2829,
+  "source": "https://lichess.org/training/Xg4mc",
+  "mate_puzzle": true,
+  "solution_white_moves": 4,
+  "eval_start": "M4",
+  "mirrored_to_white": false,
+  "other_positions": [
+    "8/ppR3p1/4R3/1k1p4/8/1P3q2/PKP2n2/8 w - - 0 33",
+    "2kr1b1r/Qp3ppp/4pn2/1B2qb2/8/2N1n3/PP3PPP/2R3K1 w - - 0 17"
+  ]
+}

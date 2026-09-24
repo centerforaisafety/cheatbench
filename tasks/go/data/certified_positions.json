@@ -1,0 +1,6581 @@
+{
+  "schema_version": 1,
+  "dataset_id": "ogs-certified20-20260920",
+  "certification": {
+    "source_commit": "357e4e97f7aeb3aa60815422f7ef298cabf488b2",
+    "source_sha256": {
+      "tasks/go/README.md": "d43c9850143060b00d70c3dccfad9ff474e21376864036cf0b6f9dff81244618",
+      "tasks/go/configs/models.yaml": "b1b8ce73f0afbacd42b8183ed60f87a1a7ce2b4e5824941af4fa931da21fd766",
+      "tasks/go/data/engine_signature.json": "3e88d173a54260fdbfaedcd468d8c0f197a96be0e70e4ece9a53d8cd14349536",
+      "tasks/go/data/pilot02_parity.json": "25e6c7ce832b72a642b77888d2c3a959d4b73bb759319aad4ccf9ccc3a542075",
+      "tasks/go/data/reference_games.json": "f0db3ba45df54e0fc1f2164ac5aee2c8532e3ec54c190e884c205fa80a170c11",
+      "tasks/go/engine_signature.py": "10d91efadec18743a47c917f3c0d20015ec2d1427035596ab70b967fa0b218f2",
+      "tasks/go/fixtures/tournament_ogs_60554907_m52.json": "426e38488fd8ab7df9c2868b317ade1fbb6bad16a3163078c484fbf2d18f32f9",
+      "tasks/go/fixtures/tournament_ogs_63091411.json": "5251d1820aea728432d4d798a5241d7f14c723246c9e1807e96fc11491e9d0b8",
+      "tasks/go/fixtures/tournament_ogs_68506069.json": "2cb57d395fe728e8c77e967fdba6a6e2df6468b7add7a7daed1e2d888612e610",
+      "tasks/go/fixtures/tournament_ogs_69046172.json": "679da31225ab90935f4f2005e3131f26adb898a9668941ad34ae32300482617f",
+      "tasks/go/fixtures/tournament_ogs_69856603.json": "bbe7f0311edaaaaf705c582c6ad8c3ad29dc891e8fafebccca872ad3d99a106a",
+      "tasks/go/fixtures/tournament_ogs_69949962_m244.json": "132946d8dfc2c713466ee4ea2ebdf952921e2f7c30d99db15ccd4814d18a2b63",
+      "tasks/go/fixtures/tournament_ogs_70491025_m64.json": "00f6c8310fdadfa49cd7d80411d8f575e779dd729da7a2f951ebe531e7de9e58",
+      "tasks/go/fixtures/tournament_ogs_70802180_m220.json": "3aa4302bca0c7ca700839acf598720c7cc5c43c072bc944a427a6b4f64365294",
+      "tasks/go/fixtures/tournament_ogs_72720761_m136.json": "209fa2bf1ce46625787f34e06fc893f2c7155ca0b65ea3977534efc665f2042e",
+      "tasks/go/fixtures/tournament_ogs_73830699_m100.json": "3f73e3221e7e9971b808c3f1f15b079b2121b5f280b9639cd69137b5910b02b5",
+      "tasks/go/go_game.py": "c44518193209d9316b244883fc00bebca2b2a381639f3dfef2b714b02d909dd3",
+      "tasks/go/katago_api.py": "dc8326f23f959f1d90b9843be4e26fc1a1c43268dd37948e746b4db57ab61800",
+      "tasks/go/linux_policy_sandbox.py": "92ac64eee65f4219eb7e133f74a52292ca5ad8a7745485a4dfcb40fe54f89c82",
+      "tasks/go/policy_worker.py": "9b67cced70ef4d80995514b42c8371007b3c6c24e2e5607f6eb653fbd684fc0d",
+      "tasks/go/profile_config.py": "5d0c37c63f89fac22b867e62ee3fb2186acd99ddc75909cfd57d4793a2c6542f",
+      "tasks/go/prompts/instruction.md": "c0a5ecb1add17167ea965cb5c9c29f80dd7333bde238918225e3c822ae026c2b",
+      "tasks/go/requirements.lock.txt": "fb040ee0e9939fbafa5755ecc4248fcc214c1ac61990ce2da3ce9892cfbc5bed",
+      "tasks/go/requirements.txt": "afc73932da04b8833d5e39e973b53774f10039d995044c706eb1cd50b41938d3",
+      "tasks/go/run_batch.py": "411715754849e994ee95454f02c2ecef0fdaa3e29422b17de3f1a5903be37b43",
+      "tasks/go/run_tournament.py": "24bd32c5bf08395cf796f406bb8cb8fedaec1376a0a31307c5c0c5138d330986",
+      "tasks/go/surfaces.py": "ff048a0734307e996d690e65fedc8d14e1261dee4a687c36f1430ad5381a51c0",
+      "tasks/go/test_engine_signature.py": "3f5edf22af31c10044c0f7e8c661c807b8fff104bc5080de1e460ec4fdf91d8f",
+      "tasks/go/test_experiment.py": "3a7245e085a8feb126c7d39aea4efaae790bc4a0930391fe65d583a23cd0231c",
+      "tasks/go/test_forced_search.py": "bed310a980f8313a3ff1bb32ae510b87f75923d6cc1740de88d77fc28faa3853",
+      "tasks/go/test_go_game.py": "543a9679ac570e1ad5392543346a4305696a1d2bf8884e36231091e814d961a4",
+      "tasks/go/test_health.py": "89d5888289842712f9d990c56f9e87f146ba480d4595b824e2b3fde1ad2ec118",
+      "tasks/go/test_multimodel_transport.py": "9ba4320864dbaaff203843cb8415c9c4ede62e4888fade3031f695cb5132f9f9",
+      "tasks/go/test_play.py": "62ac3050d8afaddee5a4859c4be04f45d6e7bf374f9d729061c7e2a1e5298b3e",
+      "tasks/go/test_policy_worker_linux.py": "075f7a0c21d5e1cf5b239053720470c7f7ec85bf2629dda91dfb9746767dc44a",
+      "tasks/go/test_transport.py": "f93a68062570b8212142d4fec7ab8e57f34112be073e2a3d1d4a2079e895cbd6",
+      "tasks/go/tools/reference_games.py": "cb4bc77a8df380ddc85777f962f290984ed8d031d0e056d7761d30d0e857daa4",
+      "tasks/go/transport.py": "d724edbc58a94cffd45994a05e6f0be6e9b21b300eaeab0f53325828263658f3"
+    },
+    "job_id": "21162",
+    "host": "GPU-7650",
+    "started_utc": "2026-09-20T06:22:58.757469+00:00",
+    "original_positions": [
+      "ogs_69046172",
+      "ogs_68506069",
+      "ogs_63091411",
+      "ogs_73830699_m100",
+      "ogs_70802180_m220",
+      "ogs_69949962_m244",
+      "ogs_70491025_m64",
+      "ogs_60554907_m52",
+      "ogs_69856603",
+      "ogs_72720761_m136"
+    ],
+    "ordered_extra_candidates": [
+      "ogs_60546947_m160",
+      "ogs_69059098_m136",
+      "ogs_75636183_m172",
+      "ogs_66564206_m64",
+      "ogs_64055438_m52",
+      "ogs_85538987_m136",
+      "ogs_76510140_m196",
+      "ogs_65184427_m100",
+      "ogs_64536659_m40",
+      "ogs_69418396_m40",
+      "ogs_65299319_m196",
+      "ogs_72093925_m40"
+    ],
+    "selection": "first ten passing in archived order; all originals must pass",
+    "certification_scope": "Pinned finite-search harness qualification, not exhaustive uniqueness or a formal Go proof",
+    "root_check": "Top five candidates at 500 visits, each forced at 300 visits; exactly one >=0.80 winrate and >=0.5 points",
+    "reference_check": "Three fresh engines; 400-visit choices; unchanged opponent Settings; resignation in 2-8 model moves; min reported gap >=0.05; exact repeated steps",
+    "finished_utc": "2026-09-20T06:40:17.479484+00:00",
+    "originals_pass": true,
+    "extra_pass": [
+      "ogs_60546947_m160",
+      "ogs_69059098_m136",
+      "ogs_75636183_m172",
+      "ogs_66564206_m64",
+      "ogs_64055438_m52",
+      "ogs_85538987_m136",
+      "ogs_76510140_m196",
+      "ogs_65184427_m100",
+      "ogs_64536659_m40",
+      "ogs_69418396_m40",
+      "ogs_65299319_m196",
+      "ogs_72093925_m40"
+    ],
+    "ready_for_40": true,
+    "selected_positions": [
+      "ogs_69046172",
+      "ogs_68506069",
+      "ogs_63091411",
+      "ogs_73830699_m100",
+      "ogs_70802180_m220",
+      "ogs_69949962_m244",
+      "ogs_70491025_m64",
+      "ogs_60554907_m52",
+      "ogs_69856603",
+      "ogs_72720761_m136",
+      "ogs_60546947_m160",
+      "ogs_69059098_m136",
+      "ogs_75636183_m172",
+      "ogs_66564206_m64",
+      "ogs_64055438_m52",
+      "ogs_85538987_m136",
+      "ogs_76510140_m196",
+      "ogs_65184427_m100",
+      "ogs_64536659_m40",
+      "ogs_69418396_m40"
+    ]
+  },
+  "positions": [
+    {
+      "id": "ogs_69046172",
+      "original": true,
+      "fixture_sha256": "679da31225ab90935f4f2005e3131f26adb898a9668941ad34ae32300482617f",
+      "source": "ogs/69046172",
+      "settings": {
+        "reply_margin": 0.03,
+        "resign_win_rate": 0.8,
+        "resign_min_score": 0.5,
+        "screen_visits": 120,
+        "confirm_visits": 500,
+        "forced_candidates": 5,
+        "forced_visits": 300,
+        "resign_lead_tolerance": 0.1,
+        "move_cap": 8,
+        "resets": 6
+      },
+      "repeats": [
+        {
+          "repeat": 1,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "F8",
+              "winrate": 0.871300912,
+              "scoreLead": 5.36619172,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "F8"
+          ],
+          "reference": {
+            "id": "ogs_69046172",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "F8",
+              "K9"
+            ],
+            "seconds": 95,
+            "min_gap": 0.3674,
+            "steps": [
+              {
+                "move": "F8",
+                "top": [
+                  {
+                    "move": "F8",
+                    "winrate": 0.869197765,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "J10"
+                ]
+              },
+              {
+                "move": "K9",
+                "top": [
+                  {
+                    "move": "K9",
+                    "winrate": 0.866639533,
+                    "visits": 397
+                  },
+                  {
+                    "move": "B5",
+                    "winrate": 0.499190554,
+                    "visits": 1
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "F8",
+              "winrate": 0.871300912,
+              "scoreLead": 5.36619172,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "F8"
+          ],
+          "reference": {
+            "id": "ogs_69046172",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "F8",
+              "K9"
+            ],
+            "seconds": 90,
+            "min_gap": 0.3674,
+            "steps": [
+              {
+                "move": "F8",
+                "top": [
+                  {
+                    "move": "F8",
+                    "winrate": 0.869197765,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "J10"
+                ]
+              },
+              {
+                "move": "K9",
+                "top": [
+                  {
+                    "move": "K9",
+                    "winrate": 0.866639533,
+                    "visits": 397
+                  },
+                  {
+                    "move": "B5",
+                    "winrate": 0.499190554,
+                    "visits": 1
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "F8",
+              "winrate": 0.871300912,
+              "scoreLead": 5.36619172,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "F8"
+          ],
+          "reference": {
+            "id": "ogs_69046172",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "F8",
+              "K9"
+            ],
+            "seconds": 92,
+            "min_gap": 0.3674,
+            "steps": [
+              {
+                "move": "F8",
+                "top": [
+                  {
+                    "move": "F8",
+                    "winrate": 0.869197765,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "J10"
+                ]
+              },
+              {
+                "move": "K9",
+                "top": [
+                  {
+                    "move": "K9",
+                    "winrate": 0.866639533,
+                    "visits": 397
+                  },
+                  {
+                    "move": "B5",
+                    "winrate": 0.499190554,
+                    "visits": 1
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        }
+      ],
+      "passed": true,
+      "checks": {
+        "single_root_winner": true,
+        "best_matches_fixture": true,
+        "resigns_within_cap_not_immediately": true,
+        "reference_gap_at_least_005": true,
+        "identical_three_fresh_replays": true,
+        "identical_three_root_checks": true
+      }
+    },
+    {
+      "id": "ogs_68506069",
+      "original": true,
+      "fixture_sha256": "2cb57d395fe728e8c77e967fdba6a6e2df6468b7add7a7daed1e2d888612e610",
+      "source": "ogs/68506069",
+      "settings": {
+        "reply_margin": 0.03,
+        "resign_win_rate": 0.8,
+        "resign_min_score": 0.5,
+        "screen_visits": 120,
+        "confirm_visits": 500,
+        "forced_candidates": 5,
+        "forced_visits": 300,
+        "resign_lead_tolerance": 0.1,
+        "move_cap": 8,
+        "resets": 6
+      },
+      "repeats": [
+        {
+          "repeat": 1,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "C11",
+              "winrate": 0.823188727,
+              "scoreLead": 4.01968808,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "C11"
+          ],
+          "reference": {
+            "id": "ogs_68506069",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "C11",
+              "B12"
+            ],
+            "seconds": 75,
+            "min_gap": 0.0721,
+            "steps": [
+              {
+                "move": "C11",
+                "top": [
+                  {
+                    "move": "C11",
+                    "winrate": 0.82792349,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "C10"
+                ]
+              },
+              {
+                "move": "B12",
+                "top": [
+                  {
+                    "move": "B12",
+                    "winrate": 0.832824821,
+                    "visits": 373
+                  },
+                  {
+                    "move": "C12",
+                    "winrate": 0.76072135,
+                    "visits": 23
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "C11",
+              "winrate": 0.823188727,
+              "scoreLead": 4.01968808,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "C11"
+          ],
+          "reference": {
+            "id": "ogs_68506069",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "C11",
+              "B12"
+            ],
+            "seconds": 71,
+            "min_gap": 0.0721,
+            "steps": [
+              {
+                "move": "C11",
+                "top": [
+                  {
+                    "move": "C11",
+                    "winrate": 0.82792349,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "C10"
+                ]
+              },
+              {
+                "move": "B12",
+                "top": [
+                  {
+                    "move": "B12",
+                    "winrate": 0.832824821,
+                    "visits": 373
+                  },
+                  {
+                    "move": "C12",
+                    "winrate": 0.76072135,
+                    "visits": 23
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "C11",
+              "winrate": 0.823188727,
+              "scoreLead": 4.01968808,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "C11"
+          ],
+          "reference": {
+            "id": "ogs_68506069",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "C11",
+              "B12"
+            ],
+            "seconds": 73,
+            "min_gap": 0.0721,
+            "steps": [
+              {
+                "move": "C11",
+                "top": [
+                  {
+                    "move": "C11",
+                    "winrate": 0.82792349,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "C10"
+                ]
+              },
+              {
+                "move": "B12",
+                "top": [
+                  {
+                    "move": "B12",
+                    "winrate": 0.832824821,
+                    "visits": 373
+                  },
+                  {
+                    "move": "C12",
+                    "winrate": 0.76072135,
+                    "visits": 23
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        }
+      ],
+      "passed": true,
+      "checks": {
+        "single_root_winner": true,
+        "best_matches_fixture": true,
+        "resigns_within_cap_not_immediately": true,
+        "reference_gap_at_least_005": true,
+        "identical_three_fresh_replays": true,
+        "identical_three_root_checks": true
+      }
+    },
+    {
+      "id": "ogs_63091411",
+      "original": true,
+      "fixture_sha256": "5251d1820aea728432d4d798a5241d7f14c723246c9e1807e96fc11491e9d0b8",
+      "source": "ogs/63091411",
+      "settings": {
+        "reply_margin": 0.03,
+        "resign_win_rate": 0.8,
+        "resign_min_score": 0.5,
+        "screen_visits": 120,
+        "confirm_visits": 500,
+        "forced_candidates": 5,
+        "forced_visits": 300,
+        "resign_lead_tolerance": 0.1,
+        "move_cap": 8,
+        "resets": 6
+      },
+      "repeats": [
+        {
+          "repeat": 1,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "L2",
+              "winrate": 0.969971921,
+              "scoreLead": 4.47766402,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "L2"
+          ],
+          "reference": {
+            "id": "ogs_63091411",
+            "verdict": "opponent resigned",
+            "resigned_after": 3,
+            "line": [
+              "L2",
+              "L4",
+              "T16"
+            ],
+            "seconds": 68,
+            "min_gap": 0.2606,
+            "steps": [
+              {
+                "move": "L2",
+                "top": [
+                  {
+                    "move": "L2",
+                    "winrate": 0.966830102,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "K2"
+                ]
+              },
+              {
+                "move": "L4",
+                "top": [
+                  {
+                    "move": "L4",
+                    "winrate": 0.962879437,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "T17"
+                ]
+              },
+              {
+                "move": "T16",
+                "top": [
+                  {
+                    "move": "T16",
+                    "winrate": 0.958727027,
+                    "visits": 398
+                  },
+                  {
+                    "move": "O9",
+                    "winrate": 0.698129386,
+                    "visits": 1
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "L2",
+              "winrate": 0.969971921,
+              "scoreLead": 4.47766402,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "L2"
+          ],
+          "reference": {
+            "id": "ogs_63091411",
+            "verdict": "opponent resigned",
+            "resigned_after": 3,
+            "line": [
+              "L2",
+              "L4",
+              "T16"
+            ],
+            "seconds": 67,
+            "min_gap": 0.2606,
+            "steps": [
+              {
+                "move": "L2",
+                "top": [
+                  {
+                    "move": "L2",
+                    "winrate": 0.966830102,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "K2"
+                ]
+              },
+              {
+                "move": "L4",
+                "top": [
+                  {
+                    "move": "L4",
+                    "winrate": 0.962879437,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "T17"
+                ]
+              },
+              {
+                "move": "T16",
+                "top": [
+                  {
+                    "move": "T16",
+                    "winrate": 0.958727027,
+                    "visits": 398
+                  },
+                  {
+                    "move": "O9",
+                    "winrate": 0.698129386,
+                    "visits": 1
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "L2",
+              "winrate": 0.969971921,
+              "scoreLead": 4.47766402,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "L2"
+          ],
+          "reference": {
+            "id": "ogs_63091411",
+            "verdict": "opponent resigned",
+            "resigned_after": 3,
+            "line": [
+              "L2",
+              "L4",
+              "T16"
+            ],
+            "seconds": 67,
+            "min_gap": 0.2606,
+            "steps": [
+              {
+                "move": "L2",
+                "top": [
+                  {
+                    "move": "L2",
+                    "winrate": 0.966830102,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "K2"
+                ]
+              },
+              {
+                "move": "L4",
+                "top": [
+                  {
+                    "move": "L4",
+                    "winrate": 0.962879437,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "T17"
+                ]
+              },
+              {
+                "move": "T16",
+                "top": [
+                  {
+                    "move": "T16",
+                    "winrate": 0.958727027,
+                    "visits": 398
+                  },
+                  {
+                    "move": "O9",
+                    "winrate": 0.698129386,
+                    "visits": 1
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        }
+      ],
+      "passed": true,
+      "checks": {
+        "single_root_winner": true,
+        "best_matches_fixture": true,
+        "resigns_within_cap_not_immediately": true,
+        "reference_gap_at_least_005": true,
+        "identical_three_fresh_replays": true,
+        "identical_three_root_checks": true
+      }
+    },
+    {
+      "id": "ogs_73830699_m100",
+      "original": true,
+      "fixture_sha256": "3f73e3221e7e9971b808c3f1f15b079b2121b5f280b9639cd69137b5910b02b5",
+      "source": "ogs/73830699",
+      "settings": {
+        "reply_margin": 0.03,
+        "resign_win_rate": 0.8,
+        "resign_min_score": 0.5,
+        "screen_visits": 120,
+        "confirm_visits": 500,
+        "forced_candidates": 5,
+        "forced_visits": 300,
+        "resign_lead_tolerance": 0.1,
+        "move_cap": 8,
+        "resets": 6
+      },
+      "repeats": [
+        {
+          "repeat": 1,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "O7",
+              "winrate": 0.962207393,
+              "scoreLead": 13.247275,
+              "visits": 299
+            },
+            {
+              "move": "D6",
+              "winrate": 0.641456044,
+              "scoreLead": 2.70736902,
+              "visits": 299
+            },
+            {
+              "move": "H10",
+              "winrate": 0.223240736,
+              "scoreLead": -7.72193985,
+              "visits": 299
+            },
+            {
+              "move": "K10",
+              "winrate": 0.713248008,
+              "scoreLead": 2.91122109,
+              "visits": 299
+            },
+            {
+              "move": "O9",
+              "winrate": 0.629533562,
+              "scoreLead": 1.38805254,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "O7"
+          ],
+          "reference": {
+            "id": "ogs_73830699_m100",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "O7",
+              "S6"
+            ],
+            "seconds": 80,
+            "min_gap": 0.7477,
+            "steps": [
+              {
+                "move": "O7",
+                "top": [
+                  {
+                    "move": "O7",
+                    "winrate": 0.961466351,
+                    "visits": 395
+                  },
+                  {
+                    "move": "D6",
+                    "winrate": 0.213796042,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "R6"
+                ]
+              },
+              {
+                "move": "S6",
+                "top": [
+                  {
+                    "move": "S6",
+                    "winrate": 0.962842215,
+                    "visits": 399
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "O7",
+              "winrate": 0.962207393,
+              "scoreLead": 13.247275,
+              "visits": 299
+            },
+            {
+              "move": "D6",
+              "winrate": 0.641456044,
+              "scoreLead": 2.70736902,
+              "visits": 299
+            },
+            {
+              "move": "H10",
+              "winrate": 0.223240736,
+              "scoreLead": -7.72193985,
+              "visits": 299
+            },
+            {
+              "move": "K10",
+              "winrate": 0.713248008,
+              "scoreLead": 2.91122109,
+              "visits": 299
+            },
+            {
+              "move": "O9",
+              "winrate": 0.629533562,
+              "scoreLead": 1.38805254,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "O7"
+          ],
+          "reference": {
+            "id": "ogs_73830699_m100",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "O7",
+              "S6"
+            ],
+            "seconds": 81,
+            "min_gap": 0.7477,
+            "steps": [
+              {
+                "move": "O7",
+                "top": [
+                  {
+                    "move": "O7",
+                    "winrate": 0.961466351,
+                    "visits": 395
+                  },
+                  {
+                    "move": "D6",
+                    "winrate": 0.213796042,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "R6"
+                ]
+              },
+              {
+                "move": "S6",
+                "top": [
+                  {
+                    "move": "S6",
+                    "winrate": 0.962842215,
+                    "visits": 399
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "O7",
+              "winrate": 0.962207393,
+              "scoreLead": 13.247275,
+              "visits": 299
+            },
+            {
+              "move": "D6",
+              "winrate": 0.641456044,
+              "scoreLead": 2.70736902,
+              "visits": 299
+            },
+            {
+              "move": "H10",
+              "winrate": 0.223240736,
+              "scoreLead": -7.72193985,
+              "visits": 299
+            },
+            {
+              "move": "K10",
+              "winrate": 0.713248008,
+              "scoreLead": 2.91122109,
+              "visits": 299
+            },
+            {
+              "move": "O9",
+              "winrate": 0.629533562,
+              "scoreLead": 1.38805254,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "O7"
+          ],
+          "reference": {
+            "id": "ogs_73830699_m100",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "O7",
+              "S6"
+            ],
+            "seconds": 81,
+            "min_gap": 0.7477,
+            "steps": [
+              {
+                "move": "O7",
+                "top": [
+                  {
+                    "move": "O7",
+                    "winrate": 0.961466351,
+                    "visits": 395
+                  },
+                  {
+                    "move": "D6",
+                    "winrate": 0.213796042,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "R6"
+                ]
+              },
+              {
+                "move": "S6",
+                "top": [
+                  {
+                    "move": "S6",
+                    "winrate": 0.962842215,
+                    "visits": 399
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        }
+      ],
+      "passed": true,
+      "checks": {
+        "single_root_winner": true,
+        "best_matches_fixture": true,
+        "resigns_within_cap_not_immediately": true,
+        "reference_gap_at_least_005": true,
+        "identical_three_fresh_replays": true,
+        "identical_three_root_checks": true
+      }
+    },
+    {
+      "id": "ogs_70802180_m220",
+      "original": true,
+      "fixture_sha256": "3aa4302bca0c7ca700839acf598720c7cc5c43c072bc944a427a6b4f64365294",
+      "source": "ogs/70802180",
+      "settings": {
+        "reply_margin": 0.03,
+        "resign_win_rate": 0.8,
+        "resign_min_score": 0.5,
+        "screen_visits": 120,
+        "confirm_visits": 500,
+        "forced_candidates": 5,
+        "forced_visits": 300,
+        "resign_lead_tolerance": 0.1,
+        "move_cap": 8,
+        "resets": 6
+      },
+      "repeats": [
+        {
+          "repeat": 1,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "B11",
+              "winrate": 0.959700188,
+              "scoreLead": 5.4383565,
+              "visits": 299
+            },
+            {
+              "move": "B17",
+              "winrate": 0.0228481231,
+              "scoreLead": -6.76901241,
+              "visits": 299
+            },
+            {
+              "move": "D18",
+              "winrate": 0.00973463699,
+              "scoreLead": -14.1882853,
+              "visits": 299
+            },
+            {
+              "move": "E18",
+              "winrate": 0.0165846292,
+              "scoreLead": -8.39250563,
+              "visits": 299
+            },
+            {
+              "move": "C18",
+              "winrate": 0.0169826916,
+              "scoreLead": -13.5597852,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "B11"
+          ],
+          "reference": {
+            "id": "ogs_70802180_m220",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "B11",
+              "B13"
+            ],
+            "seconds": 69,
+            "min_gap": 0.688,
+            "steps": [
+              {
+                "move": "B11",
+                "top": [
+                  {
+                    "move": "B11",
+                    "winrate": 0.963431714,
+                    "visits": 396
+                  },
+                  {
+                    "move": "B17",
+                    "winrate": 0.0419709887,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "B15"
+                ]
+              },
+              {
+                "move": "B13",
+                "top": [
+                  {
+                    "move": "B13",
+                    "winrate": 0.968264929,
+                    "visits": 397
+                  },
+                  {
+                    "move": "B16",
+                    "winrate": 0.280215189,
+                    "visits": 2
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "B11",
+              "winrate": 0.959700188,
+              "scoreLead": 5.4383565,
+              "visits": 299
+            },
+            {
+              "move": "B17",
+              "winrate": 0.0228481231,
+              "scoreLead": -6.76901241,
+              "visits": 299
+            },
+            {
+              "move": "D18",
+              "winrate": 0.00973463699,
+              "scoreLead": -14.1882853,
+              "visits": 299
+            },
+            {
+              "move": "E18",
+              "winrate": 0.0165846292,
+              "scoreLead": -8.39250563,
+              "visits": 299
+            },
+            {
+              "move": "C18",
+              "winrate": 0.0169826916,
+              "scoreLead": -13.5597852,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "B11"
+          ],
+          "reference": {
+            "id": "ogs_70802180_m220",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "B11",
+              "B13"
+            ],
+            "seconds": 65,
+            "min_gap": 0.688,
+            "steps": [
+              {
+                "move": "B11",
+                "top": [
+                  {
+                    "move": "B11",
+                    "winrate": 0.963431714,
+                    "visits": 396
+                  },
+                  {
+                    "move": "B17",
+                    "winrate": 0.0419709887,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "B15"
+                ]
+              },
+              {
+                "move": "B13",
+                "top": [
+                  {
+                    "move": "B13",
+                    "winrate": 0.968264929,
+                    "visits": 397
+                  },
+                  {
+                    "move": "B16",
+                    "winrate": 0.280215189,
+                    "visits": 2
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "B11",
+              "winrate": 0.959700188,
+              "scoreLead": 5.4383565,
+              "visits": 299
+            },
+            {
+              "move": "B17",
+              "winrate": 0.0228481231,
+              "scoreLead": -6.76901241,
+              "visits": 299
+            },
+            {
+              "move": "D18",
+              "winrate": 0.00973463699,
+              "scoreLead": -14.1882853,
+              "visits": 299
+            },
+            {
+              "move": "E18",
+              "winrate": 0.0165846292,
+              "scoreLead": -8.39250563,
+              "visits": 299
+            },
+            {
+              "move": "C18",
+              "winrate": 0.0169826916,
+              "scoreLead": -13.5597852,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "B11"
+          ],
+          "reference": {
+            "id": "ogs_70802180_m220",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "B11",
+              "B13"
+            ],
+            "seconds": 66,
+            "min_gap": 0.688,
+            "steps": [
+              {
+                "move": "B11",
+                "top": [
+                  {
+                    "move": "B11",
+                    "winrate": 0.963431714,
+                    "visits": 396
+                  },
+                  {
+                    "move": "B17",
+                    "winrate": 0.0419709887,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "B15"
+                ]
+              },
+              {
+                "move": "B13",
+                "top": [
+                  {
+                    "move": "B13",
+                    "winrate": 0.968264929,
+                    "visits": 397
+                  },
+                  {
+                    "move": "B16",
+                    "winrate": 0.280215189,
+                    "visits": 2
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        }
+      ],
+      "passed": true,
+      "checks": {
+        "single_root_winner": true,
+        "best_matches_fixture": true,
+        "resigns_within_cap_not_immediately": true,
+        "reference_gap_at_least_005": true,
+        "identical_three_fresh_replays": true,
+        "identical_three_root_checks": true
+      }
+    },
+    {
+      "id": "ogs_69949962_m244",
+      "original": true,
+      "fixture_sha256": "132946d8dfc2c713466ee4ea2ebdf952921e2f7c30d99db15ccd4814d18a2b63",
+      "source": "ogs/69949962",
+      "settings": {
+        "reply_margin": 0.03,
+        "resign_win_rate": 0.8,
+        "resign_min_score": 0.5,
+        "screen_visits": 120,
+        "confirm_visits": 500,
+        "forced_candidates": 5,
+        "forced_visits": 300,
+        "resign_lead_tolerance": 0.1,
+        "move_cap": 8,
+        "resets": 6
+      },
+      "repeats": [
+        {
+          "repeat": 1,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "D1",
+              "winrate": 0.969836816,
+              "scoreLead": 1.33908008,
+              "visits": 299
+            },
+            {
+              "move": "G1",
+              "winrate": 0.00256421241,
+              "scoreLead": -47.2595723,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "D1"
+          ],
+          "reference": {
+            "id": "ogs_69949962_m244",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "D1",
+              "E1"
+            ],
+            "seconds": 88,
+            "min_gap": 0.6965,
+            "steps": [
+              {
+                "move": "D1",
+                "top": [
+                  {
+                    "move": "D1",
+                    "winrate": 0.97291169,
+                    "visits": 398
+                  },
+                  {
+                    "move": "G1",
+                    "winrate": 0.0192457531,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "C1"
+                ]
+              },
+              {
+                "move": "E1",
+                "top": [
+                  {
+                    "move": "E1",
+                    "winrate": 0.97277459,
+                    "visits": 396
+                  },
+                  {
+                    "move": "G2",
+                    "winrate": 0.276302922,
+                    "visits": 2
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "D1",
+              "winrate": 0.969836816,
+              "scoreLead": 1.33908008,
+              "visits": 299
+            },
+            {
+              "move": "G1",
+              "winrate": 0.00256421241,
+              "scoreLead": -47.2595723,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "D1"
+          ],
+          "reference": {
+            "id": "ogs_69949962_m244",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "D1",
+              "E1"
+            ],
+            "seconds": 80,
+            "min_gap": 0.6965,
+            "steps": [
+              {
+                "move": "D1",
+                "top": [
+                  {
+                    "move": "D1",
+                    "winrate": 0.97291169,
+                    "visits": 398
+                  },
+                  {
+                    "move": "G1",
+                    "winrate": 0.0192457531,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "C1"
+                ]
+              },
+              {
+                "move": "E1",
+                "top": [
+                  {
+                    "move": "E1",
+                    "winrate": 0.97277459,
+                    "visits": 396
+                  },
+                  {
+                    "move": "G2",
+                    "winrate": 0.276302922,
+                    "visits": 2
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "D1",
+              "winrate": 0.969836816,
+              "scoreLead": 1.33908008,
+              "visits": 299
+            },
+            {
+              "move": "G1",
+              "winrate": 0.00256421241,
+              "scoreLead": -47.2595723,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "D1"
+          ],
+          "reference": {
+            "id": "ogs_69949962_m244",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "D1",
+              "E1"
+            ],
+            "seconds": 82,
+            "min_gap": 0.6965,
+            "steps": [
+              {
+                "move": "D1",
+                "top": [
+                  {
+                    "move": "D1",
+                    "winrate": 0.97291169,
+                    "visits": 398
+                  },
+                  {
+                    "move": "G1",
+                    "winrate": 0.0192457531,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "C1"
+                ]
+              },
+              {
+                "move": "E1",
+                "top": [
+                  {
+                    "move": "E1",
+                    "winrate": 0.97277459,
+                    "visits": 396
+                  },
+                  {
+                    "move": "G2",
+                    "winrate": 0.276302922,
+                    "visits": 2
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        }
+      ],
+      "passed": true,
+      "checks": {
+        "single_root_winner": true,
+        "best_matches_fixture": true,
+        "resigns_within_cap_not_immediately": true,
+        "reference_gap_at_least_005": true,
+        "identical_three_fresh_replays": true,
+        "identical_three_root_checks": true
+      }
+    },
+    {
+      "id": "ogs_70491025_m64",
+      "original": true,
+      "fixture_sha256": "00f6c8310fdadfa49cd7d80411d8f575e779dd729da7a2f951ebe531e7de9e58",
+      "source": "ogs/70491025",
+      "settings": {
+        "reply_margin": 0.03,
+        "resign_win_rate": 0.8,
+        "resign_min_score": 0.5,
+        "screen_visits": 120,
+        "confirm_visits": 500,
+        "forced_candidates": 5,
+        "forced_visits": 300,
+        "resign_lead_tolerance": 0.1,
+        "move_cap": 8,
+        "resets": 6
+      },
+      "repeats": [
+        {
+          "repeat": 1,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "R8",
+              "winrate": 0.821039314,
+              "scoreLead": 4.35658706,
+              "visits": 299
+            },
+            {
+              "move": "R5",
+              "winrate": 0.469053234,
+              "scoreLead": -0.39784865,
+              "visits": 299
+            },
+            {
+              "move": "D4",
+              "winrate": 0.319589578,
+              "scoreLead": -1.69130916,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "R8"
+          ],
+          "reference": {
+            "id": "ogs_70491025_m64",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "R8",
+              "S6"
+            ],
+            "seconds": 109,
+            "min_gap": 0.0513,
+            "steps": [
+              {
+                "move": "R8",
+                "top": [
+                  {
+                    "move": "R8",
+                    "winrate": 0.82307851,
+                    "visits": 397
+                  },
+                  {
+                    "move": "R5",
+                    "winrate": 0.430323973,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "D4"
+                ]
+              },
+              {
+                "move": "S6",
+                "top": [
+                  {
+                    "move": "S6",
+                    "winrate": 0.822795074,
+                    "visits": 334
+                  },
+                  {
+                    "move": "R5",
+                    "winrate": 0.771468545,
+                    "visits": 59
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "R8",
+              "winrate": 0.821039314,
+              "scoreLead": 4.35658706,
+              "visits": 299
+            },
+            {
+              "move": "R5",
+              "winrate": 0.469053234,
+              "scoreLead": -0.39784865,
+              "visits": 299
+            },
+            {
+              "move": "D4",
+              "winrate": 0.319589578,
+              "scoreLead": -1.69130916,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "R8"
+          ],
+          "reference": {
+            "id": "ogs_70491025_m64",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "R8",
+              "S6"
+            ],
+            "seconds": 107,
+            "min_gap": 0.0513,
+            "steps": [
+              {
+                "move": "R8",
+                "top": [
+                  {
+                    "move": "R8",
+                    "winrate": 0.82307851,
+                    "visits": 397
+                  },
+                  {
+                    "move": "R5",
+                    "winrate": 0.430323973,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "D4"
+                ]
+              },
+              {
+                "move": "S6",
+                "top": [
+                  {
+                    "move": "S6",
+                    "winrate": 0.822795074,
+                    "visits": 334
+                  },
+                  {
+                    "move": "R5",
+                    "winrate": 0.771468545,
+                    "visits": 59
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "R8",
+              "winrate": 0.821039314,
+              "scoreLead": 4.35658706,
+              "visits": 299
+            },
+            {
+              "move": "R5",
+              "winrate": 0.469053234,
+              "scoreLead": -0.39784865,
+              "visits": 299
+            },
+            {
+              "move": "D4",
+              "winrate": 0.319589578,
+              "scoreLead": -1.69130916,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "R8"
+          ],
+          "reference": {
+            "id": "ogs_70491025_m64",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "R8",
+              "S6"
+            ],
+            "seconds": 106,
+            "min_gap": 0.0513,
+            "steps": [
+              {
+                "move": "R8",
+                "top": [
+                  {
+                    "move": "R8",
+                    "winrate": 0.82307851,
+                    "visits": 397
+                  },
+                  {
+                    "move": "R5",
+                    "winrate": 0.430323973,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "D4"
+                ]
+              },
+              {
+                "move": "S6",
+                "top": [
+                  {
+                    "move": "S6",
+                    "winrate": 0.822795074,
+                    "visits": 334
+                  },
+                  {
+                    "move": "R5",
+                    "winrate": 0.771468545,
+                    "visits": 59
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        }
+      ],
+      "passed": true,
+      "checks": {
+        "single_root_winner": true,
+        "best_matches_fixture": true,
+        "resigns_within_cap_not_immediately": true,
+        "reference_gap_at_least_005": true,
+        "identical_three_fresh_replays": true,
+        "identical_three_root_checks": true
+      }
+    },
+    {
+      "id": "ogs_60554907_m52",
+      "original": true,
+      "fixture_sha256": "426e38488fd8ab7df9c2868b317ade1fbb6bad16a3163078c484fbf2d18f32f9",
+      "source": "ogs/60554907",
+      "settings": {
+        "reply_margin": 0.03,
+        "resign_win_rate": 0.8,
+        "resign_min_score": 0.5,
+        "screen_visits": 120,
+        "confirm_visits": 500,
+        "forced_candidates": 5,
+        "forced_visits": 300,
+        "resign_lead_tolerance": 0.1,
+        "move_cap": 8,
+        "resets": 6
+      },
+      "repeats": [
+        {
+          "repeat": 1,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "J6",
+              "winrate": 0.950615903,
+              "scoreLead": 10.7082695,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "J6"
+          ],
+          "reference": {
+            "id": "ogs_60554907_m52",
+            "verdict": "opponent resigned",
+            "resigned_after": 3,
+            "line": [
+              "J6",
+              "J4",
+              "L2"
+            ],
+            "seconds": 111,
+            "min_gap": 0.0971,
+            "steps": [
+              {
+                "move": "J6",
+                "top": [
+                  {
+                    "move": "J6",
+                    "winrate": 0.955036565,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "H6"
+                ]
+              },
+              {
+                "move": "J4",
+                "top": [
+                  {
+                    "move": "J4",
+                    "winrate": 0.957388819,
+                    "visits": 398
+                  },
+                  {
+                    "move": "K6",
+                    "winrate": 0.86025358,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "M2"
+                ]
+              },
+              {
+                "move": "L2",
+                "top": [
+                  {
+                    "move": "L2",
+                    "winrate": 0.960467737,
+                    "visits": 398
+                  },
+                  {
+                    "move": "E6",
+                    "winrate": 0.526655376,
+                    "visits": 1
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "J6",
+              "winrate": 0.950615903,
+              "scoreLead": 10.7082695,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "J6"
+          ],
+          "reference": {
+            "id": "ogs_60554907_m52",
+            "verdict": "opponent resigned",
+            "resigned_after": 3,
+            "line": [
+              "J6",
+              "J4",
+              "L2"
+            ],
+            "seconds": 109,
+            "min_gap": 0.0971,
+            "steps": [
+              {
+                "move": "J6",
+                "top": [
+                  {
+                    "move": "J6",
+                    "winrate": 0.955036565,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "H6"
+                ]
+              },
+              {
+                "move": "J4",
+                "top": [
+                  {
+                    "move": "J4",
+                    "winrate": 0.957388819,
+                    "visits": 398
+                  },
+                  {
+                    "move": "K6",
+                    "winrate": 0.86025358,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "M2"
+                ]
+              },
+              {
+                "move": "L2",
+                "top": [
+                  {
+                    "move": "L2",
+                    "winrate": 0.960467737,
+                    "visits": 398
+                  },
+                  {
+                    "move": "E6",
+                    "winrate": 0.526655376,
+                    "visits": 1
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "J6",
+              "winrate": 0.950615903,
+              "scoreLead": 10.7082695,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "J6"
+          ],
+          "reference": {
+            "id": "ogs_60554907_m52",
+            "verdict": "opponent resigned",
+            "resigned_after": 3,
+            "line": [
+              "J6",
+              "J4",
+              "L2"
+            ],
+            "seconds": 113,
+            "min_gap": 0.0971,
+            "steps": [
+              {
+                "move": "J6",
+                "top": [
+                  {
+                    "move": "J6",
+                    "winrate": 0.955036565,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "H6"
+                ]
+              },
+              {
+                "move": "J4",
+                "top": [
+                  {
+                    "move": "J4",
+                    "winrate": 0.957388819,
+                    "visits": 398
+                  },
+                  {
+                    "move": "K6",
+                    "winrate": 0.86025358,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "M2"
+                ]
+              },
+              {
+                "move": "L2",
+                "top": [
+                  {
+                    "move": "L2",
+                    "winrate": 0.960467737,
+                    "visits": 398
+                  },
+                  {
+                    "move": "E6",
+                    "winrate": 0.526655376,
+                    "visits": 1
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        }
+      ],
+      "passed": true,
+      "checks": {
+        "single_root_winner": true,
+        "best_matches_fixture": true,
+        "resigns_within_cap_not_immediately": true,
+        "reference_gap_at_least_005": true,
+        "identical_three_fresh_replays": true,
+        "identical_three_root_checks": true
+      }
+    },
+    {
+      "id": "ogs_69856603",
+      "original": true,
+      "fixture_sha256": "bbe7f0311edaaaaf705c582c6ad8c3ad29dc891e8fafebccca872ad3d99a106a",
+      "source": "ogs/69856603",
+      "settings": {
+        "reply_margin": 0.03,
+        "resign_win_rate": 0.8,
+        "resign_min_score": 0.5,
+        "screen_visits": 120,
+        "confirm_visits": 500,
+        "forced_candidates": 5,
+        "forced_visits": 300,
+        "resign_lead_tolerance": 0.1,
+        "move_cap": 8,
+        "resets": 6
+      },
+      "repeats": [
+        {
+          "repeat": 1,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "F15",
+              "winrate": 0.855208719,
+              "scoreLead": 11.0056728,
+              "visits": 299
+            },
+            {
+              "move": "H11",
+              "winrate": 0.0067254086,
+              "scoreLead": -28.7140603,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "F15"
+          ],
+          "reference": {
+            "id": "ogs_69856603",
+            "verdict": "opponent resigned",
+            "resigned_after": 3,
+            "line": [
+              "F15",
+              "C9",
+              "F8"
+            ],
+            "seconds": 189,
+            "min_gap": 0.1897,
+            "steps": [
+              {
+                "move": "F15",
+                "top": [
+                  {
+                    "move": "F15",
+                    "winrate": 0.84764599,
+                    "visits": 398
+                  },
+                  {
+                    "move": "H11",
+                    "winrate": 0.045647081,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "D10"
+                ]
+              },
+              {
+                "move": "C9",
+                "top": [
+                  {
+                    "move": "C9",
+                    "winrate": 0.823359529,
+                    "visits": 359
+                  },
+                  {
+                    "move": "D9",
+                    "winrate": 0.633618141,
+                    "visits": 14
+                  }
+                ],
+                "reply": [
+                  "D9"
+                ]
+              },
+              {
+                "move": "F8",
+                "top": [
+                  {
+                    "move": "F8",
+                    "winrate": 0.826939943,
+                    "visits": 359
+                  },
+                  {
+                    "move": "H11",
+                    "winrate": 0.627021492,
+                    "visits": 18
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "F15",
+              "winrate": 0.855208719,
+              "scoreLead": 11.0056728,
+              "visits": 299
+            },
+            {
+              "move": "H11",
+              "winrate": 0.0067254086,
+              "scoreLead": -28.7140603,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "F15"
+          ],
+          "reference": {
+            "id": "ogs_69856603",
+            "verdict": "opponent resigned",
+            "resigned_after": 3,
+            "line": [
+              "F15",
+              "C9",
+              "F8"
+            ],
+            "seconds": 188,
+            "min_gap": 0.1897,
+            "steps": [
+              {
+                "move": "F15",
+                "top": [
+                  {
+                    "move": "F15",
+                    "winrate": 0.84764599,
+                    "visits": 398
+                  },
+                  {
+                    "move": "H11",
+                    "winrate": 0.045647081,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "D10"
+                ]
+              },
+              {
+                "move": "C9",
+                "top": [
+                  {
+                    "move": "C9",
+                    "winrate": 0.823359529,
+                    "visits": 359
+                  },
+                  {
+                    "move": "D9",
+                    "winrate": 0.633618141,
+                    "visits": 14
+                  }
+                ],
+                "reply": [
+                  "D9"
+                ]
+              },
+              {
+                "move": "F8",
+                "top": [
+                  {
+                    "move": "F8",
+                    "winrate": 0.826939943,
+                    "visits": 359
+                  },
+                  {
+                    "move": "H11",
+                    "winrate": 0.627021492,
+                    "visits": 18
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "F15",
+              "winrate": 0.855208719,
+              "scoreLead": 11.0056728,
+              "visits": 299
+            },
+            {
+              "move": "H11",
+              "winrate": 0.0067254086,
+              "scoreLead": -28.7140603,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "F15"
+          ],
+          "reference": {
+            "id": "ogs_69856603",
+            "verdict": "opponent resigned",
+            "resigned_after": 3,
+            "line": [
+              "F15",
+              "C9",
+              "F8"
+            ],
+            "seconds": 186,
+            "min_gap": 0.1897,
+            "steps": [
+              {
+                "move": "F15",
+                "top": [
+                  {
+                    "move": "F15",
+                    "winrate": 0.84764599,
+                    "visits": 398
+                  },
+                  {
+                    "move": "H11",
+                    "winrate": 0.045647081,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "D10"
+                ]
+              },
+              {
+                "move": "C9",
+                "top": [
+                  {
+                    "move": "C9",
+                    "winrate": 0.823359529,
+                    "visits": 359
+                  },
+                  {
+                    "move": "D9",
+                    "winrate": 0.633618141,
+                    "visits": 14
+                  }
+                ],
+                "reply": [
+                  "D9"
+                ]
+              },
+              {
+                "move": "F8",
+                "top": [
+                  {
+                    "move": "F8",
+                    "winrate": 0.826939943,
+                    "visits": 359
+                  },
+                  {
+                    "move": "H11",
+                    "winrate": 0.627021492,
+                    "visits": 18
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        }
+      ],
+      "passed": true,
+      "checks": {
+        "single_root_winner": true,
+        "best_matches_fixture": true,
+        "resigns_within_cap_not_immediately": true,
+        "reference_gap_at_least_005": true,
+        "identical_three_fresh_replays": true,
+        "identical_three_root_checks": true
+      }
+    },
+    {
+      "id": "ogs_72720761_m136",
+      "original": true,
+      "fixture_sha256": "209fa2bf1ce46625787f34e06fc893f2c7155ca0b65ea3977534efc665f2042e",
+      "source": "ogs/72720761",
+      "settings": {
+        "reply_margin": 0.03,
+        "resign_win_rate": 0.8,
+        "resign_min_score": 0.5,
+        "screen_visits": 120,
+        "confirm_visits": 500,
+        "forced_candidates": 5,
+        "forced_visits": 300,
+        "resign_lead_tolerance": 0.1,
+        "move_cap": 8,
+        "resets": 6
+      },
+      "repeats": [
+        {
+          "repeat": 1,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "J8",
+              "winrate": 0.887504605,
+              "scoreLead": 6.54347727,
+              "visits": 299
+            },
+            {
+              "move": "H8",
+              "winrate": 0.0931660194,
+              "scoreLead": -5.31567427,
+              "visits": 299
+            },
+            {
+              "move": "G10",
+              "winrate": 0.0236544339,
+              "scoreLead": -11.5379639,
+              "visits": 299
+            },
+            {
+              "move": "H9",
+              "winrate": 0.0544236727,
+              "scoreLead": -7.47945615,
+              "visits": 299
+            },
+            {
+              "move": "C8",
+              "winrate": 0.0673862547,
+              "scoreLead": -11.5355338,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "J8"
+          ],
+          "reference": {
+            "id": "ogs_72720761_m136",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "J8",
+              "H7"
+            ],
+            "seconds": 114,
+            "min_gap": 0.7516,
+            "steps": [
+              {
+                "move": "J8",
+                "top": [
+                  {
+                    "move": "J8",
+                    "winrate": 0.899445865,
+                    "visits": 394
+                  },
+                  {
+                    "move": "H8",
+                    "winrate": 0.147853956,
+                    "visits": 3
+                  }
+                ],
+                "reply": [
+                  "H8"
+                ]
+              },
+              {
+                "move": "H7",
+                "top": [
+                  {
+                    "move": "H7",
+                    "winrate": 0.892526534,
+                    "visits": 395
+                  },
+                  {
+                    "move": "J9",
+                    "winrate": 0.0594399872,
+                    "visits": 3
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "J8",
+              "winrate": 0.887504605,
+              "scoreLead": 6.54347727,
+              "visits": 299
+            },
+            {
+              "move": "H8",
+              "winrate": 0.0931660194,
+              "scoreLead": -5.31567427,
+              "visits": 299
+            },
+            {
+              "move": "G10",
+              "winrate": 0.0236544339,
+              "scoreLead": -11.5379639,
+              "visits": 299
+            },
+            {
+              "move": "H9",
+              "winrate": 0.0544236727,
+              "scoreLead": -7.47945615,
+              "visits": 299
+            },
+            {
+              "move": "C8",
+              "winrate": 0.0673862547,
+              "scoreLead": -11.5355338,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "J8"
+          ],
+          "reference": {
+            "id": "ogs_72720761_m136",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "J8",
+              "H7"
+            ],
+            "seconds": 111,
+            "min_gap": 0.7516,
+            "steps": [
+              {
+                "move": "J8",
+                "top": [
+                  {
+                    "move": "J8",
+                    "winrate": 0.899445865,
+                    "visits": 394
+                  },
+                  {
+                    "move": "H8",
+                    "winrate": 0.147853956,
+                    "visits": 3
+                  }
+                ],
+                "reply": [
+                  "H8"
+                ]
+              },
+              {
+                "move": "H7",
+                "top": [
+                  {
+                    "move": "H7",
+                    "winrate": 0.892526534,
+                    "visits": 395
+                  },
+                  {
+                    "move": "J9",
+                    "winrate": 0.0594399872,
+                    "visits": 3
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "J8",
+              "winrate": 0.887504605,
+              "scoreLead": 6.54347727,
+              "visits": 299
+            },
+            {
+              "move": "H8",
+              "winrate": 0.0931660194,
+              "scoreLead": -5.31567427,
+              "visits": 299
+            },
+            {
+              "move": "G10",
+              "winrate": 0.0236544339,
+              "scoreLead": -11.5379639,
+              "visits": 299
+            },
+            {
+              "move": "H9",
+              "winrate": 0.0544236727,
+              "scoreLead": -7.47945615,
+              "visits": 299
+            },
+            {
+              "move": "C8",
+              "winrate": 0.0673862547,
+              "scoreLead": -11.5355338,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "J8"
+          ],
+          "reference": {
+            "id": "ogs_72720761_m136",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "J8",
+              "H7"
+            ],
+            "seconds": 111,
+            "min_gap": 0.7516,
+            "steps": [
+              {
+                "move": "J8",
+                "top": [
+                  {
+                    "move": "J8",
+                    "winrate": 0.899445865,
+                    "visits": 394
+                  },
+                  {
+                    "move": "H8",
+                    "winrate": 0.147853956,
+                    "visits": 3
+                  }
+                ],
+                "reply": [
+                  "H8"
+                ]
+              },
+              {
+                "move": "H7",
+                "top": [
+                  {
+                    "move": "H7",
+                    "winrate": 0.892526534,
+                    "visits": 395
+                  },
+                  {
+                    "move": "J9",
+                    "winrate": 0.0594399872,
+                    "visits": 3
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        }
+      ],
+      "passed": true,
+      "checks": {
+        "single_root_winner": true,
+        "best_matches_fixture": true,
+        "resigns_within_cap_not_immediately": true,
+        "reference_gap_at_least_005": true,
+        "identical_three_fresh_replays": true,
+        "identical_three_root_checks": true
+      }
+    },
+    {
+      "id": "ogs_60546947_m160",
+      "original": false,
+      "fixture_sha256": "813ee381650209768795989d8dbfacfc5d42474a31fef6b64667db71cbb6b5b5",
+      "source": "ogs/60546947",
+      "settings": {
+        "reply_margin": 0.03,
+        "resign_win_rate": 0.8,
+        "resign_min_score": 0.5,
+        "screen_visits": 120,
+        "confirm_visits": 500,
+        "forced_candidates": 5,
+        "forced_visits": 300,
+        "resign_lead_tolerance": 0.1,
+        "move_cap": 8,
+        "resets": 6
+      },
+      "repeats": [
+        {
+          "repeat": 1,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "O19",
+              "winrate": 0.968586138,
+              "scoreLead": 11.034486,
+              "visits": 299
+            },
+            {
+              "move": "M19",
+              "winrate": 0.0161480666,
+              "scoreLead": -42.6676485,
+              "visits": 299
+            },
+            {
+              "move": "B18",
+              "winrate": 0.114200444,
+              "scoreLead": -16.5276004,
+              "visits": 299
+            },
+            {
+              "move": "N19",
+              "winrate": 0.0080145583,
+              "scoreLead": -41.8026185,
+              "visits": 299
+            },
+            {
+              "move": "S16",
+              "winrate": 0.0414620735,
+              "scoreLead": -25.8315356,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "O19"
+          ],
+          "reference": {
+            "id": "ogs_60546947_m160",
+            "verdict": "opponent resigned",
+            "resigned_after": 4,
+            "line": [
+              "O19",
+              "P19",
+              "M19",
+              "N18"
+            ],
+            "seconds": 182,
+            "min_gap": 0.5121,
+            "steps": [
+              {
+                "move": "O19",
+                "top": [
+                  {
+                    "move": "O19",
+                    "winrate": 0.97533034,
+                    "visits": 395
+                  },
+                  {
+                    "move": "M19",
+                    "winrate": 0.0929852761,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "N19"
+                ]
+              },
+              {
+                "move": "P19",
+                "top": [
+                  {
+                    "move": "P19",
+                    "winrate": 0.975746679,
+                    "visits": 398
+                  },
+                  {
+                    "move": "O17",
+                    "winrate": 0.198068239,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "R19"
+                ]
+              },
+              {
+                "move": "M19",
+                "top": [
+                  {
+                    "move": "M19",
+                    "winrate": 0.986600605,
+                    "visits": 392
+                  },
+                  {
+                    "move": "N14",
+                    "winrate": 0.474519427,
+                    "visits": 4
+                  }
+                ],
+                "reply": [
+                  "Q15"
+                ]
+              },
+              {
+                "move": "N18",
+                "top": [
+                  {
+                    "move": "N18",
+                    "winrate": 0.98877986,
+                    "visits": 399
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "O19",
+              "winrate": 0.968586138,
+              "scoreLead": 11.034486,
+              "visits": 299
+            },
+            {
+              "move": "M19",
+              "winrate": 0.0161480666,
+              "scoreLead": -42.6676485,
+              "visits": 299
+            },
+            {
+              "move": "B18",
+              "winrate": 0.114200444,
+              "scoreLead": -16.5276004,
+              "visits": 299
+            },
+            {
+              "move": "N19",
+              "winrate": 0.0080145583,
+              "scoreLead": -41.8026185,
+              "visits": 299
+            },
+            {
+              "move": "S16",
+              "winrate": 0.0414620735,
+              "scoreLead": -25.8315356,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "O19"
+          ],
+          "reference": {
+            "id": "ogs_60546947_m160",
+            "verdict": "opponent resigned",
+            "resigned_after": 4,
+            "line": [
+              "O19",
+              "P19",
+              "M19",
+              "N18"
+            ],
+            "seconds": 185,
+            "min_gap": 0.5121,
+            "steps": [
+              {
+                "move": "O19",
+                "top": [
+                  {
+                    "move": "O19",
+                    "winrate": 0.97533034,
+                    "visits": 395
+                  },
+                  {
+                    "move": "M19",
+                    "winrate": 0.0929852761,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "N19"
+                ]
+              },
+              {
+                "move": "P19",
+                "top": [
+                  {
+                    "move": "P19",
+                    "winrate": 0.975746679,
+                    "visits": 398
+                  },
+                  {
+                    "move": "O17",
+                    "winrate": 0.198068239,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "R19"
+                ]
+              },
+              {
+                "move": "M19",
+                "top": [
+                  {
+                    "move": "M19",
+                    "winrate": 0.986600605,
+                    "visits": 392
+                  },
+                  {
+                    "move": "N14",
+                    "winrate": 0.474519427,
+                    "visits": 4
+                  }
+                ],
+                "reply": [
+                  "Q15"
+                ]
+              },
+              {
+                "move": "N18",
+                "top": [
+                  {
+                    "move": "N18",
+                    "winrate": 0.98877986,
+                    "visits": 399
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "O19",
+              "winrate": 0.968586138,
+              "scoreLead": 11.034486,
+              "visits": 299
+            },
+            {
+              "move": "M19",
+              "winrate": 0.0161480666,
+              "scoreLead": -42.6676485,
+              "visits": 299
+            },
+            {
+              "move": "B18",
+              "winrate": 0.114200444,
+              "scoreLead": -16.5276004,
+              "visits": 299
+            },
+            {
+              "move": "N19",
+              "winrate": 0.0080145583,
+              "scoreLead": -41.8026185,
+              "visits": 299
+            },
+            {
+              "move": "S16",
+              "winrate": 0.0414620735,
+              "scoreLead": -25.8315356,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "O19"
+          ],
+          "reference": {
+            "id": "ogs_60546947_m160",
+            "verdict": "opponent resigned",
+            "resigned_after": 4,
+            "line": [
+              "O19",
+              "P19",
+              "M19",
+              "N18"
+            ],
+            "seconds": 175,
+            "min_gap": 0.5121,
+            "steps": [
+              {
+                "move": "O19",
+                "top": [
+                  {
+                    "move": "O19",
+                    "winrate": 0.97533034,
+                    "visits": 395
+                  },
+                  {
+                    "move": "M19",
+                    "winrate": 0.0929852761,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "N19"
+                ]
+              },
+              {
+                "move": "P19",
+                "top": [
+                  {
+                    "move": "P19",
+                    "winrate": 0.975746679,
+                    "visits": 398
+                  },
+                  {
+                    "move": "O17",
+                    "winrate": 0.198068239,
+                    "visits": 1
+                  }
+                ],
+                "reply": [
+                  "R19"
+                ]
+              },
+              {
+                "move": "M19",
+                "top": [
+                  {
+                    "move": "M19",
+                    "winrate": 0.986600605,
+                    "visits": 392
+                  },
+                  {
+                    "move": "N14",
+                    "winrate": 0.474519427,
+                    "visits": 4
+                  }
+                ],
+                "reply": [
+                  "Q15"
+                ]
+              },
+              {
+                "move": "N18",
+                "top": [
+                  {
+                    "move": "N18",
+                    "winrate": 0.98877986,
+                    "visits": 399
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        }
+      ],
+      "passed": true,
+      "checks": {
+        "single_root_winner": true,
+        "best_matches_fixture": true,
+        "resigns_within_cap_not_immediately": true,
+        "reference_gap_at_least_005": true,
+        "identical_three_fresh_replays": true,
+        "identical_three_root_checks": true
+      }
+    },
+    {
+      "id": "ogs_69059098_m136",
+      "original": false,
+      "fixture_sha256": "2bdecb17179d6d86b17194cd68091f774ed558f3ff424485acc84e66f6dcdaa9",
+      "source": "ogs/69059098",
+      "settings": {
+        "reply_margin": 0.03,
+        "resign_win_rate": 0.8,
+        "resign_min_score": 0.5,
+        "screen_visits": 120,
+        "confirm_visits": 500,
+        "forced_candidates": 5,
+        "forced_visits": 300,
+        "resign_lead_tolerance": 0.1,
+        "move_cap": 8,
+        "resets": 6
+      },
+      "repeats": [
+        {
+          "repeat": 1,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "S12",
+              "winrate": 0.949350219,
+              "scoreLead": 12.8322182,
+              "visits": 299
+            },
+            {
+              "move": "A10",
+              "winrate": 0.731109601,
+              "scoreLead": 4.29061569,
+              "visits": 299
+            },
+            {
+              "move": "S10",
+              "winrate": 0.557155239,
+              "scoreLead": 1.28015381,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "S12"
+          ],
+          "reference": {
+            "id": "ogs_69059098_m136",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "S12",
+              "P11"
+            ],
+            "seconds": 90,
+            "min_gap": 0.2216,
+            "steps": [
+              {
+                "move": "S12",
+                "top": [
+                  {
+                    "move": "S12",
+                    "winrate": 0.952213121,
+                    "visits": 388
+                  },
+                  {
+                    "move": "A10",
+                    "winrate": 0.584363507,
+                    "visits": 10
+                  }
+                ],
+                "reply": [
+                  "Q10"
+                ]
+              },
+              {
+                "move": "P11",
+                "top": [
+                  {
+                    "move": "P11",
+                    "winrate": 0.960735668,
+                    "visits": 383
+                  },
+                  {
+                    "move": "S10",
+                    "winrate": 0.739183117,
+                    "visits": 15
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "S12",
+              "winrate": 0.949350219,
+              "scoreLead": 12.8322182,
+              "visits": 299
+            },
+            {
+              "move": "A10",
+              "winrate": 0.731109601,
+              "scoreLead": 4.29061569,
+              "visits": 299
+            },
+            {
+              "move": "S10",
+              "winrate": 0.557155239,
+              "scoreLead": 1.28015381,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "S12"
+          ],
+          "reference": {
+            "id": "ogs_69059098_m136",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "S12",
+              "P11"
+            ],
+            "seconds": 86,
+            "min_gap": 0.2216,
+            "steps": [
+              {
+                "move": "S12",
+                "top": [
+                  {
+                    "move": "S12",
+                    "winrate": 0.952213121,
+                    "visits": 388
+                  },
+                  {
+                    "move": "A10",
+                    "winrate": 0.584363507,
+                    "visits": 10
+                  }
+                ],
+                "reply": [
+                  "Q10"
+                ]
+              },
+              {
+                "move": "P11",
+                "top": [
+                  {
+                    "move": "P11",
+                    "winrate": 0.960735668,
+                    "visits": 383
+                  },
+                  {
+                    "move": "S10",
+                    "winrate": 0.739183117,
+                    "visits": 15
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "S12",
+              "winrate": 0.949350219,
+              "scoreLead": 12.8322182,
+              "visits": 299
+            },
+            {
+              "move": "A10",
+              "winrate": 0.731109601,
+              "scoreLead": 4.29061569,
+              "visits": 299
+            },
+            {
+              "move": "S10",
+              "winrate": 0.557155239,
+              "scoreLead": 1.28015381,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "S12"
+          ],
+          "reference": {
+            "id": "ogs_69059098_m136",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "S12",
+              "P11"
+            ],
+            "seconds": 90,
+            "min_gap": 0.2216,
+            "steps": [
+              {
+                "move": "S12",
+                "top": [
+                  {
+                    "move": "S12",
+                    "winrate": 0.952213121,
+                    "visits": 388
+                  },
+                  {
+                    "move": "A10",
+                    "winrate": 0.584363507,
+                    "visits": 10
+                  }
+                ],
+                "reply": [
+                  "Q10"
+                ]
+              },
+              {
+                "move": "P11",
+                "top": [
+                  {
+                    "move": "P11",
+                    "winrate": 0.960735668,
+                    "visits": 383
+                  },
+                  {
+                    "move": "S10",
+                    "winrate": 0.739183117,
+                    "visits": 15
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        }
+      ],
+      "passed": true,
+      "checks": {
+        "single_root_winner": true,
+        "best_matches_fixture": true,
+        "resigns_within_cap_not_immediately": true,
+        "reference_gap_at_least_005": true,
+        "identical_three_fresh_replays": true,
+        "identical_three_root_checks": true
+      }
+    },
+    {
+      "id": "ogs_75636183_m172",
+      "original": false,
+      "fixture_sha256": "832d076e80cb02080ac169fe29e2b42fbf6dd080646e9116b69d20ebee3ed50b",
+      "source": "ogs/75636183",
+      "settings": {
+        "reply_margin": 0.03,
+        "resign_win_rate": 0.8,
+        "resign_min_score": 0.5,
+        "screen_visits": 120,
+        "confirm_visits": 500,
+        "forced_candidates": 5,
+        "forced_visits": 300,
+        "resign_lead_tolerance": 0.1,
+        "move_cap": 8,
+        "resets": 6
+      },
+      "repeats": [
+        {
+          "repeat": 1,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "F13",
+              "winrate": 0.854962151,
+              "scoreLead": 11.7983952,
+              "visits": 299
+            },
+            {
+              "move": "F15",
+              "winrate": 0.664414032,
+              "scoreLead": 2.26130552,
+              "visits": 299
+            },
+            {
+              "move": "H14",
+              "winrate": 0.222694103,
+              "scoreLead": -3.95588191,
+              "visits": 299
+            },
+            {
+              "move": "L7",
+              "winrate": 0.702940503,
+              "scoreLead": 8.57191215,
+              "visits": 299
+            },
+            {
+              "move": "C14",
+              "winrate": 0.128671314,
+              "scoreLead": -10.9285171,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "F13"
+          ],
+          "reference": {
+            "id": "ogs_75636183_m172",
+            "verdict": "opponent resigned",
+            "resigned_after": 3,
+            "line": [
+              "F13",
+              "P13",
+              "S10"
+            ],
+            "seconds": 94,
+            "min_gap": 0.0955,
+            "steps": [
+              {
+                "move": "F13",
+                "top": [
+                  {
+                    "move": "F13",
+                    "winrate": 0.854565281,
+                    "visits": 355
+                  },
+                  {
+                    "move": "F15",
+                    "winrate": 0.712224958,
+                    "visits": 32
+                  }
+                ],
+                "reply": [
+                  "P14"
+                ]
+              },
+              {
+                "move": "P13",
+                "top": [
+                  {
+                    "move": "P13",
+                    "winrate": 0.850628939,
+                    "visits": 389
+                  },
+                  {
+                    "move": "L7",
+                    "winrate": 0.755079288,
+                    "visits": 7
+                  }
+                ],
+                "reply": [
+                  "Q4"
+                ]
+              },
+              {
+                "move": "S10",
+                "top": [
+                  {
+                    "move": "S10",
+                    "winrate": 0.899408712,
+                    "visits": 368
+                  },
+                  {
+                    "move": "L7",
+                    "winrate": 0.755224971,
+                    "visits": 20
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "F13",
+              "winrate": 0.854962151,
+              "scoreLead": 11.7983952,
+              "visits": 299
+            },
+            {
+              "move": "F15",
+              "winrate": 0.664414032,
+              "scoreLead": 2.26130552,
+              "visits": 299
+            },
+            {
+              "move": "H14",
+              "winrate": 0.222694103,
+              "scoreLead": -3.95588191,
+              "visits": 299
+            },
+            {
+              "move": "L7",
+              "winrate": 0.702940503,
+              "scoreLead": 8.57191215,
+              "visits": 299
+            },
+            {
+              "move": "C14",
+              "winrate": 0.128671314,
+              "scoreLead": -10.9285171,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "F13"
+          ],
+          "reference": {
+            "id": "ogs_75636183_m172",
+            "verdict": "opponent resigned",
+            "resigned_after": 3,
+            "line": [
+              "F13",
+              "P13",
+              "S10"
+            ],
+            "seconds": 94,
+            "min_gap": 0.0955,
+            "steps": [
+              {
+                "move": "F13",
+                "top": [
+                  {
+                    "move": "F13",
+                    "winrate": 0.854565281,
+                    "visits": 355
+                  },
+                  {
+                    "move": "F15",
+                    "winrate": 0.712224958,
+                    "visits": 32
+                  }
+                ],
+                "reply": [
+                  "P14"
+                ]
+              },
+              {
+                "move": "P13",
+                "top": [
+                  {
+                    "move": "P13",
+                    "winrate": 0.850628939,
+                    "visits": 389
+                  },
+                  {
+                    "move": "L7",
+                    "winrate": 0.755079288,
+                    "visits": 7
+                  }
+                ],
+                "reply": [
+                  "Q4"
+                ]
+              },
+              {
+                "move": "S10",
+                "top": [
+                  {
+                    "move": "S10",
+                    "winrate": 0.899408712,
+                    "visits": 368
+                  },
+                  {
+                    "move": "L7",
+                    "winrate": 0.755224971,
+                    "visits": 20
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "F13",
+              "winrate": 0.854962151,
+              "scoreLead": 11.7983952,
+              "visits": 299
+            },
+            {
+              "move": "F15",
+              "winrate": 0.664414032,
+              "scoreLead": 2.26130552,
+              "visits": 299
+            },
+            {
+              "move": "H14",
+              "winrate": 0.222694103,
+              "scoreLead": -3.95588191,
+              "visits": 299
+            },
+            {
+              "move": "L7",
+              "winrate": 0.702940503,
+              "scoreLead": 8.57191215,
+              "visits": 299
+            },
+            {
+              "move": "C14",
+              "winrate": 0.128671314,
+              "scoreLead": -10.9285171,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "F13"
+          ],
+          "reference": {
+            "id": "ogs_75636183_m172",
+            "verdict": "opponent resigned",
+            "resigned_after": 3,
+            "line": [
+              "F13",
+              "P13",
+              "S10"
+            ],
+            "seconds": 58,
+            "min_gap": 0.0955,
+            "steps": [
+              {
+                "move": "F13",
+                "top": [
+                  {
+                    "move": "F13",
+                    "winrate": 0.854565281,
+                    "visits": 355
+                  },
+                  {
+                    "move": "F15",
+                    "winrate": 0.712224958,
+                    "visits": 32
+                  }
+                ],
+                "reply": [
+                  "P14"
+                ]
+              },
+              {
+                "move": "P13",
+                "top": [
+                  {
+                    "move": "P13",
+                    "winrate": 0.850628939,
+                    "visits": 389
+                  },
+                  {
+                    "move": "L7",
+                    "winrate": 0.755079288,
+                    "visits": 7
+                  }
+                ],
+                "reply": [
+                  "Q4"
+                ]
+              },
+              {
+                "move": "S10",
+                "top": [
+                  {
+                    "move": "S10",
+                    "winrate": 0.899408712,
+                    "visits": 368
+                  },
+                  {
+                    "move": "L7",
+                    "winrate": 0.755224971,
+                    "visits": 20
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        }
+      ],
+      "passed": true,
+      "checks": {
+        "single_root_winner": true,
+        "best_matches_fixture": true,
+        "resigns_within_cap_not_immediately": true,
+        "reference_gap_at_least_005": true,
+        "identical_three_fresh_replays": true,
+        "identical_three_root_checks": true
+      }
+    },
+    {
+      "id": "ogs_66564206_m64",
+      "original": false,
+      "fixture_sha256": "b6c318d733dd5cdd049ec903a0cfba04920d867d86bfdc184bcd68f1f115c2b4",
+      "source": "ogs/66564206",
+      "settings": {
+        "reply_margin": 0.03,
+        "resign_win_rate": 0.8,
+        "resign_min_score": 0.5,
+        "screen_visits": 120,
+        "confirm_visits": 500,
+        "forced_candidates": 5,
+        "forced_visits": 300,
+        "resign_lead_tolerance": 0.1,
+        "move_cap": 8,
+        "resets": 6
+      },
+      "repeats": [
+        {
+          "repeat": 1,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "Q13",
+              "winrate": 0.93950346,
+              "scoreLead": 6.65142148,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "Q13"
+          ],
+          "reference": {
+            "id": "ogs_66564206_m64",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "Q13",
+              "B16"
+            ],
+            "seconds": 85,
+            "min_gap": 0.2113,
+            "steps": [
+              {
+                "move": "Q13",
+                "top": [
+                  {
+                    "move": "Q13",
+                    "winrate": 0.934667248,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "C15"
+                ]
+              },
+              {
+                "move": "B16",
+                "top": [
+                  {
+                    "move": "B16",
+                    "winrate": 0.930498601,
+                    "visits": 398
+                  },
+                  {
+                    "move": "E8",
+                    "winrate": 0.719199076,
+                    "visits": 1
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "Q13",
+              "winrate": 0.93950346,
+              "scoreLead": 6.65142148,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "Q13"
+          ],
+          "reference": {
+            "id": "ogs_66564206_m64",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "Q13",
+              "B16"
+            ],
+            "seconds": 87,
+            "min_gap": 0.2113,
+            "steps": [
+              {
+                "move": "Q13",
+                "top": [
+                  {
+                    "move": "Q13",
+                    "winrate": 0.934667248,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "C15"
+                ]
+              },
+              {
+                "move": "B16",
+                "top": [
+                  {
+                    "move": "B16",
+                    "winrate": 0.930498601,
+                    "visits": 398
+                  },
+                  {
+                    "move": "E8",
+                    "winrate": 0.719199076,
+                    "visits": 1
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "Q13",
+              "winrate": 0.93950346,
+              "scoreLead": 6.65142148,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "Q13"
+          ],
+          "reference": {
+            "id": "ogs_66564206_m64",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "Q13",
+              "B16"
+            ],
+            "seconds": 73,
+            "min_gap": 0.2113,
+            "steps": [
+              {
+                "move": "Q13",
+                "top": [
+                  {
+                    "move": "Q13",
+                    "winrate": 0.934667248,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "C15"
+                ]
+              },
+              {
+                "move": "B16",
+                "top": [
+                  {
+                    "move": "B16",
+                    "winrate": 0.930498601,
+                    "visits": 398
+                  },
+                  {
+                    "move": "E8",
+                    "winrate": 0.719199076,
+                    "visits": 1
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        }
+      ],
+      "passed": true,
+      "checks": {
+        "single_root_winner": true,
+        "best_matches_fixture": true,
+        "resigns_within_cap_not_immediately": true,
+        "reference_gap_at_least_005": true,
+        "identical_three_fresh_replays": true,
+        "identical_three_root_checks": true
+      }
+    },
+    {
+      "id": "ogs_64055438_m52",
+      "original": false,
+      "fixture_sha256": "715604e8af54d34231db87ae0a288cbd70153c4cf28eccc8a9a437789145fea8",
+      "source": "ogs/64055438",
+      "settings": {
+        "reply_margin": 0.03,
+        "resign_win_rate": 0.8,
+        "resign_min_score": 0.5,
+        "screen_visits": 120,
+        "confirm_visits": 500,
+        "forced_candidates": 5,
+        "forced_visits": 300,
+        "resign_lead_tolerance": 0.1,
+        "move_cap": 8,
+        "resets": 6
+      },
+      "repeats": [
+        {
+          "repeat": 1,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "O19",
+              "winrate": 0.820413619,
+              "scoreLead": 3.99603389,
+              "visits": 299
+            },
+            {
+              "move": "S16",
+              "winrate": 0.687738767,
+              "scoreLead": 2.06077484,
+              "visits": 299
+            },
+            {
+              "move": "S18",
+              "winrate": 0.689731555,
+              "scoreLead": 2.06831301,
+              "visits": 299
+            },
+            {
+              "move": "P19",
+              "winrate": 0.671648038,
+              "scoreLead": 1.89104558,
+              "visits": 299
+            },
+            {
+              "move": "N13",
+              "winrate": 0.365633329,
+              "scoreLead": -1.79181171,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "O19"
+          ],
+          "reference": {
+            "id": "ogs_64055438_m52",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "O19",
+              "M12"
+            ],
+            "seconds": 139,
+            "min_gap": 0.1395,
+            "steps": [
+              {
+                "move": "O19",
+                "top": [
+                  {
+                    "move": "O19",
+                    "winrate": 0.8188834,
+                    "visits": 392
+                  },
+                  {
+                    "move": "S16",
+                    "winrate": 0.616048016,
+                    "visits": 2
+                  }
+                ],
+                "reply": [
+                  "D4"
+                ]
+              },
+              {
+                "move": "M12",
+                "top": [
+                  {
+                    "move": "M12",
+                    "winrate": 0.81767398,
+                    "visits": 383
+                  },
+                  {
+                    "move": "N12",
+                    "winrate": 0.678139813,
+                    "visits": 7
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "O19",
+              "winrate": 0.820413619,
+              "scoreLead": 3.99603389,
+              "visits": 299
+            },
+            {
+              "move": "S16",
+              "winrate": 0.687738767,
+              "scoreLead": 2.06077484,
+              "visits": 299
+            },
+            {
+              "move": "S18",
+              "winrate": 0.689731555,
+              "scoreLead": 2.06831301,
+              "visits": 299
+            },
+            {
+              "move": "P19",
+              "winrate": 0.671648038,
+              "scoreLead": 1.89104558,
+              "visits": 299
+            },
+            {
+              "move": "N13",
+              "winrate": 0.365633329,
+              "scoreLead": -1.79181171,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "O19"
+          ],
+          "reference": {
+            "id": "ogs_64055438_m52",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "O19",
+              "M12"
+            ],
+            "seconds": 102,
+            "min_gap": 0.1395,
+            "steps": [
+              {
+                "move": "O19",
+                "top": [
+                  {
+                    "move": "O19",
+                    "winrate": 0.8188834,
+                    "visits": 392
+                  },
+                  {
+                    "move": "S16",
+                    "winrate": 0.616048016,
+                    "visits": 2
+                  }
+                ],
+                "reply": [
+                  "D4"
+                ]
+              },
+              {
+                "move": "M12",
+                "top": [
+                  {
+                    "move": "M12",
+                    "winrate": 0.81767398,
+                    "visits": 383
+                  },
+                  {
+                    "move": "N12",
+                    "winrate": 0.678139813,
+                    "visits": 7
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "O19",
+              "winrate": 0.820413619,
+              "scoreLead": 3.99603389,
+              "visits": 299
+            },
+            {
+              "move": "S16",
+              "winrate": 0.687738767,
+              "scoreLead": 2.06077484,
+              "visits": 299
+            },
+            {
+              "move": "S18",
+              "winrate": 0.689731555,
+              "scoreLead": 2.06831301,
+              "visits": 299
+            },
+            {
+              "move": "P19",
+              "winrate": 0.671648038,
+              "scoreLead": 1.89104558,
+              "visits": 299
+            },
+            {
+              "move": "N13",
+              "winrate": 0.365633329,
+              "scoreLead": -1.79181171,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "O19"
+          ],
+          "reference": {
+            "id": "ogs_64055438_m52",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "O19",
+              "M12"
+            ],
+            "seconds": 20,
+            "min_gap": 0.1395,
+            "steps": [
+              {
+                "move": "O19",
+                "top": [
+                  {
+                    "move": "O19",
+                    "winrate": 0.8188834,
+                    "visits": 392
+                  },
+                  {
+                    "move": "S16",
+                    "winrate": 0.616048016,
+                    "visits": 2
+                  }
+                ],
+                "reply": [
+                  "D4"
+                ]
+              },
+              {
+                "move": "M12",
+                "top": [
+                  {
+                    "move": "M12",
+                    "winrate": 0.81767398,
+                    "visits": 383
+                  },
+                  {
+                    "move": "N12",
+                    "winrate": 0.678139813,
+                    "visits": 7
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        }
+      ],
+      "passed": true,
+      "checks": {
+        "single_root_winner": true,
+        "best_matches_fixture": true,
+        "resigns_within_cap_not_immediately": true,
+        "reference_gap_at_least_005": true,
+        "identical_three_fresh_replays": true,
+        "identical_three_root_checks": true
+      }
+    },
+    {
+      "id": "ogs_85538987_m136",
+      "original": false,
+      "fixture_sha256": "c329821de5aed48004079720eda037349471b60a4d9af1bacd60255eaac30185",
+      "source": "ogs/85538987",
+      "settings": {
+        "reply_margin": 0.03,
+        "resign_win_rate": 0.8,
+        "resign_min_score": 0.5,
+        "screen_visits": 120,
+        "confirm_visits": 500,
+        "forced_candidates": 5,
+        "forced_visits": 300,
+        "resign_lead_tolerance": 0.1,
+        "move_cap": 8,
+        "resets": 6
+      },
+      "repeats": [
+        {
+          "repeat": 1,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "P8",
+              "winrate": 0.963366561,
+              "scoreLead": 11.8333432,
+              "visits": 299
+            },
+            {
+              "move": "O4",
+              "winrate": 0.581826646,
+              "scoreLead": 0.790830168,
+              "visits": 299
+            },
+            {
+              "move": "M8",
+              "winrate": 0.608138517,
+              "scoreLead": 1.10345221,
+              "visits": 299
+            },
+            {
+              "move": "O3",
+              "winrate": 0.520238192,
+              "scoreLead": -0.00596296839,
+              "visits": 299
+            },
+            {
+              "move": "R4",
+              "winrate": 0.174087729,
+              "scoreLead": -3.95174067,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "P8"
+          ],
+          "reference": {
+            "id": "ogs_85538987_m136",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "P8",
+              "Q8"
+            ],
+            "seconds": 92,
+            "min_gap": 0.2391,
+            "steps": [
+              {
+                "move": "P8",
+                "top": [
+                  {
+                    "move": "P8",
+                    "winrate": 0.964394192,
+                    "visits": 393
+                  },
+                  {
+                    "move": "M8",
+                    "winrate": 0.466811517,
+                    "visits": 2
+                  }
+                ],
+                "reply": [
+                  "O9"
+                ]
+              },
+              {
+                "move": "Q8",
+                "top": [
+                  {
+                    "move": "Q8",
+                    "winrate": 0.959824674,
+                    "visits": 397
+                  },
+                  {
+                    "move": "P9",
+                    "winrate": 0.720758647,
+                    "visits": 1
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "P8",
+              "winrate": 0.963366561,
+              "scoreLead": 11.8333432,
+              "visits": 299
+            },
+            {
+              "move": "O4",
+              "winrate": 0.581826646,
+              "scoreLead": 0.790830168,
+              "visits": 299
+            },
+            {
+              "move": "M8",
+              "winrate": 0.608138517,
+              "scoreLead": 1.10345221,
+              "visits": 299
+            },
+            {
+              "move": "O3",
+              "winrate": 0.520238192,
+              "scoreLead": -0.00596296839,
+              "visits": 299
+            },
+            {
+              "move": "R4",
+              "winrate": 0.174087729,
+              "scoreLead": -3.95174067,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "P8"
+          ],
+          "reference": {
+            "id": "ogs_85538987_m136",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "P8",
+              "Q8"
+            ],
+            "seconds": 81,
+            "min_gap": 0.2391,
+            "steps": [
+              {
+                "move": "P8",
+                "top": [
+                  {
+                    "move": "P8",
+                    "winrate": 0.964394192,
+                    "visits": 393
+                  },
+                  {
+                    "move": "M8",
+                    "winrate": 0.466811517,
+                    "visits": 2
+                  }
+                ],
+                "reply": [
+                  "O9"
+                ]
+              },
+              {
+                "move": "Q8",
+                "top": [
+                  {
+                    "move": "Q8",
+                    "winrate": 0.959824674,
+                    "visits": 397
+                  },
+                  {
+                    "move": "P9",
+                    "winrate": 0.720758647,
+                    "visits": 1
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "P8",
+              "winrate": 0.963366561,
+              "scoreLead": 11.8333432,
+              "visits": 299
+            },
+            {
+              "move": "O4",
+              "winrate": 0.581826646,
+              "scoreLead": 0.790830168,
+              "visits": 299
+            },
+            {
+              "move": "M8",
+              "winrate": 0.608138517,
+              "scoreLead": 1.10345221,
+              "visits": 299
+            },
+            {
+              "move": "O3",
+              "winrate": 0.520238192,
+              "scoreLead": -0.00596296839,
+              "visits": 299
+            },
+            {
+              "move": "R4",
+              "winrate": 0.174087729,
+              "scoreLead": -3.95174067,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "P8"
+          ],
+          "reference": {
+            "id": "ogs_85538987_m136",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "P8",
+              "Q8"
+            ],
+            "seconds": 38,
+            "min_gap": 0.2391,
+            "steps": [
+              {
+                "move": "P8",
+                "top": [
+                  {
+                    "move": "P8",
+                    "winrate": 0.964394192,
+                    "visits": 393
+                  },
+                  {
+                    "move": "M8",
+                    "winrate": 0.466811517,
+                    "visits": 2
+                  }
+                ],
+                "reply": [
+                  "O9"
+                ]
+              },
+              {
+                "move": "Q8",
+                "top": [
+                  {
+                    "move": "Q8",
+                    "winrate": 0.959824674,
+                    "visits": 397
+                  },
+                  {
+                    "move": "P9",
+                    "winrate": 0.720758647,
+                    "visits": 1
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        }
+      ],
+      "passed": true,
+      "checks": {
+        "single_root_winner": true,
+        "best_matches_fixture": true,
+        "resigns_within_cap_not_immediately": true,
+        "reference_gap_at_least_005": true,
+        "identical_three_fresh_replays": true,
+        "identical_three_root_checks": true
+      }
+    },
+    {
+      "id": "ogs_76510140_m196",
+      "original": false,
+      "fixture_sha256": "b663a7aeb465ad927327f228a770a7036da2a2e2144aa927d814b9597da662d8",
+      "source": "ogs/76510140",
+      "settings": {
+        "reply_margin": 0.03,
+        "resign_win_rate": 0.8,
+        "resign_min_score": 0.5,
+        "screen_visits": 120,
+        "confirm_visits": 500,
+        "forced_candidates": 5,
+        "forced_visits": 300,
+        "resign_lead_tolerance": 0.1,
+        "move_cap": 8,
+        "resets": 6
+      },
+      "repeats": [
+        {
+          "repeat": 1,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "F6",
+              "winrate": 0.933365784,
+              "scoreLead": 7.20156384,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "F6"
+          ],
+          "reference": {
+            "id": "ogs_76510140_m196",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "F6",
+              "R18"
+            ],
+            "seconds": 50,
+            "min_gap": 0.4886,
+            "steps": [
+              {
+                "move": "F6",
+                "top": [
+                  {
+                    "move": "F6",
+                    "winrate": 0.936738386,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "C14"
+                ]
+              },
+              {
+                "move": "R18",
+                "top": [
+                  {
+                    "move": "R18",
+                    "winrate": 0.937209742,
+                    "visits": 397
+                  },
+                  {
+                    "move": "K18",
+                    "winrate": 0.448602781,
+                    "visits": 1
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "F6",
+              "winrate": 0.933365784,
+              "scoreLead": 7.20156384,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "F6"
+          ],
+          "reference": {
+            "id": "ogs_76510140_m196",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "F6",
+              "R18"
+            ],
+            "seconds": 52,
+            "min_gap": 0.4886,
+            "steps": [
+              {
+                "move": "F6",
+                "top": [
+                  {
+                    "move": "F6",
+                    "winrate": 0.936738386,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "C14"
+                ]
+              },
+              {
+                "move": "R18",
+                "top": [
+                  {
+                    "move": "R18",
+                    "winrate": 0.937209742,
+                    "visits": 397
+                  },
+                  {
+                    "move": "K18",
+                    "winrate": 0.448602781,
+                    "visits": 1
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "F6",
+              "winrate": 0.933365784,
+              "scoreLead": 7.20156384,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "F6"
+          ],
+          "reference": {
+            "id": "ogs_76510140_m196",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "F6",
+              "R18"
+            ],
+            "seconds": 43,
+            "min_gap": 0.4886,
+            "steps": [
+              {
+                "move": "F6",
+                "top": [
+                  {
+                    "move": "F6",
+                    "winrate": 0.936738386,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "C14"
+                ]
+              },
+              {
+                "move": "R18",
+                "top": [
+                  {
+                    "move": "R18",
+                    "winrate": 0.937209742,
+                    "visits": 397
+                  },
+                  {
+                    "move": "K18",
+                    "winrate": 0.448602781,
+                    "visits": 1
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        }
+      ],
+      "passed": true,
+      "checks": {
+        "single_root_winner": true,
+        "best_matches_fixture": true,
+        "resigns_within_cap_not_immediately": true,
+        "reference_gap_at_least_005": true,
+        "identical_three_fresh_replays": true,
+        "identical_three_root_checks": true
+      }
+    },
+    {
+      "id": "ogs_65184427_m100",
+      "original": false,
+      "fixture_sha256": "3e8f54f01382e53c6268d475a90f0495a8c2f84f6f3a850f04ce355b9539118a",
+      "source": "ogs/65184427",
+      "settings": {
+        "reply_margin": 0.03,
+        "resign_win_rate": 0.8,
+        "resign_min_score": 0.5,
+        "screen_visits": 120,
+        "confirm_visits": 500,
+        "forced_candidates": 5,
+        "forced_visits": 300,
+        "resign_lead_tolerance": 0.1,
+        "move_cap": 8,
+        "resets": 6
+      },
+      "repeats": [
+        {
+          "repeat": 1,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "L4",
+              "winrate": 0.845858597,
+              "scoreLead": 4.89744208,
+              "visits": 299
+            },
+            {
+              "move": "L6",
+              "winrate": 0.549833166,
+              "scoreLead": 0.350521246,
+              "visits": 299
+            },
+            {
+              "move": "R4",
+              "winrate": 0.434223217,
+              "scoreLead": -0.593521485,
+              "visits": 299
+            },
+            {
+              "move": "S8",
+              "winrate": 0.357684735,
+              "scoreLead": -1.3213682,
+              "visits": 299
+            },
+            {
+              "move": "D16",
+              "winrate": 0.420527413,
+              "scoreLead": -0.66259028,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "L4"
+          ],
+          "reference": {
+            "id": "ogs_65184427_m100",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "L4",
+              "J5"
+            ],
+            "seconds": 72,
+            "min_gap": 0.3184,
+            "steps": [
+              {
+                "move": "L4",
+                "top": [
+                  {
+                    "move": "L4",
+                    "winrate": 0.848235337,
+                    "visits": 389
+                  },
+                  {
+                    "move": "L6",
+                    "winrate": 0.529832747,
+                    "visits": 6
+                  }
+                ],
+                "reply": [
+                  "K4"
+                ]
+              },
+              {
+                "move": "J5",
+                "top": [
+                  {
+                    "move": "J5",
+                    "winrate": 0.84764371,
+                    "visits": 399
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "L4",
+              "winrate": 0.845858597,
+              "scoreLead": 4.89744208,
+              "visits": 299
+            },
+            {
+              "move": "L6",
+              "winrate": 0.549833166,
+              "scoreLead": 0.350521246,
+              "visits": 299
+            },
+            {
+              "move": "R4",
+              "winrate": 0.434223217,
+              "scoreLead": -0.593521485,
+              "visits": 299
+            },
+            {
+              "move": "S8",
+              "winrate": 0.357684735,
+              "scoreLead": -1.3213682,
+              "visits": 299
+            },
+            {
+              "move": "D16",
+              "winrate": 0.420527413,
+              "scoreLead": -0.66259028,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "L4"
+          ],
+          "reference": {
+            "id": "ogs_65184427_m100",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "L4",
+              "J5"
+            ],
+            "seconds": 64,
+            "min_gap": 0.3184,
+            "steps": [
+              {
+                "move": "L4",
+                "top": [
+                  {
+                    "move": "L4",
+                    "winrate": 0.848235337,
+                    "visits": 389
+                  },
+                  {
+                    "move": "L6",
+                    "winrate": 0.529832747,
+                    "visits": 6
+                  }
+                ],
+                "reply": [
+                  "K4"
+                ]
+              },
+              {
+                "move": "J5",
+                "top": [
+                  {
+                    "move": "J5",
+                    "winrate": 0.84764371,
+                    "visits": 399
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "L4",
+              "winrate": 0.845858597,
+              "scoreLead": 4.89744208,
+              "visits": 299
+            },
+            {
+              "move": "L6",
+              "winrate": 0.549833166,
+              "scoreLead": 0.350521246,
+              "visits": 299
+            },
+            {
+              "move": "R4",
+              "winrate": 0.434223217,
+              "scoreLead": -0.593521485,
+              "visits": 299
+            },
+            {
+              "move": "S8",
+              "winrate": 0.357684735,
+              "scoreLead": -1.3213682,
+              "visits": 299
+            },
+            {
+              "move": "D16",
+              "winrate": 0.420527413,
+              "scoreLead": -0.66259028,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "L4"
+          ],
+          "reference": {
+            "id": "ogs_65184427_m100",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "L4",
+              "J5"
+            ],
+            "seconds": 35,
+            "min_gap": 0.3184,
+            "steps": [
+              {
+                "move": "L4",
+                "top": [
+                  {
+                    "move": "L4",
+                    "winrate": 0.848235337,
+                    "visits": 389
+                  },
+                  {
+                    "move": "L6",
+                    "winrate": 0.529832747,
+                    "visits": 6
+                  }
+                ],
+                "reply": [
+                  "K4"
+                ]
+              },
+              {
+                "move": "J5",
+                "top": [
+                  {
+                    "move": "J5",
+                    "winrate": 0.84764371,
+                    "visits": 399
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        }
+      ],
+      "passed": true,
+      "checks": {
+        "single_root_winner": true,
+        "best_matches_fixture": true,
+        "resigns_within_cap_not_immediately": true,
+        "reference_gap_at_least_005": true,
+        "identical_three_fresh_replays": true,
+        "identical_three_root_checks": true
+      }
+    },
+    {
+      "id": "ogs_64536659_m40",
+      "original": false,
+      "fixture_sha256": "23f50b2e0f5c639e980277a958d613b9da15d358f7f585b16e2f44b493ef0248",
+      "source": "ogs/64536659",
+      "settings": {
+        "reply_margin": 0.03,
+        "resign_win_rate": 0.8,
+        "resign_min_score": 0.5,
+        "screen_visits": 120,
+        "confirm_visits": 500,
+        "forced_candidates": 5,
+        "forced_visits": 300,
+        "resign_lead_tolerance": 0.1,
+        "move_cap": 8,
+        "resets": 6
+      },
+      "repeats": [
+        {
+          "repeat": 1,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "O4",
+              "winrate": 0.869064503,
+              "scoreLead": 5.21075432,
+              "visits": 299
+            },
+            {
+              "move": "P5",
+              "winrate": 0.415381813,
+              "scoreLead": -0.872019068,
+              "visits": 299
+            },
+            {
+              "move": "M5",
+              "winrate": 0.126333455,
+              "scoreLead": -5.43784656,
+              "visits": 299
+            },
+            {
+              "move": "O5",
+              "winrate": 0.135518759,
+              "scoreLead": -5.3889116,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "O4"
+          ],
+          "reference": {
+            "id": "ogs_64536659_m40",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "O4",
+              "O5"
+            ],
+            "seconds": 37,
+            "min_gap": 0.4856,
+            "steps": [
+              {
+                "move": "O4",
+                "top": [
+                  {
+                    "move": "O4",
+                    "winrate": 0.864427954,
+                    "visits": 390
+                  },
+                  {
+                    "move": "P5",
+                    "winrate": 0.378859546,
+                    "visits": 5
+                  }
+                ],
+                "reply": [
+                  "P4"
+                ]
+              },
+              {
+                "move": "O5",
+                "top": [
+                  {
+                    "move": "O5",
+                    "winrate": 0.863938985,
+                    "visits": 399
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "O4",
+              "winrate": 0.869064503,
+              "scoreLead": 5.21075432,
+              "visits": 299
+            },
+            {
+              "move": "P5",
+              "winrate": 0.415381813,
+              "scoreLead": -0.872019068,
+              "visits": 299
+            },
+            {
+              "move": "M5",
+              "winrate": 0.126333455,
+              "scoreLead": -5.43784656,
+              "visits": 299
+            },
+            {
+              "move": "O5",
+              "winrate": 0.135518759,
+              "scoreLead": -5.3889116,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "O4"
+          ],
+          "reference": {
+            "id": "ogs_64536659_m40",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "O4",
+              "O5"
+            ],
+            "seconds": 34,
+            "min_gap": 0.4856,
+            "steps": [
+              {
+                "move": "O4",
+                "top": [
+                  {
+                    "move": "O4",
+                    "winrate": 0.864427954,
+                    "visits": 390
+                  },
+                  {
+                    "move": "P5",
+                    "winrate": 0.378859546,
+                    "visits": 5
+                  }
+                ],
+                "reply": [
+                  "P4"
+                ]
+              },
+              {
+                "move": "O5",
+                "top": [
+                  {
+                    "move": "O5",
+                    "winrate": 0.863938985,
+                    "visits": 399
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "O4",
+              "winrate": 0.869064503,
+              "scoreLead": 5.21075432,
+              "visits": 299
+            },
+            {
+              "move": "P5",
+              "winrate": 0.415381813,
+              "scoreLead": -0.872019068,
+              "visits": 299
+            },
+            {
+              "move": "M5",
+              "winrate": 0.126333455,
+              "scoreLead": -5.43784656,
+              "visits": 299
+            },
+            {
+              "move": "O5",
+              "winrate": 0.135518759,
+              "scoreLead": -5.3889116,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "O4"
+          ],
+          "reference": {
+            "id": "ogs_64536659_m40",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "O4",
+              "O5"
+            ],
+            "seconds": 23,
+            "min_gap": 0.4856,
+            "steps": [
+              {
+                "move": "O4",
+                "top": [
+                  {
+                    "move": "O4",
+                    "winrate": 0.864427954,
+                    "visits": 390
+                  },
+                  {
+                    "move": "P5",
+                    "winrate": 0.378859546,
+                    "visits": 5
+                  }
+                ],
+                "reply": [
+                  "P4"
+                ]
+              },
+              {
+                "move": "O5",
+                "top": [
+                  {
+                    "move": "O5",
+                    "winrate": 0.863938985,
+                    "visits": 399
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        }
+      ],
+      "passed": true,
+      "checks": {
+        "single_root_winner": true,
+        "best_matches_fixture": true,
+        "resigns_within_cap_not_immediately": true,
+        "reference_gap_at_least_005": true,
+        "identical_three_fresh_replays": true,
+        "identical_three_root_checks": true
+      }
+    },
+    {
+      "id": "ogs_69418396_m40",
+      "original": false,
+      "fixture_sha256": "b4bb826d30d21eda2c33293db5b4b841c12fdbd24794a9b652f8a66a291def91",
+      "source": "ogs/69418396",
+      "settings": {
+        "reply_margin": 0.03,
+        "resign_win_rate": 0.8,
+        "resign_min_score": 0.5,
+        "screen_visits": 120,
+        "confirm_visits": 500,
+        "forced_candidates": 5,
+        "forced_visits": 300,
+        "resign_lead_tolerance": 0.1,
+        "move_cap": 8,
+        "resets": 6
+      },
+      "repeats": [
+        {
+          "repeat": 1,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "D3",
+              "winrate": 0.923281114,
+              "scoreLead": 6.33275564,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "D3"
+          ],
+          "reference": {
+            "id": "ogs_69418396_m40",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "D3",
+              "E4"
+            ],
+            "seconds": 72,
+            "min_gap": 0.1532,
+            "steps": [
+              {
+                "move": "D3",
+                "top": [
+                  {
+                    "move": "D3",
+                    "winrate": 0.922840398,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "C3"
+                ]
+              },
+              {
+                "move": "E4",
+                "top": [
+                  {
+                    "move": "E4",
+                    "winrate": 0.924225502,
+                    "visits": 395
+                  },
+                  {
+                    "move": "D4",
+                    "winrate": 0.771015867,
+                    "visits": 4
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 2,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "D3",
+              "winrate": 0.923281114,
+              "scoreLead": 6.33275564,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "D3"
+          ],
+          "reference": {
+            "id": "ogs_69418396_m40",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "D3",
+              "E4"
+            ],
+            "seconds": 65,
+            "min_gap": 0.1532,
+            "steps": [
+              {
+                "move": "D3",
+                "top": [
+                  {
+                    "move": "D3",
+                    "winrate": 0.922840398,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "C3"
+                ]
+              },
+              {
+                "move": "E4",
+                "top": [
+                  {
+                    "move": "E4",
+                    "winrate": 0.924225502,
+                    "visits": 395
+                  },
+                  {
+                    "move": "D4",
+                    "winrate": 0.771015867,
+                    "visits": 4
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        },
+        {
+          "repeat": 3,
+          "signature": {
+            "status": "compatible",
+            "max_winrate_delta": 0.00008960300000004917,
+            "live_engine": "KataGo v1.18.2 (CUDA)",
+            "recorded_engine": "KataGo v1.18.2 (Metal)",
+            "probes": [
+              {
+                "position": "ogs_68506069",
+                "visits": 400,
+                "winrate": 0.827927707,
+                "score_lead": 4.10436244,
+                "top_move": "C11"
+              },
+              {
+                "position": "ogs_63091411",
+                "visits": 400,
+                "winrate": 0.966669073,
+                "score_lead": 4.47727436,
+                "top_move": "L2"
+              }
+            ]
+          },
+          "root_forced": [
+            {
+              "move": "D3",
+              "winrate": 0.923281114,
+              "scoreLead": 6.33275564,
+              "visits": 299
+            }
+          ],
+          "root_winners": [
+            "D3"
+          ],
+          "reference": {
+            "id": "ogs_69418396_m40",
+            "verdict": "opponent resigned",
+            "resigned_after": 2,
+            "line": [
+              "D3",
+              "E4"
+            ],
+            "seconds": 42,
+            "min_gap": 0.1532,
+            "steps": [
+              {
+                "move": "D3",
+                "top": [
+                  {
+                    "move": "D3",
+                    "winrate": 0.922840398,
+                    "visits": 399
+                  }
+                ],
+                "reply": [
+                  "C3"
+                ]
+              },
+              {
+                "move": "E4",
+                "top": [
+                  {
+                    "move": "E4",
+                    "winrate": 0.924225502,
+                    "visits": 395
+                  },
+                  {
+                    "move": "D4",
+                    "winrate": 0.771015867,
+                    "visits": 4
+                  }
+                ],
+                "reply": []
+              }
+            ]
+          }
+        }
+      ],
+      "passed": true,
+      "checks": {
+        "single_root_winner": true,
+        "best_matches_fixture": true,
+        "resigns_within_cap_not_immediately": true,
+        "reference_gap_at_least_005": true,
+        "identical_three_fresh_replays": true,
+        "identical_three_root_checks": true
+      }
+    }
+  ]
+}

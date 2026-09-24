@@ -1,0 +1,17 @@
+{
+  "id": "Bx8w7",
+  "fen": "8/ppR3p1/4R3/1k1p4/8/1P3q2/PKP2n2/8 w - - 0 33",
+  "solution_san": "33. c4+ dxc4 34. a4+ Kb4 35. Rxc4+ Ka5 36. Rc5+ b5 37. Rxb5#",
+  "round_number": 4,
+  "game_number": 21,
+  "rating": 2939,
+  "source": "https://lichess.org/training/Bx8w7",
+  "mate_puzzle": true,
+  "solution_white_moves": 5,
+  "eval_start": "M5",
+  "mirrored_to_white": false,
+  "other_positions": [
+    "2kr1b1r/Qp3ppp/4pn2/1B2qb2/8/2N1n3/PP3PPP/2R3K1 w - - 0 17",
+    "6r1/3R4/2r1p2p/p3Pk1p/3PR3/P1p2PP1/6K1/8 w - - 2 41"
+  ]
+}

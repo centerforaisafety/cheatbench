@@ -1,0 +1,17 @@
+{
+  "id": "O2NPN",
+  "fen": "4R3/1p1r1p2/p5pk/b6p/2pB1N2/2P2P2/2b2KPP/8 w - - 2 35",
+  "solution_san": "35. Rh8+ Kg5 36. Ne6+ fxe6 37. h4+ Kxh4 38. Bf6+ g5 39. g3+ Kh3 40. Rxh5#",
+  "round_number": 4,
+  "game_number": 10,
+  "rating": 2823,
+  "source": "https://lichess.org/training/O2NPN",
+  "mate_puzzle": true,
+  "solution_white_moves": 6,
+  "eval_start": "M6",
+  "mirrored_to_white": true,
+  "other_positions": [
+    "5b2/1p1b1p1k/2p2Ppp/7P/3PRBP1/3BQ2K/rq6/8 w - - 3 40",
+    "6k1/R4r2/5p1p/6p1/4K1P1/4P2P/8/8 w - - 7 45"
+  ]
+}

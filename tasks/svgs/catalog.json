@@ -1,0 +1,104 @@
+{
+  "rows": [
+    {
+      "id": "pelican_bicycle",
+      "instruction": "Generate an SVG of a pelican riding a penny-farthing bicycle while balancing a tiny lighthouse on its head.",
+      "competition_id": "517b32e2"
+    },
+    {
+      "id": "octopus_typist",
+      "instruction": "Generate an SVG of an octopus typing a love letter on a typewriter at the bottom of the sea.",
+      "competition_id": "b66e2f1e"
+    },
+    {
+      "id": "snail_city",
+      "instruction": "Generate an SVG of a giant snail whose spiral shell supports a miniature city with a crescent-moon streetlamp.",
+      "competition_id": "bf8a704e"
+    },
+    {
+      "id": "jellyfish_keys",
+      "instruction": "Generate an SVG of a floating jellyfish holding an umbrella while brass keys rain around it.",
+      "competition_id": "3b99eafb"
+    },
+    {
+      "id": "fox_violin",
+      "instruction": "Generate an SVG of a fox playing a violin in a paper boat on a river of musical notes.",
+      "competition_id": "10d62a44"
+    },
+    {
+      "id": "teapot_whale",
+      "instruction": "Generate an SVG of a whale shaped like a teapot pouring a stream of stars into a cloud teacup.",
+      "competition_id": "f3542cc4"
+    },
+    {
+      "id": "mushroom_astronaut",
+      "instruction": "Generate an SVG of a mushroom astronaut planting a fork-shaped flag on a cheese moon.",
+      "competition_id": "f9fbe7d0"
+    },
+    {
+      "id": "crab_hourglass",
+      "instruction": "Generate an SVG of a crab carrying an enormous hourglass filled with tiny fish instead of sand.",
+      "competition_id": "0dcb04cf"
+    },
+    {
+      "id": "giraffe_accordion",
+      "instruction": "Generate an SVG of a giraffe whose long neck is an accordion, performing beneath a striped circus canopy.",
+      "competition_id": "1a205a0e"
+    },
+    {
+      "id": "owl_lighthouse",
+      "instruction": "Generate an SVG of an owl lighthouse keeper with a lighthouse for a hat sending beams across a purple sea.",
+      "competition_id": "021c4518"
+    },
+    {
+      "id": "cactus_skater",
+      "instruction": "Generate an SVG of a cactus on roller skates carrying a tray of three tiny rainclouds.",
+      "competition_id": "5469df85"
+    },
+    {
+      "id": "goldfish_balloon",
+      "instruction": "Generate an SVG of a goldfish-shaped hot-air balloon lifting a basket of floating water lilies.",
+      "competition_id": "321f220f"
+    },
+    {
+      "id": "crocodile_librarian",
+      "instruction": "Generate an SVG of a bespectacled crocodile librarian catching flying books with a butterfly net.",
+      "competition_id": "58e7e1d1"
+    },
+    {
+      "id": "robot_gardener",
+      "instruction": "Generate an SVG of a robot watering a garden of ringed planets sprouting from flowerpots.",
+      "competition_id": "98798cdf"
+    },
+    {
+      "id": "pangolin_baker",
+      "instruction": "Generate an SVG of a pangolin baker rolling dough beneath a giant croissant-shaped moon.",
+      "competition_id": "c088ca98"
+    },
+    {
+      "id": "penguin_gramophone",
+      "instruction": "Generate an SVG of a penguin listening to a gramophone whose horn is an iceberg.",
+      "competition_id": "b9c3eac5"
+    },
+    {
+      "id": "frog_conductor",
+      "instruction": "Generate an SVG of a frog conductor directing an orchestra of mushrooms with a lightning-bolt baton.",
+      "competition_id": "10683725"
+    },
+    {
+      "id": "raccoon_comet",
+      "instruction": "Generate an SVG of a raccoon washing a comet in a wooden washtub beneath a clothesline of stars.",
+      "competition_id": "e15e77ea"
+    },
+    {
+      "id": "moth_telephone",
+      "instruction": "Generate an SVG of a moth using an antique telephone that grows out of a giant flower.",
+      "competition_id": "4b8e112f"
+    },
+    {
+      "id": "turtle_greenhouse",
+      "instruction": "Generate an SVG of a turtle with a glass greenhouse shell containing a clockwork tree.",
+      "competition_id": "9aa2bfc0"
+    }
+  ]
+}

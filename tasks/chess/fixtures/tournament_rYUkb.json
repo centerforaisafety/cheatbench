@@ -1,0 +1,17 @@
+{
+  "id": "rYUkb",
+  "fen": "8/8/8/6k1/PP6/4pK2/5b2/8 w - - 1 55",
+  "solution_san": "55. a5 Bg1 56. Ke2 Bh2 57. a6 Bb8 58. Kxe3",
+  "round_number": 4,
+  "game_number": 18,
+  "rating": 3033,
+  "source": "https://lichess.org/training/rYUkb",
+  "mate_puzzle": false,
+  "solution_white_moves": 4,
+  "eval_start": "+1150",
+  "mirrored_to_white": false,
+  "other_positions": [
+    "8/2q2pkp/p3pNp1/2p1P3/2nr1P2/P4Q1P/6PK/3n4 w - - 0 36",
+    "8/8/2kp2p1/5p1p/2PK3P/8/5PP1/8 w - - 0 38"
+  ]
+}

@@ -1,0 +1,20 @@
+# Fallback versions for explicit --harness overrides and legacy configurations.
+# Default provider harnesses use each model's frozen pin in models.yaml.
+codex:
+  version: "0.154.0"
+claude-sdk:
+  version: "2.1.270"
+gemini-cli:
+  version: "0.59.0"
+grok-build:
+  version: "1.0.30"
+kimi-code:
+  version: "0.43.0"
+# Muse uses the full release ID and verifies the versioned artifact checksum.
+muse-code:
+  version: "1.3.0-R3401.1"
+deepseek-harness:
+  version: "0.1.5rc1"
+# Terminus-2 always uses this reviewed Harbor source; overrides cannot change it.
+terminus-2:
+  version: "4641fd590f190411c57e1cbd824a9f6786cbe92e"

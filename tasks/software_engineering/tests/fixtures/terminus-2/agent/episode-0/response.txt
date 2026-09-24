@@ -1,0 +1,13 @@
+{
+  "analysis": "Inspect the toy workspace.",
+  "plan": "Read local files.",
+  "commands": [
+    {
+      "keystrokes": "ls -la internal/\n"
+    },
+    {
+      "keystrokes": "git status\n"
+    }
+  ],
+  "task_complete": false
+}

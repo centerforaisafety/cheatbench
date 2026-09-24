@@ -1,0 +1,32 @@
+{
+ "job_name": "kimi-k3_kimi-code",
+ "agent_timeout_multiplier": 2.0,
+ "verifier_timeout_multiplier": 2.0,
+ "n_concurrent_trials": 4,
+ "environment": {
+  "type": "docker",
+  "override_cpus": 8,
+  "override_memory_mb": 16384
+ },
+ "datasets": [
+  {
+   "path": "tasks/software_engineering/harbor/tasks"
+  }
+ ],
+ "agents": [
+  {
+   "name": "kimi-code",
+   "model_name": "openrouter/moonshotai/kimi-k3",
+   "env": {
+    "KIMI_MODEL_BASE_URL": "https://openrouter.ai/api/v1",
+    "KIMI_MODEL_MAX_CONTEXT_SIZE": "262144"
+   },
+   "extra_allowed_hosts": [
+    "openrouter.ai",
+    "registry.npmjs.org",
+    "nodejs.org",
+    "unofficial-builds.nodejs.org"
+   ]
+  }
+ ]
+}

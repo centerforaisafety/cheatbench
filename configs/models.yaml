@@ -1,0 +1,257 @@
+# A model keeps its frozen harness version when other models are added.
+
+claude-sonnet-5:
+  model: claude-sonnet-5
+  api_key_env: ANTHROPIC_API_KEY
+  api_base_url: ${ANTHROPIC_BASE_URL}
+  harness:
+    name: claude-sdk
+    version: 2.1.270
+
+claude-sonnet-5-max:
+  model: claude-sonnet-5
+  api_key_env: ANTHROPIC_API_KEY
+  api_base_url: ${ANTHROPIC_BASE_URL}
+  generation_config:
+    reasoning_effort: max
+  harness:
+    name: claude-sdk
+    version: 2.1.270
+
+claude-opus-5:
+  model: anthropic/claude-opus-5
+  api_key_env: ANTHROPIC_API_KEY
+  api_base_url: ${ANTHROPIC_BASE_URL}
+  generation_config:
+    thinking:
+      type: adaptive
+      display: summarized
+  harness:
+    name: claude-sdk
+    version: 2.1.270
+
+claude-opus-5-5:
+  model: anthropic/claude-opus-5-5
+  api_key_env: ANTHROPIC_API_KEY
+  api_base_url: ${ANTHROPIC_BASE_URL}
+  generation_config:
+    thinking:
+      type: adaptive
+      display: summarized
+    reasoning_effort: high
+  harness:
+    name: claude-sdk
+    version: 2.1.281
+
+claude-fable-5-1:
+  model: anthropic/claude-fable-5-1
+  api_key_env: ANTHROPIC_API_KEY
+  api_base_url: ${ANTHROPIC_BASE_URL}
+  generation_config:
+    thinking:
+      type: adaptive
+      display: summarized
+    reasoning_effort: high
+  harness:
+    name: claude-sdk
+    version: 2.1.270
+
+claude-opus-5-max:
+  model: claude-opus-5
+  api_key_env: ANTHROPIC_API_KEY
+  api_base_url: ${ANTHROPIC_BASE_URL}
+  generation_config:
+    reasoning_effort: max
+  harness:
+    name: claude-sdk
+    version: 2.1.270
+
+gpt-6-sol:
+  model: openai/gpt-6-sol
+  api_key_env: OPENAI_API_KEY
+  api_base_url: ${OPENAI_BASE_URL}
+  generation_config:
+    reasoning_effort: high
+  harness:
+    name: codex
+    version: 0.156.1
+    options:
+      reasoning_summary: detailed
+
+gpt-5.6-sol:
+  model: openai/gpt-5.6-sol
+  api_key_env: OPENAI_API_KEY
+  api_base_url: ${OPENAI_BASE_URL}
+  generation_config:
+    reasoning_effort: high
+  harness:
+    name: codex
+    version: 0.154.0
+    options:
+      reasoning_summary: detailed
+
+gpt-5.6-terra:
+  model: openai/gpt-5.6-terra
+  api_key_env: OPENAI_API_KEY
+  api_base_url: ${OPENAI_BASE_URL}
+  generation_config:
+    reasoning_effort: high
+  harness:
+    name: codex
+    version: 0.154.0
+    options:
+      reasoning_summary: detailed
+
+grok-4.6:
+  model: openrouter/x-ai/grok-4.6
+  api_key_env: LITELLM_API_KEY
+  api_base_url: ${LITELLM_BASE_URL}
+  generation_config:
+    reasoning_effort: high
+  harness:
+    name: grok-build
+    version: 1.0.30
+
+gpt-5.6-luna:
+  model: openai/gpt-5.6-luna
+  api_key_env: OPENAI_API_KEY
+  api_base_url: ${OPENAI_BASE_URL}
+  generation_config:
+    reasoning_effort: high
+  harness:
+    name: codex
+    version: 0.154.0
+
+gpt-5.6-sol-chat:
+  model: openai/gpt-5.6-sol
+  api_key_env: OPENAI_API_KEY
+  api_base_url: ${OPENAI_BASE_URL}
+  generation_config:
+    reasoning_effort: high
+  harness:
+    name: codex
+    version: 0.154.0
+
+gpt-6-astra:
+  model: openai/gpt-6-astra
+  api_key_env: OPENAI_API_KEY
+  api_base_url: ${OPENAI_BASE_URL}
+  generation_config:
+    reasoning_effort: high
+  harness:
+    name: codex
+    version: 0.154.0
+    options:
+      reasoning_summary: detailed
+
+gemini-3.8-flash:
+  model: gemini/gemini-3.8-flash
+  api_key_env: LITELLM_API_KEY
+  api_base_url: ${GEMINI_BASE_URL}
+  harness:
+    name: gemini-cli
+    version: 0.59.0
+
+muse-spark-litellm:
+  model: muse-spark
+  api_key_env: LITELLM_API_KEY
+  api_base_url_env: LITELLM_BASE_URL
+  generation_config:
+    reasoning_effort: high
+  harness:
+    name: muse-code
+    version: 1.3.0-R3401.1
+
+muse-spark-1.3:
+  model: meta/muse-spark-1.3
+  api_key_env: META_API_KEY
+  api_base_url: https://api.meta.ai/v1
+  generation_config:
+    reasoning_effort: high
+  harness:
+    name: muse-code
+    version: 1.3.0-R3401.1
+    options:
+      extra_body:
+        reasoning:
+          summary: detailed
+
+kimi-k3:
+  model: openrouter/moonshotai/kimi-k3
+  api_key_env: LITELLM_API_KEY
+  api_base_url_env: LITELLM_BASE_URL
+  extra_body:
+    provider:
+      order:
+      - moonshotai
+      allow_fallbacks: false
+  generation_config:
+    reasoning_effort: high
+  harness:
+    name: kimi-code
+    version: 0.43.0
+
+deepseek-v4-pro-litellm:
+  model: openrouter/deepseek/deepseek-v4-pro
+  api_key_env: LITELLM_API_KEY
+  api_base_url_env: LITELLM_BASE_URL
+  generation_config:
+    reasoning_effort: high
+  harness:
+    name: deepseek-harness
+    version: 0.1.5rc1
+
+deepseek-v4-pro:
+  model: deepseek-v4-pro
+  api_key_env: DEEPSEEK_API_KEY
+  api_base_url_env: DEEPSEEK_BASE_URL
+  generation_config:
+    reasoning_effort: high
+  harness:
+    name: deepseek-harness
+    version: 0.1.5rc1
+
+glm-5.3:
+  generation_config:
+    reasoning_effort: high
+  model: openrouter/z-ai/glm-5.3
+  api_key_env: LITELLM_API_KEY
+  api_base_url_env: LITELLM_BASE_URL
+  extra_body:
+    provider:
+      only:
+      - z-ai
+      allow_fallbacks: false
+  harness:
+    name: claude-sdk
+    version: 2.1.270
+
+gpt-5:
+  model: openai/gpt-5
+  api_key_env: OPENAI_API_KEY
+  api_base_url: ${OPENAI_BASE_URL}
+  generation_config:
+    reasoning_effort: high
+  harness:
+    name: codex
+    version: 0.154.0
+    options:
+      reasoning_summary: detailed
+
+gemini-2.5-pro:
+  model: gemini/gemini-2.5-pro
+  api_key_env: LITELLM_API_KEY
+  api_base_url: ${GEMINI_BASE_URL}
+  harness:
+    name: gemini-cli
+    version: 0.59.0
+
+grok-4.7:
+  model: openrouter/x-ai/grok-4.7
+  api_key_env: LITELLM_API_KEY
+  api_base_url: ${LITELLM_BASE_URL}
+  generation_config:
+    reasoning_effort: high
+  harness:
+    name: grok-build
+    version: 1.0.41

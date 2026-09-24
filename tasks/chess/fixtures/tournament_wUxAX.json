@@ -1,0 +1,17 @@
+{
+  "id": "wUxAX",
+  "fen": "1r2r3/pp4qk/2b2R1p/4Q3/2Pp4/3P2P1/4P2P/R5K1 w - - 1 25",
+  "solution_san": "25. Qf5+ Kh8 26. Rg6 Rf8 27. Qg4 Bd7 28. Rxg7 Bxg4 29. Rxg4",
+  "round_number": 4,
+  "game_number": 13,
+  "rating": 3054,
+  "source": "https://lichess.org/training/wUxAX",
+  "mate_puzzle": false,
+  "solution_white_moves": 5,
+  "eval_start": "+567",
+  "mirrored_to_white": true,
+  "other_positions": [
+    "8/2q2pkp/p3pNp1/2p1P3/2nr1P2/P4Q1P/6PK/3n4 w - - 0 36",
+    "8/8/2kp2p1/5p1p/2PK3P/8/5PP1/8 w - - 0 38"
+  ]
+}

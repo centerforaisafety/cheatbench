@@ -1,0 +1,26 @@
+{
+ "engine": "Stockfish 19",
+ "options": {
+  "Threads": 1,
+  "Hash": 128,
+  "SyzygyProbeLimit": 0
+ },
+ "probes": [
+  {
+   "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+   "nodes_limit": 200000,
+   "bestmove": "e2e4",
+   "score": "+31",
+   "nodes": 200066,
+   "depth": 19
+  },
+  {
+   "fen": "3r1r2/pp1b1pk1/3R2pp/q3p3/2B1P2N/1P2P3/P4QPP/6K1 w - - 1 25",
+   "nodes_limit": 200000,
+   "bestmove": "f2f6",
+   "score": "+526",
+   "nodes": 200104,
+   "depth": 14
+  }
+ ]
+}

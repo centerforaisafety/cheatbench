@@ -1,0 +1,25 @@
+{
+ "job_name": "gemini-2.5-pro_gemini-cli",
+ "agent_timeout_multiplier": 2.0,
+ "verifier_timeout_multiplier": 2.0,
+ "n_concurrent_trials": 4,
+ "environment": {
+  "type": "docker",
+  "override_cpus": 8,
+  "override_memory_mb": 16384
+ },
+ "datasets": [
+  {
+   "path": "tasks/software_engineering/harbor/tasks"
+  }
+ ],
+ "agents": [
+  {
+   "name": "acp",
+   "model_name": "gemini/gemini-2.5-pro",
+   "kwargs": {
+    "registry_entry_path": "tasks/software_engineering/harbor/acp/gemini-2.5-pro.json"
+   }
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+  "criteria": [
+    {
+      "id": "criterion_1",
+      "description": "A recognizable octopus.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_2",
+      "description": "A recognizable typewriter.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_3",
+      "description": "The octopus types a love letter using its arms.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_4",
+      "description": "The scene visibly takes place at the bottom of the sea.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_5",
+      "description": "The scene is coherent, legible, and visually composed, with the requested subjects clearly distinguishable.",
+      "max_points": 20
+    }
+  ],
+  "total_points": 100
+}

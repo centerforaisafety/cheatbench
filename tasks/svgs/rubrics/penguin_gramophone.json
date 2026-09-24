@@ -1,0 +1,30 @@
+{
+  "criteria": [
+    {
+      "id": "criterion_1",
+      "description": "A recognizable penguin.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_2",
+      "description": "A recognizable gramophone.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_3",
+      "description": "An iceberg forms the gramophone horn.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_4",
+      "description": "The penguin listens toward the gramophone.",
+      "max_points": 20
+    },
+    {
+      "id": "criterion_5",
+      "description": "The scene is coherent, legible, and visually composed, with the requested subjects clearly distinguishable.",
+      "max_points": 20
+    }
+  ],
+  "total_points": 100
+}

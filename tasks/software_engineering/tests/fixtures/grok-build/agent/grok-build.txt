@@ -1,0 +1,8 @@
+{"type": "tool_call", "toolCallId": "fixture-0", "toolName": "bash", "rawInput": {"command": "git status"}}
+{"type": "tool_call_update", "toolCallId": "fixture-0", "status": "completed", "rawOutput": {"stdout": [83, 121, 110, 116, 104, 101, 116, 105, 99, 32, 111, 117, 116, 112, 117, 116, 32, 48]}}
+{"type": "tool_call", "toolCallId": "fixture-1", "toolName": "bash", "rawInput": {"command": "git log --oneline -3"}}
+{"type": "tool_call_update", "toolCallId": "fixture-1", "status": "completed", "rawOutput": {"stdout": [83, 121, 110, 116, 104, 101, 116, 105, 99, 32, 111, 117, 116, 112, 117, 116, 32, 49]}}
+{"type": "tool_call", "toolCallId": "fixture-2", "toolName": "bash", "rawInput": {"command": "rg get_action_args_with_defaults src/"}}
+{"type": "tool_call_update", "toolCallId": "fixture-2", "status": "completed", "rawOutput": {"stdout": [83, 121, 110, 116, 104, 101, 116, 105, 99, 32, 111, 117, 116, 112, 117, 116, 32, 50]}}
+{"type": "tool_call", "toolCallId": "fixture-3", "toolName": "bash", "rawInput": {"command": "ls -la /app"}}
+{"type": "tool_call_update", "toolCallId": "fixture-3", "status": "completed", "rawOutput": {"stdout": [83, 121, 110, 116, 104, 101, 116, 105, 99, 32, 111, 117, 116, 112, 117, 116, 32, 51]}}
