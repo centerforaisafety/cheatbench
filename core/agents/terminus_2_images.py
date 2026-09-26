@@ -83,7 +83,9 @@ def response_content(content, role="user"):
     return parts
 
 
-class ImageLiteLLM(LiteLLM):
+class TerminusLLMClient(LiteLLM):
+    """Harbor model client with image formatting and API request recovery."""
+
     def _record_recovery(self, kind):
         counts = getattr(self, "transport_recoveries", {})
         counts[kind] = counts.get(kind, 0) + 1
@@ -273,7 +275,7 @@ class ImageTerminus2(Terminus2):
             raise ValueError("T2 image extension requires the LiteLLM backend")
         extra = dict(kwargs.pop("llm_kwargs") or {})
         install_wire_audit()
-        return ImageLiteLLM(**kwargs, **extra)
+        return TerminusLLMClient(**kwargs, **extra)
 
     async def _query_llm(self, *args, **kwargs):
         self._llm._size_recovery_used = False

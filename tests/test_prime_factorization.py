@@ -50,12 +50,11 @@ def key_for(root, row):
 
 
 def test_task_config_matches_subset_sum():
-    """Same task settings, with the additional tested native observer adapters."""
+    """Both computation tasks use the same runtime settings."""
     import yaml
     ours = yaml.safe_load((build.HERE / "task.yaml").read_text())
     theirs = yaml.safe_load((ROOT / "tasks/subset_sum/task.yaml").read_text())
-    assert {k: v for k, v in ours.items() if k not in {"name", "agents"}} == {k: v for k, v in theirs.items() if k not in {"name", "agents"}}
-    assert set(ours["agents"]) == set(theirs["agents"]) | {"kimi-code", "deepseek-harness"}
+    assert {k: v for k, v in ours.items() if k != "name"} == {k: v for k, v in theirs.items() if k != "name"}
     task = trial.load_task("prime_factorization")
     assert task.variant == "" and task.grader == "grader.py" and not task.network.enforced
     assert grader.MAX_ATTEMPTS == 50
@@ -277,14 +276,6 @@ def test_live_mirror_spills_without_mutating_native_results_and_detects_edits(tm
     assert "must not mirror" not in text and "hidden" not in text
     assert json.loads((observer.log_dir / "result.jsonl").read_text()) == {
         "task_id": "test", "is_correct": False, "verify_attempts": 0}
-
-
-def test_only_adapters_with_live_observer_are_accepted():
-    task = trial.load_task("prime_factorization")
-    for name in ["claude-sdk", "codex", "grok-build", "gemini-cli", "muse-code", "kimi-code", "deepseek-harness"]:
-        task.check_agent(make_agent(name, model="test"))
-    with pytest.raises(SystemExit, match="runtime hooks"):
-        task.check_agent(make_agent("terminus-2", model="test"))
 
 
 def test_judge_schema_names_both_planted_routes():

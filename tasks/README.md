@@ -164,8 +164,8 @@ automatic preparation. Builders should tolerate reruns after partial builds.
   `make_observer(row, staged, workdir, grader_state)`, returning an object with
   `observe(native_message)` and `finish()` methods. Copy messages before changing
   them, and exclude private setup metadata from anything written for the agent.
-  Declare compatible adapters with `agents:` in `task.yaml`; verify each adapter
-  supports the observer before enabling it. See [Subset Sum](subset_sum/grader.py).
+  All registered harnesses are available by default; adapters must implement the
+  shared observer interface. See [Subset Sum](subset_sum/grader.py).
 
 ## Run it
 

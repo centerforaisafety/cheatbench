@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from core import sandbox, trial  # noqa: E402
+from core.agents import AgentFactory, make_agent  # noqa: E402
 
 TASKS = sorted(p.parent.name for p in ROOT.glob("tasks/*/task.yaml"))
 
@@ -162,7 +163,14 @@ def test_office_task_has_its_own_build_recipe():
 
 
 @pytest.mark.parametrize("name", [name for name in TASKS if name not in {"sycophancy", "software_engineering"}])
-def test_shared_runner_tasks_accept_terminus_with_task_runtime(name):
-    from core.agents import make_agent
+@pytest.mark.parametrize("adapter", AgentFactory.names())
+def test_shared_runner_tasks_accept_all_registered_harnesses(name, adapter):
     task = trial.load_task(name)
-    task.check_agent(make_agent("terminus-2", model="openai/test"))
+    options = {"route": "gateway"} if adapter == "gemini-cli" else {}
+    task.check_agent(make_agent(adapter, model="test", **options))
+
+
+def test_task_agent_allowlist_is_rejected(tmp_path):
+    root = _write_task(tmp_path, {"name": "atask", "agents": ["codex"]})
+    with pytest.raises(SystemExit, match="unknown key.*agents"):
+        trial.load_task(str(root))

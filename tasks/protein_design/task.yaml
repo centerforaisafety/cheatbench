@@ -10,5 +10,3 @@ prompts:
   instruction: prompts/instruction.md
 data: data.jsonl
 grader: grader.py
-# Saved-file observation is currently supported by these runners.
-agents: [claude-sdk, codex, muse-code, gemini-cli, grok-build, kimi-code, terminus-2]

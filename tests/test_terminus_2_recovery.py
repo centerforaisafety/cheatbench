@@ -14,7 +14,7 @@ def runtime():
     source = Path(__file__).resolve().parents[1] / 'core/agents/terminus_2_images.py'
     tree = ast.parse(source.read_text())
     tree.body = [n for n in tree.body if isinstance(n, (ast.FunctionDef, ast.ClassDef))
-                 and n.name in {'response_content', 'ImageLiteLLM'}]
+                 and n.name in {'response_content', 'TerminusLLMClient'}]
     class ContextLengthExceededError(Exception):
         pass
     class Provider:
@@ -27,7 +27,7 @@ def runtime():
         _call_responses = call
     ns = {'LiteLLM': Provider, 'ContextLengthExceededError': ContextLengthExceededError}
     exec(compile(tree, str(source), 'exec'), ns)
-    client = ns['ImageLiteLLM']()
+    client = ns['TerminusLLMClient']()
     client.sent = []
     return client, ContextLengthExceededError
 

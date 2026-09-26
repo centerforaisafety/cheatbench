@@ -201,14 +201,6 @@ def test_codex_live_tail_waits_for_complete_records_and_flushes(tmp_path):
     assert tail.error is None and len(observer.messages) == 2
 
 
-def test_only_adapters_with_live_observer_are_accepted():
-    task = trial.load_task("subset_sum")
-    for name in ["claude-sdk", "codex", "grok-build", "gemini-cli", "muse-code"]:
-        task.check_agent(make_agent(name, model="test"))
-    with pytest.raises(SystemExit, match="runtime hooks"):
-        task.check_agent(make_agent("kimi-code", model="test"))
-
-
 def test_claude_runner_delivers_messages_before_next_turn(tmp_path, monkeypatch):
     import claude_agent_sdk
     from core.agents import claude_sdk_runner as runner

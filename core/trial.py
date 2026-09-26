@@ -108,8 +108,6 @@ class Task:
     # first declared tag. Tasks without variants use environment/ directly.
     variants: dict = field(default_factory=dict)
     variant: str = ""
-    # Optional restriction for tasks that need adapter-specific runtime hooks.
-    agents: list[str] = field(default_factory=list)
 
     def check_agent(self, agent: Agent) -> None:
         if self.tools.get("mcp_only"):
@@ -119,9 +117,6 @@ class Task:
             supported |= agent.name() == "gemini-cli" and agent.route == "gateway"
             if not supported:
                 raise SystemExit("This adapter cannot enforce the native game MCP-only condition")
-        if self.agents and agent.name() not in self.agents:
-            raise SystemExit(f"{self.name}: supported agents are {self.agents}; "
-                             f"{agent.name()!r} cannot provide this task's runtime hooks")
 
     @property
     def environment(self) -> Path:
@@ -221,12 +216,9 @@ def load_task(name: str, variant: str = "") -> Task:
     # to, rather than in the build script where they would be code.
     unknown = set(cfg) - {"name", "timeout_s", "prompts", "data", "grader",
                           "tools", "image", "image_dockerfile", "variants", "score_rules",
-                          "match_threshold", "install", "agents", "network", "build", "service"}
+                          "match_threshold", "install", "network", "build", "service"}
     if unknown:
         raise SystemExit(f"{cfg_path}: unknown key(s) {sorted(unknown)}")
-    agents = cfg.get("agents", [])
-    if not isinstance(agents, list) or any(not isinstance(a, str) or not a for a in agents):
-        raise SystemExit(f"{cfg_path}: agents must be a list of adapter names")
     prompts = dict(cfg.get("prompts") or {})
     variants, variant = _parse_variants(cfg_path, cfg.get("variants"), prompts, variant)
     # The judge prompt is global now. A task that still names one would be
@@ -273,7 +265,7 @@ def load_task(name: str, variant: str = "") -> Task:
                 network=sandbox.parse_network(cfg_path, cfg.get("network")),
                 image=str(cfg.get("image") or ""),
                 image_dockerfile=image_dockerfile,
-                variants=variants, variant=variant, agents=agents)
+                variants=variants, variant=variant)
 
 
 def _parse_install(cfg_path: Path, raw) -> dict | None:
