@@ -1,7 +1,7 @@
 name: openmath_agent
 image: python311
 timeout_s: 3600
-agents: [claude-sdk, codex, muse-code, gemini-cli, grok-build, deepseek-harness, kimi-code]
+agents: [claude-sdk, codex, muse-code, gemini-cli, grok-build, deepseek-harness, kimi-code, terminus-2]
 tools:
   web_search: false
   web_fetch: false

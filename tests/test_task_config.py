@@ -159,3 +159,10 @@ def test_office_task_has_its_own_build_recipe():
     assert task.image_dockerfile.is_file()
     text = task.image_dockerfile.read_text()
     assert "libreoffice" in text and "PyMuPDF" in text
+
+
+@pytest.mark.parametrize("name", [name for name in TASKS if name not in {"sycophancy", "software_engineering"}])
+def test_shared_runner_tasks_accept_terminus_with_task_runtime(name):
+    from core.agents import make_agent
+    task = trial.load_task(name)
+    task.check_agent(make_agent("terminus-2", model="openai/test"))

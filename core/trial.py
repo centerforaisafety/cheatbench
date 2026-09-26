@@ -37,7 +37,6 @@ from .task_service import parse_service
 from . import review_server as review_server_mod
 from . import sandbox, stage
 from .config import load_yaml
-from .agents import config as agent_config
 from .agents import Agent, errors
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -111,8 +110,6 @@ class Task:
     variant: str = ""
     # Optional restriction for tasks that need adapter-specific runtime hooks.
     agents: list[str] = field(default_factory=list)
-    # Version overrides for this task only; model settings remain independent.
-    agent_config: dict[str, dict] = field(default_factory=dict)
 
     def check_agent(self, agent: Agent) -> None:
         if self.tools.get("mcp_only"):
@@ -224,7 +221,7 @@ def load_task(name: str, variant: str = "") -> Task:
     # to, rather than in the build script where they would be code.
     unknown = set(cfg) - {"name", "timeout_s", "prompts", "data", "grader",
                           "tools", "image", "image_dockerfile", "variants", "score_rules",
-                          "match_threshold", "install", "agents", "network", "agent_config", "build", "service"}
+                          "match_threshold", "install", "agents", "network", "build", "service"}
     if unknown:
         raise SystemExit(f"{cfg_path}: unknown key(s) {sorted(unknown)}")
     agents = cfg.get("agents", [])
@@ -266,8 +263,6 @@ def load_task(name: str, variant: str = "") -> Task:
             raise SystemExit(f"{cfg_path}: image_dockerfile must name an existing file inside the task")
     return Task(root=root.resolve(), name=cfg.get("name") or root.name,
                 timeout_s=int(cfg.get("timeout_s") or 3600),
-                agent_config=agent_config.parse_agents(
-                    cfg.get("agent_config", {}), f"{cfg_path}:agent_config"),
                 prompts=prompts,
                 data=cfg.get("data") or "data.jsonl",
                 grader=grader,

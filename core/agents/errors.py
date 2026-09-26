@@ -395,6 +395,7 @@ ERROR_PATTERNS: list[ErrorPattern] = [
     ErrorPattern(r"Repeated 529 Overloaded errors", ApiOverloadedError),
     # Our own turn cap, reported by the CLI as an error result.
     ErrorPattern(r"Reached maximum number of turns", MaxTurnsError),
+    ErrorPattern(r"^max_turns reached before confirmed task completion$", MaxTurnsError),
     ErrorPattern(r"Maximum session turns exceeded|MAX_TURNS_EXCEEDED", MaxTurnsError),
     # OpenRouter-style phrasing of the same mid-stream disconnect.
     ErrorPattern(r"API Error: stream closed before completion",

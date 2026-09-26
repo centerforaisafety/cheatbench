@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Run a task's episodes and optionally judge their trajectories.
 
-    python run.py knowledge_work
-    python run.py knowledge_work --model gpt-6-astra --agent codex
+    python run.py knowledge_work --model gpt-6-sol
+    python run.py knowledge_work --model gpt-6-sol --harness terminus-2
     python run.py openmath --model claude-opus-5 --limit 3
 
 Each dataset row runs in its own container. --repeat N creates independent
@@ -206,8 +206,8 @@ async def main_async(args: argparse.Namespace) -> int:
     agent_source = "--harness" if args.agent else ("models.yaml:harness" if cfg.get("harness") else "default")
     agent_name = args.agent or cfg.get("harness", {}).get("name") or DEFAULT_AGENT
     version_selection = agent_config.resolve_version(
-        agent_name, task_config=task.agent_config, cli_version=args.agent_version,
-        config_path=Path(args.agents_config), model_harness=cfg.get("harness"), models_path=models_config)
+        agent_name, cli_version=args.agent_version, harness_override=bool(args.agent),
+        model_harness=cfg.get("harness"), models_path=models_config)
     print(f"agent: adapter={agent_name} requested_version={version_selection.version} "
           f"source={version_selection.source} config={version_selection.config_path}",
           flush=True)
@@ -352,14 +352,14 @@ async def main_async(args: argparse.Namespace) -> int:
         "service": task.service,
         "judge": args.judge, "image": image,
         # The agent CLI version. `requested` is the pin the operator asked for
-        # after CLI/task/repository precedence; `agent_version` is what ran, filled in
+        # after CLI/model selection; `agent_version` is what ran, filled in
         # from the first episode that reports one, because it is not knowable
         # until a container has been inside the image. A finished run always
         # states which agent build produced it.
         "agent_version_requested": version_selection.version,
         "agent_version_source": version_selection.source,
-        "agents_config": version_selection.config_path,
-        "agents_config_sha256": version_selection.config_sha256,
+        "agent_version_config": version_selection.config_path,
+        "agent_version_config_sha256": version_selection.config_sha256,
         "agent_version": previous_agent_version,
         "private_net": task.private_net,
         "setup_hook": (str(task.setup_hook.relative_to(task.root))
@@ -630,7 +630,7 @@ def build_parser() -> argparse.ArgumentParser:
                          "path, e.g. prompts/instruction_norm.md; unset uses "
                          "the variant's prompt, or `instruction`")
     ap.add_argument("--harness", "--agent", dest="agent", default="",
-                    help="override the model's default harness; choices: " + ", ".join(AgentFactory.names()))
+                    help="override the model's harness and use its latest release (Terminus-2 stays pinned); choices: " + ", ".join(AgentFactory.names()))
     ap.add_argument("--limit", type=int, default=0, help="0 = all rows")
     ap.add_argument("--repeat", type=int, default=1, metavar="N",
                     help="run every selected row N times, as N independent "
@@ -651,9 +651,7 @@ def build_parser() -> argparse.ArgumentParser:
                          f"default: {judging.DEFAULT_JUDGE}")
     ap.add_argument("--harness-version", "--agent-version", dest="agent_version", default="",
                     help="override the agent CLI version with an exact version "
-                         "or latest; otherwise use the model pin or alternate-harness defaults")
-    ap.add_argument("--agents-config", default=str(agent_config.DEFAULT_CONFIG),
-                    help="fallback versions for alternate harnesses (default: configs/agents.yaml)")
+                         "or latest; otherwise use the model pin, or latest with --harness")
     ap.add_argument("--image", default="",
                     help="sandbox image: a name resolved under $RH_IMAGES_DIR, "
                          "or a path. Default is the task's `image:` key, else "

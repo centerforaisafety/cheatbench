@@ -49,6 +49,7 @@ tasks/*/.build.lock
 tasks/go/environment/assets/
 tasks/go/environment/site/
 tasks/go/environment/data.jsonl
+tasks/go/environment/rows.json
 
 # Pinned host-only chess engine downloads.
 tasks/chess/environment/stockfish/
