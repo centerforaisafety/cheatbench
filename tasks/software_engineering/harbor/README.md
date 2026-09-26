@@ -21,8 +21,7 @@ patch -p1 -d "$(python -c 'import harbor,os;print(os.path.dirname(os.path.dirnam
 
 Choose a job from [configs/](configs/). These files configure the model, agent,
 resources, and timeouts. [acp/](acp/) defines the Gemini and DeepSeek integrations.
-Harbor execution uses these settings independently of CheatBench's common runner
-and `configs/agents.yaml`.
+Harbor execution uses these settings independently of CheatBench's common runner.
 
 | Agent | Credential |
 |---|---|

@@ -7,11 +7,8 @@ import json
 from pathlib import Path
 import re
 
-import yaml
-
 from .factory import AgentFactory
 
-DEFAULT_CONFIG = Path(__file__).resolve().parents[2] / "configs" / "agents.yaml"
 _VERSION = re.compile(r"[0-9]+\.[0-9]+\.[0-9]+(?:(?:a|b|rc)[0-9]+)?(?:[-+][A-Za-z0-9._+-]+)?")
 
 
@@ -28,22 +25,6 @@ def validate_version(value, source: str, *, agent: str | None = None) -> str:
     return value
 
 
-def parse_agents(raw, source: str) -> dict[str, dict]:
-    if not isinstance(raw, dict):
-        raise SystemExit(f"{source}: expected a map of adapter names to configuration blocks")
-    names = AgentFactory.names()
-    for name, entry in raw.items():
-        if name not in names:
-            raise SystemExit(f"{source}: unknown adapter {name!r}; have: {names}")
-        if not isinstance(entry, dict):
-            raise SystemExit(f"{source}.{name}: expected a block with a version key")
-        unknown = set(entry) - {"version"}
-        if unknown:
-            raise SystemExit(f"{source}.{name}: unknown key(s) {sorted(unknown)}")
-        validate_version(entry.get("version"), f"{source}.{name}.version", agent=name)
-    return {name: dict(entry) for name, entry in raw.items()}
-
-
 @dataclass(frozen=True)
 class VersionSelection:
     version: str
@@ -52,36 +33,25 @@ class VersionSelection:
     config_sha256: str
 
 
-def resolve_version(agent: str, *, task_config: dict[str, dict] | None = None,
-                    cli_version: str = "", config_path: Path = DEFAULT_CONFIG,
+def resolve_version(agent: str, *, cli_version: str = "",
+                    harness_override: bool = False,
                     model_harness: dict | None = None,
                     models_path: Path | None = None) -> VersionSelection:
-    """CLI > model pin > task > repository fallback; an explicit config overrides model pins."""
-    path = Path(config_path).resolve()
-    try:
-        raw = path.read_bytes()
-        defaults = parse_agents(yaml.safe_load(raw), str(path))
-    except (OSError, yaml.YAMLError) as e:
-        raise SystemExit(f"cannot load agents config {path}: {e}") from e
-    if agent not in AgentFactory.names():
-        raise SystemExit(f"unknown agent {agent!r}; have: {AgentFactory.names()}")
-    overrides = parse_agents(task_config if task_config is not None else {}, "task.yaml:agent_config")
+    """Use the model pin by default; an explicit harness selects its latest release."""
+    adapter = AgentFactory.get_agent_class(agent)
     if cli_version:
-        version = validate_version(cli_version, "--agent-version", agent=agent)
-        source = "--agent-version"
-    elif (model_harness or {}).get("name") == agent and path == DEFAULT_CONFIG.resolve():
+        version = validate_version(cli_version, "--harness-version", agent=agent)
+        return VersionSelection(version, "--harness-version", "", "")
+    if not harness_override and (model_harness or {}).get("name") == agent:
         version = validate_version(model_harness.get("version"), "models.yaml:harness", agent=agent)
-        source = "models.yaml:harness"
         path = Path(models_path).resolve()
-        raw = path.read_bytes()
-    elif agent in overrides:
-        version, source = overrides[agent]["version"], "task.yaml:agent_config"
-    elif agent in defaults:
-        version, source = defaults[agent]["version"], "agents.yaml"
-    else:
-        raise SystemExit(f"{path}: no version for {agent!r}; add one or set "
-                         "task.yaml:agent_config or --agent-version")
-    return VersionSelection(version, source, str(path), hashlib.sha256(raw).hexdigest())
+        return VersionSelection(version, "models.yaml:harness", str(path),
+                                hashlib.sha256(path.read_bytes()).hexdigest())
+    # Source-based adapters have no package release channel. Their immutable
+    # revision remains owned by the adapter, not by a second configuration file.
+    if adapter.FIXED_VERSION:
+        return VersionSelection(adapter.FIXED_VERSION, "adapter:fixed", "", "")
+    return VersionSelection("latest", "--harness" if harness_override else "adapter:default", "", "")
 
 
 def resume_version(path: Path, agent: str, requested: str) -> str | None:

@@ -112,14 +112,16 @@ def test_sandbox_detects_a_service_exit_without_a_tool_call(tmp_path):
         sandbox.check_health()
 
 
-def test_idle_engine_death_stops_real_service_process(tmp_path):
-    """Run the real HTTPS service with a sleeping engine, then kill only that child."""
+@pytest.mark.parametrize('stop_owner', [False, True])
+def test_real_service_exit_lifecycle(tmp_path, stop_owner):
+    """Engine death fails health; normal namespace-owner exit does not."""
     from tasks.go.build import tls
     from core.sandbox.runtime import MirrorSandbox
     tls(tmp_path)
     rows = tmp_path / 'rows.json'
     rows.write_text(json.dumps({'test': {'fixture': FIXTURE.name, 'token': 'test-token'}}))
     ready, pid_file = tmp_path / 'ready', tmp_path / 'engine.pid'
+    owner = subprocess.Popen([sys.executable, '-c', 'import time; time.sleep(60)'])
     script = '''
 import asyncio, json, sys
 from pathlib import Path
@@ -136,12 +138,13 @@ class Engine:
 service.KataGoEngine = lambda **kwargs: Engine()
 async def verify(engine): return {'status': 'test'}
 service.verify = verify
+service.enter_namespaces = lambda pid: None
 service.main()
 '''
     command = [sys.executable, '-c', script, str(pid_file), '--overrides', str(rows),
                '--only', 'test', '--log', str(tmp_path / 'requests.log'),
                '--cert', str(tmp_path / 'tls/site.crt'), '--key', str(tmp_path / 'tls/site.key'),
-               '--port', '0', '--ready-file', str(ready)]
+               '--port', '0', '--ready-file', str(ready), '--netns-pid', str(owner.pid)]
     process = subprocess.Popen(command, cwd=FIXTURE.parents[3], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     try:
         deadline = time.monotonic() + 15
@@ -149,19 +152,53 @@ service.main()
             time.sleep(.05)
         assert ready.exists(), process.communicate(timeout=5)
         import os, signal
-        os.kill(int(pid_file.read_text()), signal.SIGKILL)
+        if stop_owner:
+            owner.terminate()
+            owner.wait(timeout=5)
+        else:
+            os.kill(int(pid_file.read_text()), signal.SIGKILL)
         process.wait(timeout=10)
-        error = json.loads((tmp_path / 'go_test/infrastructure_error.json').read_text())
-        assert 'KataGo exited' in error['error']
         mirror = MirrorSandbox.__new__(MirrorSandbox)
+        mirror._net_pid = owner.pid
         mirror._server, mirror.server_log = process, tmp_path / 'requests.log'
-        with pytest.raises(RuntimeError, match='mirror service exited'):
+        error_file = tmp_path / 'go_test/infrastructure_error.json'
+        if stop_owner:
+            assert process.returncode == 0
+            assert not error_file.exists()
             mirror.check_health()
+        else:
+            assert 'KataGo exited' in json.loads(error_file.read_text())['error']
+            with pytest.raises(RuntimeError, match='mirror service exited'):
+                mirror.check_health()
     finally:
+        if owner.poll() is None:
+            owner.terminate()
+        owner.wait(timeout=5)
         if process.poll() is None:
             process.terminate()
             process.wait(timeout=10)
         process.communicate(timeout=5)
+
+
+@pytest.mark.parametrize('exit_code,owner_alive,should_fail', [
+    (0, False, False), (0, True, True), (7, False, True), (7, True, True),
+])
+def test_service_exit_respects_namespace_lifetime(tmp_path, monkeypatch,
+                                                exit_code, owner_alive, should_fail):
+    from core.sandbox import runtime
+    mirror = runtime.MirrorSandbox.__new__(runtime.MirrorSandbox)
+    mirror._net_pid = 123456
+    mirror.server_log = tmp_path / 'service.log'
+    mirror._server = SimpleNamespace(poll=lambda: exit_code, returncode=exit_code)
+    def owner_exists(path):
+        assert path == '/proc/123456'
+        return owner_alive
+    monkeypatch.setattr(runtime.os.path, 'exists', owner_exists)
+    if should_fail:
+        with pytest.raises(RuntimeError, match='mirror service exited'):
+            mirror.check_health()
+    else:
+        mirror.check_health()
 
 
 def write(ep, name, text):

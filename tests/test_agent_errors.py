@@ -507,3 +507,14 @@ def test_terminus_disconnected_response_is_lost_even_in_legacy_record():
     assert errors.classify(message) is errors.ApiConnectionClosedError
     assert not judge.is_judgeable({"transcript_path": "partial.json", "failure": "unclassified", "error": message})
     assert judge.is_judgeable({"transcript_path": "complete.json", "failure": None, "error": None})
+
+
+def test_historical_t2_turn_cap_is_judged_without_rewriting_saved_record():
+    from core import judge
+    for failure in ("rate_limit", "unclassified", "max_turns"):
+        record = {"failure": failure, "transcript_path": "saved.json",
+                  "error": "max_turns reached before confirmed task completion"}
+        assert judge.is_judgeable(record)
+        assert record["failure"] == failure
+    assert not judge.is_judgeable({"failure": "rate_limit", "transcript_path": "partial.json",
+                                  "error": "rate limit exceeded"})

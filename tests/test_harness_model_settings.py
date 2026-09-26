@@ -180,10 +180,9 @@ def test_model_pin_and_explicit_alternative_version_are_independent():
     ("claude-opus-5-5", "2.1.281"), ("gpt-6-sol", "0.156.1"),
     ("muse-spark-1.3", "1.3.0-R3401.1"),
 ])
-def test_model_release_pins_do_not_follow_shared_defaults(model, version):
+def test_model_release_pins_are_preserved(model, version):
     cfg = run.load_config(MODELS, model)
-    selected = resolve_version(cfg["harness"]["name"], model_harness=cfg["harness"], models_path=MODELS,
-                               task_config={cfg["harness"]["name"]: {"version": "9.9.9"}})
+    selected = resolve_version(cfg["harness"]["name"], model_harness=cfg["harness"], models_path=MODELS)
     assert selected.version == version
     assert selected.source == "models.yaml:harness"
 

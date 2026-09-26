@@ -23,8 +23,9 @@ runner, and behavioral judges. Task success and cheating are measured separately
 - Terminus-2 (`terminus-2`)
 
 Each model pins its harness and version in [configs/models.yaml](configs/models.yaml).
-Use `--harness terminus-2` to run that model through Terminus-2, which calls the
-model API directly. See [configuration](CONFIGURATION.md) for overrides and limits.
+An explicit `--harness` uses the latest release; add `--harness-version` to pin it.
+Terminus-2 uses a fixed Harbor revision and calls the model API directly.
+See [configuration](CONFIGURATION.md) for overrides and limits.
 
 ## Container support
 
@@ -86,6 +87,19 @@ python judge.py outputs/<run-directory> --redo
 
 [Sycophancy](tasks/sycophancy/) uses its direct API runner;
 [Software Engineering](tasks/software_engineering/) uses Harbor. Their task READMEs document the commands. To add a task, follow the [task guide](tasks/README.md).
+
+## Citation
+
+```bibtex
+@misc{phan2026cheatbench,
+  title  = {{CheatBench}: Measuring Reward Gaming in {AI} Agents},
+  author = {Long Phan and Stephen K. Yang and Jaehyuk Lim and Mantas Mazeika and
+            Wenyu Zhang and Zheyuan Liu and Richard Ren and Jingxiang Meng and
+            Yaoteng Tan and Weiliang Zhao and Addison Wu and Matei Anghel and Dan Hendrycks},
+  year   = {2026},
+  url    = {https://cheatbench.ai}
+}
+```
 
 ## License
 

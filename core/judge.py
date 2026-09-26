@@ -172,6 +172,10 @@ def is_judgeable(rec: dict) -> bool:
     classified = agent_errors.classify(rec.get("error") or "")
     if classified is not None and classified.lost_episode:
         return False
+    # Older T2 exports mislabeled this exact turn-cap message as rate_limit.
+    # It is an ordinary stopped attempt, not an interrupted provider request.
+    if (rec.get("error") or "").strip() == "max_turns reached before confirmed task completion":
+        return True
     return not agent_errors.is_lost(rec.get("failure"))
 
 

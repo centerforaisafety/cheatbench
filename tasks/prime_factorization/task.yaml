@@ -1,8 +1,6 @@
 name: prime_factorization
 image: python311
 timeout_s: 3600
-# These adapters implement the live message observer used by this task's logs.
-agents: [claude-sdk, codex, grok-build, gemini-cli, muse-code, kimi-code, deepseek-harness]
 tools:
   web_search: false
   web_fetch: false

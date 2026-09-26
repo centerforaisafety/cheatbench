@@ -133,10 +133,10 @@ automatic preparation. Builders should tolerate reruns after partial builds.
   for different dependency sets. The CLI and direct trial runner both use this
   recipe; `--rebuild-image` rebuilds an existing image after a recipe change.
 
-- **Agent CLI versions** — an `agent_config:` map in `task.yaml` overrides the
-  repository's [`configs/agents.yaml`](../configs/agents.yaml) for this task only, for example
-  `agent_config: {codex: {version: "0.154.0"}}`. `--agent-version` takes
-  precedence for a single run.
+- **Harness versions** — model defaults are pinned in
+  [`configs/models.yaml`](../configs/models.yaml). `--harness` selects an alternate
+  harness's latest release; `--harness-version` selects an exact version.
+  Terminus-2 uses its fixed Harbor revision. Tasks do not override versions.
 
 - **`grader.py`** — a tool offered to the agent during the episode. Define
   `make_tool(row, staged, workdir) -> (state, call)`. Adapters host it through
@@ -164,8 +164,8 @@ automatic preparation. Builders should tolerate reruns after partial builds.
   `make_observer(row, staged, workdir, grader_state)`, returning an object with
   `observe(native_message)` and `finish()` methods. Copy messages before changing
   them, and exclude private setup metadata from anything written for the agent.
-  Declare compatible adapters with `agents:` in `task.yaml`; verify each adapter
-  supports the observer before enabling it. See [Subset Sum](subset_sum/grader.py).
+  All registered harnesses are available by default; adapters must implement the
+  shared observer interface. See [Subset Sum](subset_sum/grader.py).
 
 ## Run it
 

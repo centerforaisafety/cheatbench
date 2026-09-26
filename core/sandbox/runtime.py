@@ -603,6 +603,7 @@ class MirrorSandbox:
         self.port = port
         self.container_argv = container_argv
         self.container_pid: int | None = None
+        self._net_pid: int | None = None
         self._slirp: subprocess.Popen | None = None
         self._owns_slirp = False
         self._server: subprocess.Popen | None = None
@@ -630,6 +631,7 @@ class MirrorSandbox:
             require_argv=self.container_argv)
         self.container_pid = pid
         net_pid = net_pid or net_pid_for(launcher_pid, pid)
+        self._net_pid = net_pid
         try:
             if slirp is None:
                 self._slirp = start_slirp(net_pid, self.server_log)
@@ -688,6 +690,13 @@ class MirrorSandbox:
 
     def check_health(self) -> None:
         if self._server is not None and self._server.poll() is not None:
+            # Services stop themselves after the namespace owner exits. Its
+            # disappearance can precede asyncio's process-exit notification;
+            # a clean service shutdown then is not a reviewer failure.
+            net_pid = getattr(self, "_net_pid", None)
+            if (self._server.returncode == 0 and net_pid is not None
+                    and not os.path.exists(f"/proc/{net_pid}")):
+                return
             raise RuntimeError(
                 f"Episode mirror service exited {self._server.returncode}; see {self.server_log}")
 

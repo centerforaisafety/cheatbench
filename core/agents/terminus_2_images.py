@@ -21,7 +21,7 @@ from harbor.models.trajectories.observation import Observation
 from harbor.models.trajectories.observation_result import ObservationResult
 from harbor.models.trajectories.tool_call import ToolCall
 
-IMAGE_EXTENSION_VERSION = "4-request-compaction"
+IMAGE_EXTENSION_VERSION = "5-transport-recovery"
 WIRE_REQUESTS = []
 MAX_IMAGES = 2
 MAX_IMAGE_BYTES = 5 * 1024 * 1024
@@ -83,20 +83,49 @@ def response_content(content, role="user"):
     return parts
 
 
-class ImageLiteLLM(LiteLLM):
-    async def call(self, *args, **kwargs):
+class TerminusLLMClient(LiteLLM):
+    """Harbor model client with image formatting and API request recovery."""
+
+    def _record_recovery(self, kind):
+        counts = getattr(self, "transport_recoveries", {})
+        counts[kind] = counts.get(kind, 0) + 1
+        self.transport_recoveries = counts
+
+    @staticmethod
+    def _without_empty_assistant(history):
+        return [m for m in history if not (
+            isinstance(m, dict) and m.get("role") == "assistant"
+            and m.get("content") in (None, "", [])
+            and not m.get("reasoning_content") and not m.get("tool_calls"))]
+
+    async def call(self, prompt, message_history=None, response_format=None,
+                   logging_path=None, **kwargs):
+        history = message_history or []
+        if getattr(self, "_empty_assistant_rejected", False):
+            history = self._without_empty_assistant(history)
         try:
-            return await super().call(*args, **kwargs)
+            return await super().call(prompt, history, response_format, logging_path, **kwargs)
         except Exception as exc:
             message = str(exc).lower()
+            if "role 'assistant' must not be empty" in message:
+                # Harbor can append an empty model reply after a malformed turn.
+                # Remove only empty wire messages, keeping the recorded turn,
+                # all real content, reasoning, tool calls and task instructions.
+                cleaned = self._without_empty_assistant(history)
+                if len(cleaned) != len(history):
+                    self._empty_assistant_rejected = True
+                    self._record_recovery("empty_assistant_message")
+                    return await super().call(prompt, cleaned, response_format, logging_path, **kwargs)
             oversized = ("request_too_large" in message
-                         or "request exceeds the maximum size" in message)
+                         or "request exceeds the maximum size" in message
+                         or "downloaded image content cannot exceed" in message)
             if not oversized or getattr(self, "_size_recovery_used", False):
                 raise
             # Enter Harbor's existing context-overflow handler exactly once per
             # main-agent turn. A failed recovery remains an infrastructure error.
             self._size_recovery_used = True
             self._byte_overflow_pending = True
+            self._record_recovery("request_size_compaction")
             raise ContextLengthExceededError(str(exc)) from exc
 
     async def _call_responses(
@@ -107,6 +136,7 @@ class ImageLiteLLM(LiteLLM):
         logging_path=None,
         **kwargs,
     ):
+        original_prompt = prompt
         history = [
             dict(m, content=response_content(m["content"], m["role"]))
             for m in (message_history or [])
@@ -116,9 +146,25 @@ class ImageLiteLLM(LiteLLM):
             # Upstream sends prompt directly as input when chaining. Responses
             # requires message items here, not a bare list of content blocks.
             prompt = [{"role": "user", "content": prompt}]
-        return await super()._call_responses(
-            prompt, history, response_format, logging_path, **kwargs
-        )
+        try:
+            return await super()._call_responses(
+                prompt, history, response_format, logging_path, **kwargs
+            )
+        except Exception as exc:
+            # A vendor may expire its server-side chain. Replay the same local
+            # history rather than switching protocol, model, or memory policy.
+            text = str(exc).lower()
+            if not kwargs.get("previous_response_id") or not (
+                "referenced response not found or expired" in text
+                or ("previous_response" in text and ("not found" in text or "expired" in text))
+            ):
+                raise
+            self._record_recovery("expired_response_chain")
+            retry = {**kwargs, "previous_response_id": None}
+            return await super()._call_responses(
+                response_content(original_prompt), history, response_format, logging_path, **retry
+            )
+
 
 
 class ImageChat(Chat):
@@ -229,7 +275,7 @@ class ImageTerminus2(Terminus2):
             raise ValueError("T2 image extension requires the LiteLLM backend")
         extra = dict(kwargs.pop("llm_kwargs") or {})
         install_wire_audit()
-        return ImageLiteLLM(**kwargs, **extra)
+        return TerminusLLMClient(**kwargs, **extra)
 
     async def _query_llm(self, *args, **kwargs):
         self._llm._size_recovery_used = False
@@ -343,6 +389,7 @@ class ImageTerminus2(Terminus2):
             self._context.metadata = {
                 **(self._context.metadata or {}),
                 "image_extension_version": IMAGE_EXTENSION_VERSION,
+                "transport_recoveries": dict(getattr(self._llm, "transport_recoveries", {})),
                 "wire_requests": list(WIRE_REQUESTS),
                 "request_size_compactions": getattr(self, "_byte_compactions", []),
                 "image_observations_sent": getattr(

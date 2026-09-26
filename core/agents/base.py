@@ -89,7 +89,7 @@ class Agent(abc.ABC):
 
           1. what the container reported after `check || install` -- the only
              source that describes the build that really executed;
-          2. the resolved CLI/task/configs/agents.yaml pin, when the episode has not run yet
+          2. the resolved CLI or models.yaml pin, when the episode has not run yet
              (run.py prints this before any container starts);
           3. None, meaning "latest at episode time, not yet resolved".
 

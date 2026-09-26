@@ -2,7 +2,6 @@ name: knowledge_work
 image: python311-office
 image_dockerfile: Dockerfile
 timeout_s: 3600
-agents: [claude-sdk, codex, muse-code, gemini-cli, grok-build, kimi-code, deepseek-harness]
 tools:
   web_search: false
   web_fetch: false

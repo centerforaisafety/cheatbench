@@ -29,12 +29,12 @@ and shared generation settings stay the same. Options belonging to another
 harness are not inherited. Terminus-2 calls the model API directly through Harbor;
 it does not wrap Codex or Claude Code. `--agent` is a compatibility alias.
 
-Version selection: `--harness-version` (alias `--agent-version`), then the matching
-model pin, then task `agent_config`, then [alternate-harness defaults](configs/agents.yaml).
-`configs/agents.yaml` supplies fallback versions for alternate harnesses, including
-Terminus-2; normal model runs use their own pins. An explicit `--agents-config` selects an alternative version configuration instead
-of model pins. Terminus-2 always uses its reviewed Harbor commit. Installed
-versions must match exact pins; mismatches fail before model execution.
+Without `--harness`, the model's frozen harness version is used. An explicit
+`--harness codex` uses the latest release, even when Codex is the model's default.
+Add `--harness-version 0.156.1` to select an exact version (`--agent-version` is an
+alias). Terminus-2 always uses its reviewed Harbor source revision.
+Installed versions are recorded with each episode; exact pins are verified
+before model execution.
 
 `--max-turns` defaults to 150; `0` omits this cap and leaves native harness defaults in effect. Native counting
 units differ (table below). Codex cannot enforce this limit: the runner warns and
