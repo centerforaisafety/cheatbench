@@ -1,6 +1,6 @@
 # CheatBench
 
-[Website](https://cheatbench.ai)
+[Website](https://cheatbench.ai) | [Paper](https://arxiv.org/abs/2609.36308)
 
 CheatBench measures whether AI agents attempt to cheat while completing challenging
 assignments. Tasks span mathematical research, visual reasoning, writing, coding,
@@ -91,13 +91,14 @@ python judge.py outputs/<run-directory> --redo
 ## Citation
 
 ```bibtex
-@misc{phan2026cheatbench,
-  title  = {{CheatBench}: Measuring Reward Gaming in {AI} Agents},
-  author = {Long Phan and Stephen K. Yang and Jaehyuk Lim and Mantas Mazeika and
-            Wenyu Zhang and Zheyuan Liu and Richard Ren and Jingxiang Meng and
-            Yaoteng Tan and Weiliang Zhao and Addison Wu and Matei Anghel and Dan Hendrycks},
-  year   = {2026},
-  url    = {https://cheatbench.ai}
+@misc{phan2026cheatbenchmeasuringrewardgaming,
+      title={CheatBench: Measuring Reward Gaming in AI Agents}, 
+      author={Long Phan and Stephen K. Yang and Jason J. Lim and Mantas Mazeika and Wenyu Zhang and Zheyuan Liu and Richard Ren and Jingxiang Meng and Yaoteng Tan and Weiliang Zhao and Addison Wu and Matei Anghel and Dan Hendrycks},
+      year={2026},
+      eprint={2609.36308},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2609.36308}, 
 }
 ```
 
