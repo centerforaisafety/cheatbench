@@ -199,6 +199,17 @@ async def main_async(args: argparse.Namespace) -> int:
     if not args.model:
         raise SystemExit("--model is required")
     cfg = load_config(models_config, args.model)
+    # A self-hosted plain-HTTP server on another machine (vLLM etc.) is out of
+    # reach for egress-enforced and mcp_only tasks; serve it on loopback instead
+    # (core/sandbox/endpoint_bridge.py). Lives for the whole process.
+    from core.sandbox.endpoint_bridge import EndpointBridge, bridge_mode
+    network = getattr(task, "network", None)
+    mode = bridge_mode(cfg.get("api_base_url"), mcp_only=bool((getattr(task, "tools", None) or {}).get("mcp_only")),
+                       egress_enforced=bool(network and network.enforced))
+    bridge = EndpointBridge(cfg["api_base_url"], mode) if mode else None
+    if bridge:
+        print(f"endpoint bridge ({mode}): {bridge.local_base_url} -> {bridge.upstream_url}", flush=True)
+        cfg["api_base_url"] = bridge.local_base_url
     # Resolve the judge from the same model entries before starting episodes.
     args.judge = args.judge or judging.DEFAULT_JUDGE
     judge_cfg = judging.load_judge_config(models_config, args.judge)
@@ -288,6 +299,8 @@ async def main_async(args: argparse.Namespace) -> int:
     child_env = {k: os.environ[k] for k in agent.PASSTHROUGH_ENV
                  if os.environ.get(k)}
     agent_routing = agent.resolved_routing()
+    if bridge:
+        agent_routing["endpoint_bridge"] = {"mode": bridge.mode, "upstream": bridge.upstream_url}
     judge_routing = judging.judge_routing_record(args.judge, judge_cfg)
 
     args.prompt = args.prompt or task.default_prompt
