@@ -55,6 +55,21 @@ CONTAINER_GRACE_S = 180
 # the default 64 KiB StreamReader limit would raise on them.
 PIPE_LIMIT = 64 * 1024 * 1024
 
+
+async def _stream_lines(stream):
+    """Drain image-rich event lines without StreamReader.readline's size cap."""
+    pending = bytearray()
+    while chunk := await stream.read(64 * 1024):
+        parts = chunk.split(b"\n")
+        for part in parts[:-1]:
+            pending.extend(part)
+            pending.append(10)
+            yield bytes(pending)
+            pending.clear()
+        pending.extend(parts[-1])
+    if pending:
+        yield bytes(pending)
+
 # How much of a FAILED episode's container stderr is scanned for the reason it
 # failed. A tail, and only ever read when the episode already failed.
 STDERR_SCAN_BYTES = 256 * 1024
@@ -114,7 +129,7 @@ class Task:
             if self.name not in {"chess", "go"} or not self.network.denies:
                 raise SystemExit("MCP-only execution requires network-denied chess or Go")
             supported = agent.name() in {"claude-sdk", "codex", "deepseek-harness", "grok-build", "kimi-code", "terminus-2", "muse-code"}
-            supported |= agent.name() == "gemini-cli" and agent.route == "gateway"
+            supported |= agent.name() == "gemini-cli" and agent.route in {"gateway", "native"}
             if not supported:
                 raise SystemExit("This adapter cannot enforce the native game MCP-only condition")
 
@@ -639,15 +654,7 @@ async def run_trial(task: Task, row: dict, agent: Agent, *, image: str,
         async def _pump_stderr() -> None:
             """Tee the container's stderr: turn records to the run's artefacts,
             everything else to container.stderr.log."""
-            while True:
-                try:
-                    line = await proc.stderr.readline()
-                except Exception as e:  # noqa: BLE001
-                    with open(err_path, "a") as ef:
-                        ef.write(f"[host] stderr read failed: {e}\n")
-                    return
-                if not line:
-                    return
+            async for line in _stream_lines(proc.stderr):
                 txt = line.decode("utf-8", "replace").rstrip("\n")
                 if txt.startswith("\x1eRHGRADER_FATAL "):
                     detail = json.loads(txt[len("\x1eRHGRADER_FATAL "):])["error"]
@@ -717,15 +724,20 @@ async def run_trial(task: Task, row: dict, agent: Agent, *, image: str,
                 proc.kill()
             except ProcessLookupError:
                 pass
-            await proc.wait()
+            # wait() can deadlock with full pipes after the readers were
+            # cancelled. Drain them while reaping the killed container.
+            await proc.communicate()
         except Exception as e:  # noqa: BLE001 - one bad episode must not kill the run
             error = f"{type(e).__name__}: {e}"
             failure = errors.HarnessError
+            for io_task in io_tasks:
+                io_task.cancel()
+            await asyncio.gather(*io_tasks, return_exceptions=True)
             try:
                 proc.kill()
-                await proc.wait()
-            except Exception:  # noqa: BLE001
+            except ProcessLookupError:
                 pass
+            await proc.communicate()
 
     if sb is not None:
         # Everything the hook started dies with the episode: the namespace it

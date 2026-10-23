@@ -37,7 +37,8 @@ def test_restricted_adapter_preserves_native_default_and_prompt():
     assert task["row"]["episode_timeout_s"] == 3600
     assert task["content"] == "unchanged"
     assert "bash" in agent.apply_tool_policy({"web_search": False, "web_fetch": False})
-    assert resolve_version("deepseek-harness").version == "0.1.5rc1"
+    assert resolve_version("deepseek-harness").version == "latest"
+    assert resolve_version("deepseek-harness", cli_version="0.1.5rc1").version == "0.1.5rc1"
 
 
 def test_profile_keeps_full_native_sdk_and_removes_action_plugins():

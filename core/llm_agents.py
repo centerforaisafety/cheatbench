@@ -409,6 +409,9 @@ class GeminiAgent(OpenAIAgent):
     if not vertexai:
         api_base_url = (api_base_url or os.environ.get("GEMINI_BASE_URL")
                         or "https://generativelanguage.googleapis.com/v1beta/openai/")
+        # The same model entry serves the native CLI and direct chat runner.
+        if api_base_url.rstrip("/") == "https://generativelanguage.googleapis.com":
+            api_base_url = "https://generativelanguage.googleapis.com/v1beta/openai/"
         super().__init__(model=model,
                          api_key_env=api_key_env, 
                          api_base_url=api_base_url, 

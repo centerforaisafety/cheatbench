@@ -33,7 +33,7 @@ Image viewing is available through an optional top-level JSON field:
 Use the actual file path for your task. This action returns image pixels in the
 next observation. Request at most two PNG, JPEG, GIF or WebP files per turn,
 up to 5 MiB and 25 million pixels each. Images larger than 2000 pixels on either
-side are resized proportionally; crop the relevant region for finer detail.
+side are resized proportionally.
 Relative paths are relative to the
 initial working directory, not a subsequent shell cd. Commands run before
 image reads. All existing required JSON fields remain required. You may use
@@ -44,20 +44,47 @@ compaction; after compaction you can reopen them with view_images.
 
 
 def install_wire_audit():
-    """Record actual serialized HTTP body lengths, without headers or payloads."""
+    """Record request sizes, model identity and effort without prompts or keys."""
     import httpx
     original = httpx.AsyncClient.send
     if getattr(original, "_t2_wire_audit", False):
         return
     async def send(client, request, *args, **kwargs):
+        record = None
         if request.method == "POST" and request.url.path.endswith(("/messages", "/responses", "/chat/completions")):
             try:
                 body = request.content
-                WIRE_REQUESTS.append({"body_bytes": len(body), "path": request.url.path,
-                                      "host": request.url.host})
+                record = {"body_bytes": len(body), "path": request.url.path,
+                          "host": request.url.host}
+                document = json.loads(body)
+                if isinstance(document, dict):
+                    record.update(model=document.get("model"),
+                        reasoning_effort=document.get("reasoning_effort"),
+                        reasoning=document.get("reasoning"),
+                        output_config=document.get("output_config"),
+                        thinking=document.get("thinking"))
+                    def images(value):
+                        if isinstance(value, dict):
+                            return int(value.get("type") in {"image_url", "input_image", "image"}) + sum(images(v) for v in value.values())
+                        return sum(images(v) for v in value) if isinstance(value, list) else 0
+                    record["n_images"] = images(document)
             except httpx.RequestNotRead:
-                WIRE_REQUESTS.append({"body_bytes": None, "path": request.url.path})
-        return await original(client, request, *args, **kwargs)
+                record = {"body_bytes": None, "path": request.url.path}
+            except (ValueError, UnicodeError):
+                pass
+            if record is not None:
+                WIRE_REQUESTS.append(record)
+        response = await original(client, request, *args, **kwargs)
+        if record is not None:
+            record["status"] = response.status_code
+            try:
+                document = response.json()
+                if isinstance(document, dict):
+                    record["returned_model"] = document.get("model")
+                    record["stop_reason"] = document.get("stop_reason")
+            except (httpx.ResponseNotRead, ValueError, UnicodeError):
+                pass
+        return response
     send._t2_wire_audit = True
     httpx.AsyncClient.send = send
 
@@ -85,6 +112,15 @@ def response_content(content, role="user"):
 
 class TerminusLLMClient(LiteLLM):
     """Harbor model client with image formatting and API request recovery."""
+
+    def _build_base_kwargs(self, logging_path=None):
+        kwargs = super()._build_base_kwargs(logging_path)
+        if self._reasoning_effort is not None and not self._use_responses_api:
+            # Harbor enables drop_params. A newly released model absent from
+            # LiteLLM's registry must not silently lose an explicit effort.
+            kwargs["allowed_openai_params"] = list(dict.fromkeys([
+                *(kwargs.get("allowed_openai_params") or []), "reasoning_effort"]))
+        return kwargs
 
     def _record_recovery(self, kind):
         counts = getattr(self, "transport_recoveries", {})

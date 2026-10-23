@@ -255,3 +255,47 @@ grok-4.7:
   harness:
     name: grok-build
     version: 1.0.41
+
+gemini-4-argon:
+  model: gemini/gemini-4-argon
+  api_key_env: GEMINI_API_KEY
+  api_base_url: https://generativelanguage.googleapis.com
+  generation_config:
+    reasoning_effort: high
+  harness:
+    name: gemini-cli
+    version: 0.64.0
+    options:
+      route: native
+
+muse-spark-open:
+  model: openrouter/meta/muse-spark-open
+  api_key_env: OPENROUTER_API_KEY
+  api_base_url: https://openrouter.ai/api/v1
+  generation_config:
+    reasoning_effort: high
+  harness:
+    name: muse-code
+    version: 1.4.11-R6667.1
+
+muse-wonder-1.0:
+  model: meta/muse-wonder-1.0
+  api_key_env: META_API_KEY
+  api_base_url: https://api.meta.ai/v1
+  generation_config:
+    reasoning_effort: high
+  harness:
+    name: muse-code
+    version: 1.4.11-R6667.1
+
+gpt-6.1-sol:
+  model: openai/gpt-6.1-sol
+  api_key_env: OPENAI_API_KEY
+  api_base_url: ${OPENAI_BASE_URL}
+  generation_config:
+    reasoning_effort: high
+  harness:
+    name: codex
+    version: 0.159.1
+    options:
+      reasoning_summary: detailed

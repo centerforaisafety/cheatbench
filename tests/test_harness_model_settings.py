@@ -22,7 +22,7 @@ def endpoints(monkeypatch):
     for name in ("OPENAI_BASE_URL", "ANTHROPIC_BASE_URL", "LITELLM_BASE_URL",
                  "GEMINI_BASE_URL", "DEEPSEEK_BASE_URL"):
         monkeypatch.setenv(name, "https://gateway.example/v1")
-    for name in ("OPENAI_API_KEY", "ANTHROPIC_API_KEY", "LITELLM_API_KEY",
+    for name in ("OPENAI_API_KEY", "OPENROUTER_API_KEY", "ANTHROPIC_API_KEY", "LITELLM_API_KEY",
                  "GEMINI_API_KEY", "DEEPSEEK_API_KEY", "META_API_KEY", "XAI_API_KEY"):
         monkeypatch.setenv(name, "offline-test")
 
@@ -85,6 +85,24 @@ def test_t2_override_uses_correct_protocol_and_wire_model(name, api_model):
 def test_gemini_turn_cap_is_a_model_limit_not_an_infrastructure_failure():
     from core.agents import errors
     assert errors.classify("Maximum session turns exceeded") is errors.MaxTurnsError
+
+
+def test_gemini_argon_effort_survives_resolved_model_after_tool_call():
+    cfg = run.load_config(MODELS, "gemini-4-argon")
+    assert cfg["harness"] == {"name": "gemini-cli", "version": "0.64.0", "options": {"route": "native"}}
+    agent = agent_for("gemini-4-argon")
+    assert agent.route == "native"
+    assert agent.API_KEY_ENV == "GEMINI_API_KEY"
+    assert agent.resolved_base_url() == "https://generativelanguage.googleapis.com"
+    assert agent.setup() == []
+    aliases = agent.settings()["modelConfigs"]["customAliases"]
+    # The first turn uses the launch alias; tool continuations use the bare ID.
+    for selected in (agent.run_model, "gemini-4-argon"):
+        config = aliases[selected]["modelConfig"]
+        assert config["model"] == "gemini-4-argon"
+        assert config["generateContentConfig"]["thinkingConfig"]["thinkingLevel"] == "HIGH"
+    chat = load_chat_config(MODELS, "gemini-4-argon")
+    assert chat["generation_config"] == {"reasoning_effort": "high"}
 
 
 def test_claude_shared_settings_reach_sdk_and_messages_api():
@@ -211,3 +229,19 @@ def test_summary_cannot_leak_into_raw_chat_factory():
     from core.llm_agents import get_llm_agent_class
     with pytest.raises(ValueError, match="harness.options"):
         get_llm_agent_class("openai/test", {"reasoning_summary": "detailed"})
+
+
+def test_muse_wonder_uses_meta_in_all_consumers():
+    cfg = run.load_config(MODELS, "muse-wonder-1.0")
+    assert cfg["api_key_env"] == "META_API_KEY"
+    assert cfg["api_base_url"] == "https://api.meta.ai/v1"
+    assert cfg["harness"]["version"] == "1.4.11-R6667.1"
+    native = agent_for("muse-wonder-1.0")
+    assert native.model_slug == "muse-wonder-1.0"
+    assert native.reasoning_effort == "high"
+    general = agent_for("muse-wonder-1.0", "terminus-2")
+    assert general.api_model() == "openai/muse-wonder-1.0"
+    assert general.generation_config == {"reasoning_effort":"high"}
+    chat = load_chat_config(MODELS, "muse-wonder-1.0")
+    assert chat["factory_model"] == "openai/muse-wonder-1.0"
+    assert chat["generation_config"] == {"reasoning_effort":"high"}

@@ -52,6 +52,17 @@ def test_empty_reply_recovery_preserves_content_and_original_history(runtime):
     assert history == original
 
 
+def test_explicit_effort_is_not_dropped_for_new_model_ids(runtime, monkeypatch):
+    client, _ = runtime
+    parent = type(client).__mro__[1]
+    monkeypatch.setattr(parent, '_build_base_kwargs', lambda self, path: {'drop_params':True}, raising=False)
+    client._reasoning_effort = 'high'
+    client._use_responses_api = False
+    assert client._build_base_kwargs()['allowed_openai_params'] == ['reasoning_effort']
+    client._reasoning_effort = None
+    assert 'allowed_openai_params' not in client._build_base_kwargs()
+
+
 def test_expired_response_replays_full_image_history_without_chain(runtime):
     client, _ = runtime
     history = [{'role': 'user', 'content': 'Original task rules'},

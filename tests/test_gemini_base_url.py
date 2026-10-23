@@ -3,6 +3,7 @@ import pytest
 
 
 @pytest.mark.parametrize("explicit,env,expected", [
+    ("https://generativelanguage.googleapis.com", "https://gateway.example/v1", "https://generativelanguage.googleapis.com/v1beta/openai/"),
     ("https://explicit.example/v1", "https://env.example/v1", "https://explicit.example/v1"),
     (None, "https://env.example/v1", "https://env.example/v1"),
     (None, None, "https://generativelanguage.googleapis.com/v1beta/openai/"),

@@ -215,3 +215,26 @@ def test_policy_outputs_and_independent_runtime_helpers():
     assert not set(a.INSTALL_HOSTS).intersection(
         egress.hosts_for(egress.NetworkPolicy("deny"), "https://gateway.example")
     )
+
+
+def test_native_gemini_uses_google_chat_endpoint_for_t2():
+    a = make_agent("terminus-2", model="gemini/gemini-4-argon",
+        api_key_env="GEMINI_API_KEY", api_base_url="https://generativelanguage.googleapis.com",
+        generation_config={"reasoning_effort":"high"})
+    a.apply_tool_policy({"web_search":False,"web_fetch":False,"mcp_only":True})
+    assert a.setup() == []
+    assert a.api_model() == "openai/gemini-4-argon"
+    assert a.resolved_base_url() == "https://generativelanguage.googleapis.com/v1beta/openai"
+    p = payload(a)["task"]
+    assert p["generation_config"] == {"reasoning_effort":"high"}
+    assert p["api_key_env"] == "GEMINI_API_KEY"
+
+
+def test_openrouter_muse_keeps_exact_t2_model_and_effort():
+    a = make_agent("terminus-2", model="openrouter/meta/muse-spark-open",
+        api_key_env="OPENROUTER_API_KEY", api_base_url="https://openrouter.ai/api/v1",
+        generation_config={"reasoning_effort":"high"})
+    a.apply_tool_policy({"web_search":False,"web_fetch":False})
+    assert a.setup() == []
+    assert a.api_model() == "openrouter/meta/muse-spark-open"
+    assert payload(a)["task"]["generation_config"] == {"reasoning_effort":"high"}

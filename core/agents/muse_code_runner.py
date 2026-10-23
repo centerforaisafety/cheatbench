@@ -550,14 +550,22 @@ def check_response_item(item, mcp_server="chess"):
         raise ValueError("Muse MCP-only blocked a non-function tool call")
 
 
-def checked_response(doc, mcp_server="chess"):
+def checked_response(doc, mcp_server="chess", call_namespaces=None):
     if not isinstance(doc, dict):
         raise ValueError("Invalid native response")
     if doc.get("type") in {"response.function_call_arguments.delta", "response.function_call_arguments.done"} and "name" in doc:
-        identity = {"type": "function_call", "name": doc["name"], "namespace": doc.get("namespace")}
+        namespace = doc.get("namespace")
+        if namespace is None and call_namespaces is not None:
+            namespace = call_namespaces.get(doc.get("item_id"))
+        identity = {"type": "function_call", "name": doc["name"], "namespace": namespace}
         check_response_item(identity, mcp_server)
         doc["name"] = identity["name"]
     check_response_item(doc.get("item"), mcp_server)
+    item = doc.get("item")
+    if (call_namespaces is not None and isinstance(item, dict)
+            and item.get("type") == "function_call" and item.get("id")
+            and item.get("namespace") == game_namespace(mcp_server)):
+        call_namespaces[item["id"]] = item["namespace"]
     for source in (doc, doc.get("response", {})):
         if isinstance(source, dict):
             for item in source.get("output", []):
@@ -565,16 +573,70 @@ def checked_response(doc, mcp_server="chess"):
     return doc
 
 
-def guard_response(response, frames_class, mcp_server="chess"):
+def declared_mcp_tools(request):
+    """MCP identities actually offered in this request; native tools stay native."""
+    return {
+        group["name"]: {tool["name"] for tool in group.get("tools", [])
+                        if isinstance(tool, dict) and isinstance(tool.get("name"), str)}
+        for group in request.get("tools", [])
+        if isinstance(group, dict) and group.get("type") == "namespace"
+        and isinstance(group.get("name"), str) and group["name"].startswith("mcp__")
+    }
+
+
+def normalized_mcp_response(doc, declared, call_namespaces):
+    """Translate declared MCP namespace calls to Muse's canonical dispatch ids.
+
+    Never guess a namespace from a bare name. Argument events can inherit only
+    the identity from an earlier, validated function-call item in this response.
+    Native tool calls, reasoning, arguments, and all other fields are untouched.
+    """
+    if not isinstance(doc, dict):
+        return doc
+
+    def normalize(item, item_id=None):
+        if not isinstance(item, dict):
+            return
+        namespace = item.get("namespace")
+        if namespace is None:
+            namespace = call_namespaces.get(item_id)
+        names = declared.get(namespace, set())
+        name = item.get("name")
+        if name in names:
+            item["name"] = namespace + "__" + name
+        elif name in {namespace + "." + n for n in names}:
+            item["name"] = name.replace(namespace + ".", namespace + "__", 1)
+        if item_id and item.get("name") in {namespace + "__" + n for n in names}:
+            call_namespaces[item_id] = namespace
+
+    if doc.get("type") in {"response.function_call_arguments.delta", "response.function_call_arguments.done"}:
+        normalize(doc, doc.get("item_id"))
+    item = doc.get("item")
+    if isinstance(item, dict) and item.get("type") == "function_call":
+        normalize(item, item.get("id"))
+    for source in (doc, doc.get("response", {})):
+        if isinstance(source, dict):
+            for item in source.get("output", []):
+                if isinstance(item, dict) and item.get("type") == "function_call":
+                    normalize(item, item.get("id"))
+    return doc
+
+
+def guard_response(response, frames_class, mcp_server="chess", *, declared_mcp=None):
     """Validate complete SSE events, retaining streaming and native reasoning."""
     original = response.iter_chunks
+    call_namespaces = {}
+    def transform(doc):
+        if declared_mcp is not None:
+            return normalized_mcp_response(doc, declared_mcp, call_namespaces)
+        return checked_response(doc, mcp_server, call_namespaces)
     original_header = response.header
     response.header = lambda name: None if name.lower() == "content-length" else original_header(name)
     def chunks(size=65536):
         if "text/event-stream" not in (response.header("Content-Type") or ""):
             body = b"".join(original(size))
             if response.status < 400:
-                body = json.dumps(checked_response(json.loads(body), mcp_server)).encode()
+                body = json.dumps(transform(json.loads(body))).encode()
             yield body
             return
         frames = frames_class()
@@ -582,7 +644,7 @@ def guard_response(response, frames_class, mcp_server="chess"):
             for frame in frames.feed(chunk):
                 data = b"\n".join(line[5:].lstrip(b" ") for line in frame.splitlines() if line.startswith(b"data:"))
                 if data and data != b"[DONE]":
-                    doc = checked_response(json.loads(data), mcp_server)
+                    doc = transform(json.loads(data))
                     # Re-encode only the data field; preserve event type and id.
                     fields = [line for line in frame.splitlines() if not line.startswith(b"data:")]
                     frame = b"\n".join(fields).rstrip(b"\n") + b"\ndata: " + json.dumps(doc).encode() + b"\n\n"
@@ -666,6 +728,7 @@ class _ShimHandler(BaseHTTPRequestHandler):
             except (ValueError, TypeError, KeyError):
                 self._send(403, "application/json", b'{"error":{"message":"Muse MCP-only tool roster rejected"}}')
                 return
+        declared_mcp = declared_mcp_tools(req)
         t0 = time.time()
         try:
             _, sep, query = self.path.partition("?")
@@ -683,9 +746,11 @@ class _ShimHandler(BaseHTTPRequestHandler):
         try:
             if self.server.mcp_only:
                 guard_response(resp, self.server.frames_class, self.server.mcp_server)
-            # Keep the native stream and reasoning fields. Restricted mode
-            # validates calls and normalizes MCP names before relaying events;
-            # ordinary gateway mode still relays the original bytes.
+            elif declared_mcp:
+                guard_response(resp, self.server.frames_class,
+                               declared_mcp=declared_mcp)
+            # Restricted mode also gates the roster. Ordinary gateway mode
+            # normalizes only declared MCP identities, retaining native tools.
             n_out = resp.relay(self)
         except (OSError, HTTPException, ValueError) as e:
             relay_error = type(e).__name__
@@ -1106,6 +1171,7 @@ def run(task: dict, install: dict | None, grader=None,
     events: list = []
     usage_main = usage_subagents = None
     n_sub = 0
+    subagent_models = {}
     try:
         session_path = find_session(cfg["data_home"])
         if session_path:
@@ -1113,8 +1179,12 @@ def run(task: dict, install: dict | None, grader=None,
             usage_main = usage_of(events)
             for sub in subagent_sessions(session_path):
                 n_sub += 1
+                sub_events = read_session(sub)
+                sub_model = summarise(sub_events).get("model")
+                if sub_model:
+                    subagent_models[sub_model] = subagent_models.get(sub_model, 0) + 1
                 usage_subagents = add_usage(usage_subagents,
-                                            usage_of(read_session(sub)))
+                                            usage_of(sub_events))
             _log(f"session {session_path}: {len(events)} records, "
                  f"{n_sub} subagent session(s)")
         else:
@@ -1174,6 +1244,8 @@ def run(task: dict, install: dict | None, grader=None,
         "usage_main": usage_main,
         "usage_subagents": usage_subagents,
         "n_subagent_sessions": n_sub,
+        "muse_session_model": info["model"],
+        "subagent_models": subagent_models,
         "result_subtype": info["terminal"],
         "terminal_reason": info["terminal_reason"],
         "session_id": info["session_id"],

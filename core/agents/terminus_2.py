@@ -101,9 +101,19 @@ class Terminus2Agent(InstalledAgent):
         return ["terminus-2 uses api_base_url, not base_url"] if self.base_url else []
 
     def api_model(self):
+        from urllib.parse import urlsplit
+        if (self.model.startswith("gemini/")
+                and urlsplit(self.resolved_base_url()).hostname == "generativelanguage.googleapis.com"):
+            return "openai/" + self.model.split("/", 1)[1]
         from ..model_settings import factory_model
         return factory_model(self.model, self.model,
                              {"api_base_url": self.resolved_base_url()}, "terminus-2")
+
+    def resolved_base_url(self):
+        base = super().resolved_base_url()
+        if self.model.startswith("gemini/") and base.rstrip("/") == "https://generativelanguage.googleapis.com":
+            return base.rstrip("/") + "/v1beta/openai"
+        return base
 
     def resolved_routing(self):
         out = super().resolved_routing()

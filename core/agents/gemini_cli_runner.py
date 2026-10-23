@@ -1157,6 +1157,10 @@ class GatewayShim(_LoopbackServer):
                 _log(f"shim: TOOL POLICY BREACH: {breach} declared outside the allowed tool policy")
             self.calls.append({"model": model, "upstream_model": upstream,
                                "n_contents": len(body.get("contents") or []),
+                               "n_images": sum(
+                                   str((part.get("inlineData") or part.get("fileData") or {}).get("mimeType", "")).startswith("image/")
+                                   for content in body.get("contents") or []
+                                   for part in content.get("parts") or [] if isinstance(part, dict)),
                                "n_tools": len(names),
                                "generation_config": gen, "notes": notes})
         if breach and self.allowed_tools is not None:
@@ -1166,7 +1170,7 @@ class GatewayShim(_LoopbackServer):
              + (f" notes={notes}" if notes else ""))
 
     def observe_response(self, model: str, status: int, usage, seconds: float,
-                         error: str | None = None) -> None:
+                         error: str | None = None, response_models=None) -> None:
         with self._lock:
             for entry in reversed(self.calls):
                 if entry.get("status") is None:
@@ -1174,6 +1178,8 @@ class GatewayShim(_LoopbackServer):
                                   "seconds": round(seconds, 2)})
                     if error:
                         entry["error"] = error
+                    if response_models is not None:
+                        entry["response_models"] = sorted(response_models)
                     break
         _log(f"shim: <- {status} in {seconds:.1f}s usage={json.dumps(usage)}"
              + (f" error={error}" if error else ""))
@@ -1203,7 +1209,11 @@ class _NativeHandler(_ShimHandler):
             return
         server = self.server
         upstream = server.upstream_model(model)
-        server.observe_request(body, model, upstream, [])
+        try:
+            server.observe_request(body, model, upstream, [])
+        except ValueError as exc:
+            self._reply(403, gemini_error(403, str(exc)))
+            return
         # Never forward the loopback credential in a query string.
         query.pop("key", None)
         api_version = path.split("/")[1]
@@ -1235,12 +1245,19 @@ class _NativeHandler(_ShimHandler):
             self.send_header("Connection", "close")
             self.end_headers()
             self.close_connection = True
+            response_models = set()
+            identity_tail = b""
             try:
                 while chunk := response.read1(65536):
+                    identity_chunk = identity_tail + chunk
+                    response_models.update(value.decode("utf-8") for value in
+                        re.findall(rb'"modelVersion"\s*:\s*"([^"\r\n]{1,200})"', identity_chunk))
+                    identity_tail = identity_chunk[-256:]
                     self.wfile.write(chunk)
                     self.wfile.flush()
             finally:
-                server.observe_response(model, response.status, None, time.time() - started)
+                server.observe_response(model, response.status, None, time.time() - started,
+                                        response_models=response_models)
 
 
 class NativeRelay(GatewayShim):
@@ -1500,8 +1517,8 @@ def run(task: dict, install: dict | None, grader=None, observer=None,
     shim = None
     allowed_tools = None
     if cfg.get("mcp_only"):
-        if route != "gateway" or grader is None:
-            error = error or "Gemini MCP-only requires a grader and the gateway route"
+        if grader is None:
+            error = error or "Gemini MCP-only requires a grader"
         allowed_tools = ([f"mcp_{grader.grader_server_name}_{name}" for name in grader.grader_tools]
                          if grader is not None else [])
     if route == "gateway":
@@ -1528,7 +1545,7 @@ def run(task: dict, install: dict | None, grader=None, observer=None,
             base_url=cfg.get("base_url") or "https://generativelanguage.googleapis.com",
             api_key=api_key, model_id=cfg.get("model_id") or cfg.get("model_slug") or "",
             model_slug=cfg.get("model_slug") or "",
-            exclude_tools=cfg.get("exclude_tools") or [])
+            exclude_tools=cfg.get("exclude_tools") or [], allowed_tools=allowed_tools)
         shim.start()
         env.pop(key_env, None)
         env.pop("OPENAI_API_KEY", None)

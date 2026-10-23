@@ -170,3 +170,14 @@ def test_file_tools_reject_symlink_escape(tmp_path):
     tools = {s["name"]: s["call"] for s in grader.make_file_tools(str(root), {})}
     assert tools["write_notes"]({"text": "bad"})["isError"]
     assert not (tmp_path / "notes.txt").exists()
+
+
+@pytest.mark.parametrize("prefix", ["/api/v1", "/v1beta/openai"])
+def test_model_api_prefix_keeps_inference_only(proxy, prefix):
+    proxy.path_prefix = prefix
+    path = prefix + "/chat/completions"
+    assert request(proxy, path)[0] == 200
+    assert proxy.upstream.request.call_args.args[1] == path
+    for invalid in ("/v1/chat/completions", prefix+"/files", path+"?url=https://example.com", prefix+"/../chat/completions"):
+        assert request(proxy, invalid)[0] == 403
+    assert proxy.upstream.request.call_count == 1
