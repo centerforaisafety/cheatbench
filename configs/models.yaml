@@ -1,5 +1,16 @@
 # A model keeps its frozen harness version when other models are added.
 
+qwen3.8-27b:
+  model: openai/qwen3.8-27b
+  api_key_env: VLLM_API_KEY
+  api_base_url: ${VLLM_BASE_URL}
+  harness:
+    name: terminus-2
+    version: 4641fd590f190411c57e1cbd824a9f6786cbe92e
+    options:
+      model_info:
+        max_input_tokens: 262144
+
 claude-sonnet-5:
   model: claude-sonnet-5
   api_key_env: ANTHROPIC_API_KEY

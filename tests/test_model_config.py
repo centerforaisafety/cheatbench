@@ -199,7 +199,8 @@ def test_every_shipped_generation_key_is_deliverable_by_someone() -> None:
         assert not unknown, f"{name}: {sorted(unknown)}"
 
 
-def test_every_judge_entry_still_resolves() -> None:
+def test_every_judge_entry_still_resolves(monkeypatch) -> None:
+    monkeypatch.setenv("VLLM_BASE_URL", "http://127.0.0.1:8000/v1")
     doc = yaml.safe_load(MODELS.read_text())
     for name, entry in doc.items():
         if name == "default" or "/" not in entry["model"]:
