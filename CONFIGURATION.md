@@ -52,6 +52,14 @@ Codex's summary option becomes `model_reasoning_summary`; it is not sent to
 Chat Completions. Archived configs with old display fields remain readable,
 with unsupported fields recorded explicitly.
 
+Gemini CLI accepts `harness.options.route: native` for direct Google API access,
+including Chess and Go. Argon uses this route with `GEMINI_API_KEY`, high reasoning,
+and Gemini CLI 0.64.0; existing models keep their versions and routes.
+
+Muse Wonder uses the Meta API; Muse Spark Open uses OpenRouter. Both pin Muse Code
+1.4.11-R6667.1. GPT-6.1 Sol pins Codex 0.159.1. `--harness terminus-2` selects the
+pinned general harness instead of the model's provider CLI.
+
 ## Adapter audit (2026-09-24)
 
 | Harness | Shared reasoning effort becomes | Turn limit | Default permission delivery |

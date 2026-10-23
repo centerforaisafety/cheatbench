@@ -30,6 +30,41 @@ CLI_TOKEN = "episode-test-token"
 GATEWAY_KEY = "gateway-test-key"
 
 
+def test_openrouter_model_pin_and_wire_id():
+    from core.chat_config import load_chat_config
+    from core.model_settings import harness_settings
+    cfg = run_py.load_config(ROOT / 'configs/models.yaml', 'muse-spark-open')
+    gen, extra = harness_settings(cfg, 'muse-code')
+    agent = make_agent('muse-code', model=cfg['model'], api_base_url=cfg['api_base_url'],
+        api_key_env=cfg['api_key_env'], generation_config=gen, version=cfg['harness']['version'])
+    agent.apply_tool_policy({'web_search':False,'web_fetch':False})
+    assert agent.setup() == []
+    assert agent.pinned_version == '1.4.11-R6667.1'
+    assert agent.model_slug == 'meta/muse-spark-open'
+    assert agent.route == 'gateway'
+    assert agent.reasoning_effort == 'high'
+    assert agent.API_KEY_ENV == 'OPENROUTER_API_KEY'
+    chat = load_chat_config(ROOT / 'configs/models.yaml', 'muse-spark-open')
+    assert chat['factory_model'] == 'openrouter/meta/muse-spark-open'
+    assert chat['generation_config'] == {'reasoning_effort':'high'}
+    other = make_agent('muse-code', model=cfg['model'], api_base_url='https://gateway.example/v1')
+    assert other.model_slug == 'openrouter/meta/muse-spark-open'
+
+
+def test_mcp_argument_events_inherit_only_previously_validated_namespace():
+    known = {}
+    runner.checked_response({'type':'response.output_item.added',
+        'item':{'type':'function_call','id':'fc_1','namespace':'mcp__chess','name':'read_notes'}},
+        'chess', known)
+    event = runner.checked_response({'type':'response.function_call_arguments.done',
+        'item_id':'fc_1','name':'read_notes','arguments':'{}'}, 'chess', known)
+    assert event['name'] == 'mcp__chess__read_notes'
+    for item_id, name in [('unknown','read_notes'), ('fc_1','bash')]:
+        with pytest.raises(ValueError, match='non-game'):
+            runner.checked_response({'type':'response.function_call_arguments.done',
+                'item_id':item_id,'name':name,'arguments':'{}'}, 'chess', known)
+
+
 @pytest.fixture
 def gateway():
     state = SimpleNamespace(seen=[], status=200, body=b'{"object":"response"}',
@@ -306,3 +341,61 @@ def test_native_body_overrides_use_proxy_with_bare_model_and_one_base_url(
     assert gateway.seen[0]["path"] == "/v1/responses"
     assert json.loads(gateway.seen[0]["body"]) == {
         "model": "muse-spark-1.3", "reasoning": {"effort": "high", "summary": "detailed"}}
+
+
+@pytest.mark.parametrize('server,tool', [('grader', 'check_design'), ('verifier', 'verify_factors'), ('verifier', 'verify_subset')])
+def test_general_mcp_normalization_keeps_native_calls_and_unknown_names(server, tool):
+    namespace = 'mcp__' + server
+    declared = runner.declared_mcp_tools({'tools': [
+        {'type': 'namespace', 'name': namespace, 'tools': [{'name': tool}]},
+        {'type': 'namespace', 'name': 'muse', 'tools': [{'name': 'bash'}]}]})
+    known = {}
+    event = {'type': 'response.output_item.added', 'item': {
+        'type': 'function_call', 'id': 'fc_1', 'namespace': namespace,
+        'name': tool, 'arguments': '', 'call_id': 'c1'}}
+    runner.normalized_mcp_response(event, declared, known)
+    assert event['item']['name'] == namespace + '__' + tool
+    done = {'type': 'response.function_call_arguments.done', 'item_id': 'fc_1',
+            'name': tool, 'arguments': '{"sequence":"ACDEFG"}'}
+    runner.normalized_mcp_response(done, declared, known)
+    assert done['name'] == namespace + '__' + tool
+    assert done['arguments'] == '{"sequence":"ACDEFG"}'
+    for item in [
+        {'type':'function_call','namespace':'muse','name':'bash','arguments':'{}'},
+        {'type':'function_call','namespace':namespace,'name':'undeclared','arguments':'{}'},
+        {'type':'function_call','name':tool,'arguments':'{}'},
+    ]:
+        original = dict(item)
+        runner.normalized_mcp_response({'item':item}, declared, known)
+        assert item == original
+    unknown = {'type':'response.function_call_arguments.done', 'item_id':'unknown', 'name':tool}
+    runner.normalized_mcp_response(unknown, declared, known)
+    assert unknown['name'] == tool
+
+
+def test_general_mcp_gateway_stream_normalizes_all_call_events(gateway, proxy):
+    declared = {'tools':[{'type':'namespace','name':'mcp__grader',
+                        'tools':[{'type':'function','name':'check_design'}]}]}
+    item = {'type':'function_call','id':'fc_1','namespace':'mcp__grader',
+            'name':'check_design','call_id':'c1','arguments':'{"sequence":"ACDEFG"}'}
+    events = [
+        {'type':'response.output_item.added','item':dict(item)},
+        {'type':'response.function_call_arguments.done','item_id':'fc_1',
+         'name':'check_design','arguments':item['arguments']},
+        {'type':'response.output_item.done','item':dict(item)},
+        {'type':'response.completed','response':{'model':'meta/muse-spark-open','output':[dict(item)]}},
+    ]
+    gateway.content_type = 'text/event-stream'
+    gateway.body = b''.join(b'event: ' + e['type'].encode() + b'\ndata: ' + json.dumps(e).encode() + b'\n\n' for e in events)
+    conn, response = request(proxy.url, json.dumps(declared).encode())
+    try:
+        assert response.status == 200
+        received = [json.loads(line[6:]) for line in response.read().decode().splitlines() if line.startswith('data: ')]
+    finally:
+        conn.close()
+    assert received[0]['item']['name'] == 'mcp__grader__check_design'
+    assert received[1]['name'] == 'mcp__grader__check_design'
+    assert received[2]['item']['name'] == 'mcp__grader__check_design'
+    assert received[3]['response']['output'][0]['name'] == 'mcp__grader__check_design'
+    assert received[3]['response']['model'] == 'meta/muse-spark-open'
+    assert json.loads(gateway.seen[0]['body']) == declared

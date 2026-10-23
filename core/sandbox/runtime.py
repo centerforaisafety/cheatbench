@@ -830,7 +830,8 @@ class EpisodeSandbox:
         grok_mcp = bool(task.get("grok", {}).get("mcp_only"))
         mcp_server = task.get("row", {}).get("tool_surface", "chess")
         bridge = InferenceBridge(base_url, api_key, self.log_dir / "inference_requests.jsonl",
-                                 grok_mcp=grok_mcp, mcp_server=mcp_server)
+                                 grok_mcp=grok_mcp, mcp_server=mcp_server,
+                                 gemini_native=task.get("gemini", {}).get("route") == "native")
         self._parts.append(bridge)
         routed = reroute_blob(blob, bridge.local_base_url)
         return routed, bridge.server_port

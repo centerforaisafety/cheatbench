@@ -161,7 +161,8 @@ class MuseCodeAgent(InstalledAgent):
     # status, sizes -- never bodies), and the token split between the main
     # session and the CLI's own reminder subagents (see USAGE_KEYS).
     EXTRA_RECORD_KEYS = ("muse_command", "session_path", "route", "shim_calls",
-                         "usage_main", "usage_subagents", "n_subagent_sessions")
+                         "usage_main", "usage_subagents", "n_subagent_sessions",
+                         "muse_session_model", "subagent_models")
 
     # ---- what an episode cost ---------------------------------------------
     #
@@ -383,6 +384,10 @@ class MuseCodeAgent(InstalledAgent):
                  verbatim, so the CLI must ask for exactly that string.
         """
         if not self.native_origin:
+            from urllib.parse import urlsplit
+            if (urlsplit(self.resolved_base_url()).hostname == "openrouter.ai"
+                    and self.model.startswith("openrouter/")):
+                return self.model.removeprefix("openrouter/")
             return self.model
         provider, _, rest = self.model.partition("/")
         return rest if provider == "meta" and rest else self.model

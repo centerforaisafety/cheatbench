@@ -53,10 +53,13 @@ def test_runtime_allowlist_uses_observed_fully_qualified_mcp_names():
     assert "tools" not in normal and "includeTools" not in normal["mcpServers"]["chess"]
 
 
-def test_unverified_direct_route_is_rejected_for_mcp_only():
+def test_native_route_supports_mcp_only_with_model_pinning_relay():
+    from core.trial import load_task
     agent = GeminiCLIAgent(model="gemini/test", route="native")
     agent.apply_tool_policy(POLICY)
-    assert any("gateway" in problem for problem in agent.setup())
+    assert agent.setup() == []
+    load_task("chess").check_agent(agent)
+    load_task("go").check_agent(agent)
 
 
 def test_gemini_serves_exact_chess_schemas_and_dispatches(tmp_path):
@@ -79,9 +82,11 @@ def test_gemini_serves_exact_chess_schemas_and_dispatches(tmp_path):
         server.close()
 
 
-@pytest.fixture
-def shim():
-    value = runner.GatewayShim(base_url="https://gateway.example/v1", api_key="test",
+@pytest.fixture(params=["gateway", "native"])
+def shim(request):
+    cls = runner.NativeRelay if request.param == "native" else runner.GatewayShim
+    base = "https://generativelanguage.googleapis.com" if request.param == "native" else "https://gateway.example/v1"
+    value = cls(base_url=base, api_key="test",
         model_id="gemini/test", model_slug="test", exclude_tools=["web_fetch"],
         allowed_tools=WIRE_NAMES)
     yield value

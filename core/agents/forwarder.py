@@ -270,7 +270,10 @@ class Upstream:
     """
 
     def __init__(self, base_url: str, api_key: str, extra_body=None,
-                 timeout: float | None = None):
+                 timeout: float | None = None, auth_scheme: str = "bearer"):
+        if auth_scheme not in {"bearer", "google-api-key"}:
+            raise ValueError("Unsupported upstream authentication scheme")
+        self.auth_scheme = auth_scheme
         parts = urlsplit(base_url)
         if parts.scheme not in ("http", "https") or not parts.netloc:
             raise ValueError(f"upstream base_url must be http(s)://host[/path], "
@@ -315,10 +318,15 @@ class Upstream:
                 continue
             if lname == "authorization":
                 continue
+            if lname == "x-goog-api-key" and self.auth_scheme == "google-api-key":
+                continue
             out_headers[name] = value
         body = self.merge_body(body, content_type)
         out_headers["Host"] = self.netloc
-        out_headers["Authorization"] = f"Bearer {self.api_key}"
+        if self.auth_scheme == "google-api-key":
+            out_headers["x-goog-api-key"] = self.api_key
+        else:
+            out_headers["Authorization"] = f"Bearer {self.api_key}"
         if had_x_api_key:
             out_headers["x-api-key"] = self.api_key
         if body is not None:

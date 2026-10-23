@@ -157,7 +157,8 @@ class GeminiCLIAgent(InstalledAgent):
 
     def __init__(self, *args, route: str | None = None, **kwargs):
         super().__init__(*args, **kwargs)
-        self.route = (route or os.environ.get(self.ROUTE_ENV) or "gateway").strip().lower()
+        configured_route = self.generation_config.pop("route", None)
+        self.route = (route or configured_route or os.environ.get(self.ROUTE_ENV) or "gateway").strip().lower()
         if self.route not in self.ROUTES:
             raise ValueError(f"{self.ROUTE_ENV}={self.route!r}; choose one of "
                              f"{list(self.ROUTES)}")
@@ -255,12 +256,16 @@ class GeminiCLIAgent(InstalledAgent):
             out["model"] = {"maxSessionTurns": self.max_turns}
         effort = self.generation_config.get("reasoning_effort")
         if effort:
-            out["modelConfigs"] = {"customAliases": {self.model_alias: {
+            model_config = {
                 "modelConfig": {
                     "model": self.model_slug,
                     "generateContentConfig": {
                         "thinkingConfig": {"includeThoughts": True,
-                                           "thinkingLevel": str(effort).upper()}}}}}}
+                                           "thinkingLevel": str(effort).upper()}}}}
+            # After a tool call, the CLI uses the resolved model name instead
+            # of the launch alias. Both must retain the requested effort.
+            out["modelConfigs"] = {"customAliases": {
+                self.model_alias: model_config, self.model_slug: model_config}}
         return out
 
     def resolved_base_url(self) -> str:
@@ -287,8 +292,6 @@ class GeminiCLIAgent(InstalledAgent):
             problems.append("apply_tool_policy was never called")
             return problems
         problems += self.config_problems()
-        if self.policy.get("mcp_only") and self.route != "gateway":
-            problems.append("Gemini MCP-only requires the verified gateway route")
         effort = self.generation_config.get("reasoning_effort")
         if effort and effort not in self.REASONING_EFFORT_CHOICES:
             problems.append(f"reasoning_effort={effort!r}; gemini-cli takes "

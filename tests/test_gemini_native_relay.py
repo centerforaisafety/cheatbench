@@ -19,7 +19,7 @@ from core.agents import gemini_cli_runner as runner
 ])
 def test_native_wire(method, cli_model, expected, status):
     seen = []
-    output = b'data: {"text":"first"}\n\ndata: {"text":"last"}\n\n' if method.startswith('stream') else b'{"totalTokens":17}'
+    output = b'data: {"text":"first","modelVersion":"gemini-4-argon"}\n\ndata: {"text":"last"}\n\n' if method.startswith('stream') else b'{"totalTokens":17}'
     class Upstream(BaseHTTPRequestHandler):
         def log_message(self, *args): pass
         def do_POST(self):
@@ -48,6 +48,8 @@ def test_native_wire(method, cli_model, expected, status):
         assert relay.calls[0]['model'] == cli_model
         assert relay.calls[0]['upstream_model'] == expected
         assert relay.calls[0]['status'] == status
+        if status == 200 and method.startswith('stream'):
+            assert relay.calls[0]['response_models'] == ['gemini-4-argon']
         with pytest.raises(urllib.error.HTTPError) as error:
             urllib.request.urlopen(urllib.request.Request(relay.url + f'/v1beta/models/{cli_model}:{method}', data=body), timeout=5)
         assert error.value.code == 403

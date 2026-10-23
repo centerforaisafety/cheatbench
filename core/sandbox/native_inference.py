@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import http.client
 import json
+import re
 import threading
 import time
 from datetime import datetime, timezone
@@ -25,6 +26,29 @@ POST_PATHS = frozenset({"/v1/responses", "/responses", "/v1/messages", "/message
 GET_PATHS = frozenset({"/v1/models", "/models"})
 MCP_TOOLS = frozenset({"play_move", "game_status", "reset_game", "write_notes", "read_notes",
                        "api_request", "list_files", "read_file", "write_file"})
+GEMINI_POST_PATH = re.compile(
+    r"/v1beta/models/[A-Za-z0-9._-]+:(?:generateContent|streamGenerateContent|countTokens)(?:\?alt=sse)?")
+
+
+def restrict_gemini_tools(document, *, mcp_server):
+    """Keep only the game's MCP functions in Google's native request format."""
+    if mcp_server not in {"chess", "go"}:
+        raise ValueError("Unsupported restricted game namespace")
+    if "tools" not in document:
+        return document
+    if not isinstance(document["tools"], list):
+        raise ValueError("Invalid tool declarations")
+    allowed = {f"mcp_{mcp_server}_{name}" for name in MCP_TOOLS}
+    declarations = []
+    for tool in document["tools"]:
+        if not isinstance(tool, dict):
+            continue
+        functions = tool.get("functionDeclarations", [])
+        if not isinstance(functions, list):
+            raise ValueError("Invalid function declarations")
+        declarations.extend(f for f in functions if isinstance(f, dict) and f.get("name") in allowed)
+    document["tools"] = [{"functionDeclarations": declarations}] if declarations else []
+    return document
 
 
 def restrict_tools(document, *, grok_mcp=False, mcp_server="chess"):
@@ -99,7 +123,14 @@ class Handler(BaseHTTPRequestHandler):
     def forward(self, paths):
         # Compare the entire target, including Claude's fixed beta query.
         # Other query strings, absolute URLs and traversal are not normalized.
-        if self.path not in paths or self.headers.get("Upgrade") or self.headers.get("Transfer-Encoding"):
+        native_google = self.server.gemini_native
+        target = self.path
+        if self.server.path_prefix == "/api/v1":
+            target = target[4:] if target.startswith("/api/v1/") else ""
+        elif self.server.path_prefix == "/v1beta/openai":
+            target = "/v1" + target[len("/v1beta/openai"):] if target.startswith("/v1beta/openai/") else ""
+        allowed = (self.command == "POST" and GEMINI_POST_PATH.fullmatch(self.path)) if native_google else target in paths
+        if not allowed or self.headers.get("Upgrade") or self.headers.get("Transfer-Encoding"):
             return self.reject()
         lengths = self.headers.get_all("Content-Length") or []
         try:
@@ -119,8 +150,12 @@ class Handler(BaseHTTPRequestHandler):
                 document = json.loads(body or b"")
                 if not isinstance(document, dict):
                     raise ValueError("expected object")
-                body = json.dumps(restrict_tools(document, grok_mcp=self.server.grok_mcp,
-                                                 mcp_server=self.server.mcp_server)).encode()
+                if native_google:
+                    document = restrict_gemini_tools(document, mcp_server=self.server.mcp_server)
+                else:
+                    document = restrict_tools(document, grok_mcp=self.server.grok_mcp,
+                                              mcp_server=self.server.mcp_server)
+                body = json.dumps(document).encode()
             except (ValueError, UnicodeError):
                 return self.reject(400)
         elif self.command != "POST" and body:
@@ -162,19 +197,21 @@ class Handler(BaseHTTPRequestHandler):
 class InferenceBridge(ThreadingHTTPServer):
     daemon_threads = True
 
-    def __init__(self, base_url, api_key, log_path, *, keepalive_interval=15, grok_mcp=False, mcp_server="chess"):
+    def __init__(self, base_url, api_key, log_path, *, keepalive_interval=15, grok_mcp=False, mcp_server="chess", gemini_native=False):
         if mcp_server not in {"chess", "go"}:
             raise ValueError("Unsupported restricted game namespace")
         if keepalive_interval <= 0:
             raise ValueError("keepalive_interval must be positive")
         parsed = urlsplit(base_url)
         if (parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password
-                or parsed.query or parsed.fragment or parsed.path.rstrip("/") not in ("", "/v1")):
-            raise ValueError("Restricted native inference requires an HTTPS model origin, optionally ending in /v1")
+                or parsed.query or parsed.fragment or parsed.path.rstrip("/") not in ("", "/v1", "/api/v1", "/v1beta/openai")):
+            raise ValueError("Restricted native inference requires an HTTPS model origin with a supported inference API prefix")
         super().__init__(("127.0.0.1", 0), Handler)
-        self.upstream = Upstream(base_url, api_key, timeout=900)
+        self.upstream = Upstream(base_url, api_key, timeout=900,
+                                 auth_scheme="google-api-key" if gemini_native else "bearer")
         self.keepalive_interval = keepalive_interval
         self.grok_mcp = bool(grok_mcp)
+        self.gemini_native = bool(gemini_native)
         self.mcp_server = mcp_server
         self.hosts = (parsed.hostname,)
         self.path_prefix = parsed.path.rstrip("/")
@@ -225,8 +262,8 @@ def reroute_blob(blob, local_base_url):
         if task["codex"].get("provider"):
             task["codex"]["provider"]["base_url"] = local_base_url
     if "gemini" in task:
-        if not task["gemini"].get("mcp_only") or task["gemini"].get("route") != "gateway":
-            raise ValueError("Restricted native Gemini requires MCP-only gateway routing")
+        if not task["gemini"].get("mcp_only") or task["gemini"].get("route") not in {"gateway", "native"}:
+            raise ValueError("Restricted native Gemini requires MCP-only routing")
         task["gemini"]["base_url"] = local_base_url
         task["env"]["GEMINI_BASE_URL"] = local_base_url
     if "deepseek_harness" in task:
