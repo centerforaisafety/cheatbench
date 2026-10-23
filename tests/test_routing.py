@@ -440,26 +440,3 @@ def test_claude_model_prefix_matches_upstream(base, expected):
     agent = make_agent("claude-sdk", model="anthropic/claude-opus-5", api_base_url=base)
     agent.apply_tool_policy(POLICY)
     assert _blob(agent)["task"]["model"] == expected
-
-
-def test_codex_openrouter_model_id_preserves_vendor_prefix(tmp_path):
-    """An optional gateway route must work without changing shipped GPT defaults."""
-    from core.chat_config import load_chat_config
-    path = _write(tmp_path, {
-        "routed-gpt": {
-            "model": "openrouter/openai/gpt-6.1-sol",
-            "api_key_env": "RH_TEST_KEY",
-            "api_base_url": "https://openrouter.ai/api/v1",
-            "generation_config": {"reasoning_effort": "high"},
-        }
-    })
-    cfg = run_py.load_config(path, "routed-gpt")
-    agent = make_agent("codex", model=cfg["model"], api_base_url=cfg["api_base_url"],
-                       api_key_env=cfg["api_key_env"])
-    agent.apply_tool_policy(POLICY)
-    assert _blob(agent)["task"]["codex"]["model_slug"] == "openai/gpt-6.1-sol"
-    assert agent.API_KEY_ENV == "RH_TEST_KEY"
-    for loader in (load_chat_config, judging.load_judge_config):
-        chat = loader(path, "routed-gpt")
-        assert chat["factory_model"] == "openrouter/openai/gpt-6.1-sol"
-        assert chat["generation_config"] == {"reasoning_effort": "high"}

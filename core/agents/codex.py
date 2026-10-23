@@ -395,9 +395,6 @@ class CodexAgent(InstalledAgent):
         `gpt-6-astra`, which is not one. So the model goes through verbatim when
         this instance carries its own base URL.
         """
-        from urllib.parse import urlsplit
-        if urlsplit(self.resolved_base_url()).hostname == "openrouter.ai":
-            return self.model.removeprefix("openrouter/")
         if self.base_url:
             return self.model
         return self.model.split("/")[-1]
