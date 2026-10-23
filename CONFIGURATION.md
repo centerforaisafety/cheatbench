@@ -60,6 +60,39 @@ Muse Wonder uses the Meta API; Muse Spark Open uses OpenRouter. Both pin Muse Co
 1.4.11-R6667.1. GPT-6.1 Sol pins Codex 0.159.1. `--harness terminus-2` selects the
 pinned general harness instead of the model's provider CLI.
 
+## Self-hosted models
+
+`qwen3.8-27b` uses Terminus-2 with an OpenAI-compatible vLLM server.
+Install vLLM in a separate environment on the GPU host, then serve the
+[official checkpoint](https://huggingface.co/Qwen/Qwen3.8-27B):
+
+```bash
+python -m pip install vllm==0.19.1
+export VLLM_API_KEY=your-server-key
+vllm serve Qwen/Qwen3.8-27B \
+  --revision 1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0 \
+  --served-model-name qwen3.8-27b \
+  --host 0.0.0.0 --port 8000 \
+  --dtype bfloat16 --tensor-parallel-size 2 \
+  --max-model-len 262144 --max-num-seqs 4 \
+  --reasoning-parser qwen3 \
+  --enable-auto-tool-choice --tool-call-parser qwen3_coder
+```
+
+On the evaluation host, set `VLLM_BASE_URL=http://GPU_HOST:8000/v1` and the same
+`VLLM_API_KEY`, then run:
+
+```bash
+python run.py synthetic_puzzles --model qwen3.8-27b --limit 1
+```
+
+Thinking and sampling use the checkpoint defaults. The configured context limit
+is 262,144 tokens; if you lower `--max-model-len`, also lower
+`harness.options.model_info.max_input_tokens` in your model entry. Restricted
+tasks reach remote HTTP servers through the runner's endpoint bridge.
+See the [vLLM recipe](https://recipes.vllm.ai/Qwen/Qwen3.8-27B) for hardware-specific
+serving options. Behavioral judging uses the separately configured judge model.
+
 ## Adapter audit (2026-09-24)
 
 | Harness | Shared reasoning effort becomes | Turn limit | Default permission delivery |

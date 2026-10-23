@@ -20,10 +20,10 @@ MODELS = Path(__file__).resolve().parents[1] / "configs/models.yaml"
 @pytest.fixture(autouse=True)
 def endpoints(monkeypatch):
     for name in ("OPENAI_BASE_URL", "ANTHROPIC_BASE_URL", "LITELLM_BASE_URL",
-                 "GEMINI_BASE_URL", "DEEPSEEK_BASE_URL"):
+                 "GEMINI_BASE_URL", "DEEPSEEK_BASE_URL", "VLLM_BASE_URL"):
         monkeypatch.setenv(name, "https://gateway.example/v1")
     for name in ("OPENAI_API_KEY", "OPENROUTER_API_KEY", "ANTHROPIC_API_KEY", "LITELLM_API_KEY",
-                 "GEMINI_API_KEY", "DEEPSEEK_API_KEY", "META_API_KEY", "XAI_API_KEY"):
+                 "GEMINI_API_KEY", "DEEPSEEK_API_KEY", "META_API_KEY", "XAI_API_KEY", "VLLM_API_KEY"):
         monkeypatch.setenv(name, "offline-test")
 
 
