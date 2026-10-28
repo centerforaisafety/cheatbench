@@ -197,17 +197,19 @@ class Handler(BaseHTTPRequestHandler):
 class InferenceBridge(ThreadingHTTPServer):
     daemon_threads = True
 
-    def __init__(self, base_url, api_key, log_path, *, keepalive_interval=15, grok_mcp=False, mcp_server="chess", gemini_native=False):
+    def __init__(self, base_url, api_key, log_path, *, keepalive_interval=15, grok_mcp=False, mcp_server="chess", gemini_native=False, upstream_timeout_s=900):
         if mcp_server not in {"chess", "go"}:
             raise ValueError("Unsupported restricted game namespace")
         if keepalive_interval <= 0:
             raise ValueError("keepalive_interval must be positive")
+        if upstream_timeout_s <= 0:
+            raise ValueError("upstream_timeout_s must be positive")
         parsed = urlsplit(base_url)
         if (parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password
                 or parsed.query or parsed.fragment or parsed.path.rstrip("/") not in ("", "/v1", "/api/v1", "/v1beta/openai")):
             raise ValueError("Restricted native inference requires an HTTPS model origin with a supported inference API prefix")
         super().__init__(("127.0.0.1", 0), Handler)
-        self.upstream = Upstream(base_url, api_key, timeout=900,
+        self.upstream = Upstream(base_url, api_key, timeout=upstream_timeout_s,
                                  auth_scheme="google-api-key" if gemini_native else "bearer")
         self.keepalive_interval = keepalive_interval
         self.grok_mcp = bool(grok_mcp)

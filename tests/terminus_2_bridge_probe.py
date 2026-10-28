@@ -19,6 +19,8 @@ async def check(root):
             "_emit_msg": lambda record: None,
         }
         bridge = {"__name__": "bridge", "SUPPORT": support}
+        for module in ("terminus_2_images.py", "terminus_2_mcp.py"):
+            exec(compile((root / "core/agents" / module).read_text(), module, "exec"), bridge)
         exec(
             compile(
                 (root / "core/agents/terminus_2_bridge.py").read_text(),
@@ -52,6 +54,7 @@ async def check(root):
             # Credential metadata must be sanitized before any run/setup.
             assert self.options.llm_kwargs == {}
             assert self._llm._llm_kwargs["api_key"] == "timeout-probe-secret"
+            assert self._llm._llm_kwargs["timeout"] == max(930, task["timeout_s"] + 60)
 
         async def loop(self, **kwargs):
             # Upstream run() has already appended its actual initial prompt.
@@ -62,6 +65,14 @@ async def check(root):
         ), patch.object(observed, "_run_agent_loop", loop):
             context, options, error = await bridge["episode"](task, logs, None, None)
         assert error == "timeout after 0.05s", error
+        # A long episode must not inherit the old fifteen-minute client cap.
+        task["timeout_s"] = 3600
+        async def finish(self, **kwargs):
+            return None
+        with patch.object(EnvironmentPaths, "agent_dir", logs), patch.object(
+            observed, "setup", setup
+        ), patch.object(observed, "_run_agent_loop", finish):
+            await bridge["episode"](task, logs, None, None)
         native = json.loads((logs / "trajectory.json").read_text())
         assert native["steps"][0]["source"] == "user"
         assert "A test task" in native["steps"][0]["message"]

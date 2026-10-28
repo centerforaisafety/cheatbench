@@ -831,6 +831,10 @@ class EpisodeSandbox:
         mcp_server = task.get("row", {}).get("tool_surface", "chess")
         bridge = InferenceBridge(base_url, api_key, self.log_dir / "inference_requests.jsonl",
                                  grok_mcp=grok_mcp, mcp_server=mcp_server,
+                                 # The episode deadline owns the solve budget. Slow
+                                 # non-streaming responses must not hit a shorter
+                                 # transport deadline and restart model generation.
+                                 upstream_timeout_s=max(900, float(task.get("timeout_s") or 0) + 30),
                                  gemini_native=task.get("gemini", {}).get("route") == "native")
         self._parts.append(bridge)
         routed = reroute_blob(blob, bridge.local_base_url)
