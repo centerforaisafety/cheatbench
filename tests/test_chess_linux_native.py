@@ -52,16 +52,18 @@ def test_linux_transport_preserves_native_payloads(model):
 
 
 @pytest.mark.parametrize("grok", [False, True])
-def test_linux_bridge_does_not_choose_network_policy_and_closes_it(tmp_path, monkeypatch, grok):
+@pytest.mark.parametrize("budget,expected_timeout", [(60, 900), (3600, 3630), (5400, 5430)])
+def test_linux_bridge_does_not_choose_network_policy_and_closes_it(tmp_path, monkeypatch, grok, budget, expected_timeout):
     bridge = Mock(server_port=43210, local_base_url="http://127.0.0.1:43210/v1")
     factory = Mock(return_value=bridge)
     monkeypatch.setattr(native_inference, "InferenceBridge", factory)
     sb = runtime.EpisodeSandbox(1, (), tmp_path)
     sb.lock_egress = Mock(return_value="guard")
-    task = {"tools": [], **({"grok": {"mcp_only": True}} if grok else {})}
+    task = {"tools": [], "timeout_s": budget, **({"grok": {"mcp_only": True}} if grok else {})}
     routed, port = sb.route_mcp_only(json.dumps({"task": task}), "https://model.example/v1", "mock-key")
     assert port == 43210
     assert factory.call_args.kwargs["grok_mcp"] is grok
+    assert factory.call_args.kwargs["upstream_timeout_s"] == expected_timeout
     sb.lock_egress.assert_not_called()
     assert json.loads(routed)["task"]["routing"]["api_base_url"] == bridge.local_base_url
     sb.close()

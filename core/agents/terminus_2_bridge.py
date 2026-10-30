@@ -182,10 +182,10 @@ async def episode(task, logs_dir, grader, observer):
     agent = ObservedTerminus2(
         logs_dir=logs_dir,
         model_name=task["model"],
-        # The host bridge waits up to 900 seconds for upstream headers. Allow
-        # it to return its response/error before LiteLLM abandons the socket.
-        # The outer episode timeout still enforces the original solve budget.
-        llm_kwargs={"api_key": key, "timeout": 930},
+        # Keep the transport deadline beyond both the episode budget and the
+        # host bridge's budget + 30s deadline. asyncio.wait_for below still
+        # enforces the original solve budget and retains partial trajectories.
+        llm_kwargs={"api_key": key, "timeout": max(930, float(task["timeout_s"]) + 60)},
         mcp_servers=[] if task.get("terminus_2", {}).get("mcp_only") else mcp,
         mcp_only=task.get("terminus_2", {}).get("mcp_only", False),
         task_grader=grader,

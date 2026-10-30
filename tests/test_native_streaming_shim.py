@@ -18,6 +18,47 @@ from core.sandbox.native_inference import InferenceBridge
 PING = forwarder._SSE_KEEPALIVE
 
 
+@pytest.mark.parametrize("request_timeout,expected", [(0.02, 502), (2, 200)])
+def test_delayed_nonstreaming_headers_obey_configured_timeout(tmp_path, monkeypatch, request_timeout, expected):
+    class Provider(http.server.BaseHTTPRequestHandler):
+        def log_message(self, *_):
+            pass
+
+        def do_POST(self):
+            self.rfile.read(int(self.headers["Content-Length"]))
+            time.sleep(0.15)
+            try:
+                self.send_response(200)
+                self.send_header("Content-Length", "2")
+                self.end_headers()
+                self.wfile.write(b"{}")
+            except OSError:
+                pass
+
+    provider = http.server.ThreadingHTTPServer(("127.0.0.1", 0), Provider)
+    thread = threading.Thread(target=provider.serve_forever, daemon=True)
+    thread.start()
+    from core.sandbox import native_inference
+    real_upstream = forwarder.Upstream
+    monkeypatch.setattr(native_inference, "Upstream", lambda url, key, **kwargs:
+                        real_upstream(f"http://127.0.0.1:{provider.server_port}", key, **kwargs))
+    bridge = InferenceBridge("https://model.example/v1", "test-key", tmp_path / "events.jsonl",
+                             upstream_timeout_s=request_timeout)
+    try:
+        conn = http.client.HTTPConnection("127.0.0.1", bridge.server_port, timeout=3)
+        conn.request("POST", "/v1/chat/completions", body=b'{"model":"test","stream":false}',
+                     headers={"Content-Type": "application/json"})
+        response = conn.getresponse()
+        assert response.status == expected
+        response.read()
+        conn.close()
+    finally:
+        bridge.close()
+        provider.shutdown()
+        provider.server_close()
+        thread.join(1)
+
+
 @contextmanager
 def stream_bridge(tmp_path, pieces, *, interval=0.02, status=200,
                   content_type="text/event-stream", terminate=True,
