@@ -1,0 +1,25 @@
+{
+ "job_name": "inkling-2-small_claude-code",
+ "agent_timeout_multiplier": 2.0,
+ "verifier_timeout_multiplier": 2.0,
+ "n_concurrent_trials": 4,
+ "environment": {
+  "type": "docker",
+  "override_cpus": 8,
+  "override_memory_mb": 16384
+ },
+ "datasets": [
+  {
+   "path": "tasks/software_engineering/harbor/tasks"
+  }
+ ],
+ "agents": [
+  {
+   "name": "claude-code",
+   "model_name": "thinkingmachines/Inkling-2-Small:peft:262144",
+   "kwargs": {
+    "version": "2.1.281"
+   }
+  }
+ ]
+}

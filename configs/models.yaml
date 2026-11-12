@@ -299,3 +299,13 @@ gpt-6.1-sol:
     version: 0.159.1
     options:
       reasoning_summary: detailed
+
+inkling-2-small:
+  model: thinkingmachines/Inkling-2-Small:peft:262144
+  api_key_env: TINKER_API_KEY
+  api_base_url: https://tinker.thinkingmachines.dev/services/tinker-prod/anthropic/api
+  generation_config:
+    reasoning_effort: high
+  harness:
+    name: claude-sdk
+    version: 2.1.281

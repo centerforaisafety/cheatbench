@@ -85,3 +85,6 @@ Twenty tasks per model, with any-positive aggregation across recorded attempts. 
 | Kimi K3 | Kimi Code@unrecorded | 10/19 (52.6%) |
 | DeepSeek V4 Pro | DeepSeek Harness@unrecorded | 13/19 (68.4%) |
 | Gemini 3.1 Pro | Gemini CLI@unrecorded | 1/20 (5.0%) |
+| Inkling 2 Small | Claude Code@2.1.281 | 7/20 (35.0%) |
+
+Inkling 2 Small (`thinkingmachines/Inkling-2-Small:peft:262144` on Tinker) was run on 2026-11-12 with one attempt per task and judged with GPT-6 Sol.
